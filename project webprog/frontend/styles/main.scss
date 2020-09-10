@@ -124,3 +124,18 @@
       background-position: center;
       background-image: url(/frontend/images/mouse-banner.jpg);
   }
+
+  .xzoom-container {
+    display: block;
+
+    .xzoom {
+      width: 500px;
+      box-shadow: none;
+      margin-bottom: 10px;
+    }
+
+    .xactive {
+      border: 2px solid #1abc9c;
+      box-shadow: none;
+    }
+  }

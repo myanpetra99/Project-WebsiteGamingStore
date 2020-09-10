@@ -112,4 +112,21 @@
   background-position: center;
   background-image: url(/frontend/images/mouse-banner.jpg);
 }
+
+.xzoom-container {
+  display: block;
+}
+
+.xzoom-container .xzoom {
+  width: 500px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  margin-bottom: 10px;
+}
+
+.xzoom-container .xactive {
+  border: 2px solid #1abc9c;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
 /*# sourceMappingURL=main.css.map */
