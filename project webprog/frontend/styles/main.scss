@@ -28,7 +28,7 @@
     }
 }
 
-.card {
+.card-homepage {
 
     width: 350px;
     height: 100px;
@@ -37,13 +37,13 @@
 
     &:hover {
 
-        .card-bg {
+        .card-homepage-bg {
             transition-duration: 500ms;
 
             -webkit-filter: blur(4px);
         }
 
-        .card-title {
+        .card-homepage-title {
             transition-duration: 500ms;
             -webkit-text-stroke-width: 0px;
         }
@@ -57,8 +57,8 @@
 
 
 
-.card-bg,
-.card-title {
+.card-homepage-bg,
+.card-homepage-title {
 
     position: absolute;
     top: 0;
@@ -88,7 +88,7 @@
 }
 
 
-.card-bg {
+.card-homepage-bg {
 
     object-fit: cover !important;
     -webkit-filter: blur(1.5px);
@@ -111,4 +111,16 @@
   .brand-logo{
       max-width: 70px;
   }
+  }
+
+  //PAGE home/mouse (mouse.html)
+
+  .banner{
+      height: 30vh;
+  }
+  .mouse-banner{
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url(/frontend/images/mouse-banner.jpg);
   }

@@ -25,31 +25,31 @@
   color: whitesmoke;
 }
 
-.card {
+.card-homepage {
   width: 350px;
   height: 100px;
   border-radius: 10px;
   position: relative;
 }
 
-.card:hover .card-bg {
+.card-homepage:hover .card-homepage-bg {
   -webkit-transition-duration: 500ms;
           transition-duration: 500ms;
   -webkit-filter: blur(4px);
 }
 
-.card:hover .card-title {
+.card-homepage:hover .card-homepage-title {
   -webkit-transition-duration: 500ms;
           transition-duration: 500ms;
   -webkit-text-stroke-width: 0px;
 }
 
-.card:hover .underline--magical {
+.card-homepage:hover .underline--magical {
   background-size: 100% 88%;
 }
 
-.card-bg,
-.card-title {
+.card-homepage-bg,
+.card-homepage-title {
   position: absolute;
   top: 0;
   left: 0;
@@ -74,7 +74,7 @@
   font-size: 35px !important;
 }
 
-.card-bg {
+.card-homepage-bg {
   -o-object-fit: cover !important;
      object-fit: cover !important;
   -webkit-filter: blur(1.5px);
@@ -100,5 +100,16 @@
   .brand-logo {
     max-width: 70px;
   }
+}
+
+.banner {
+  height: 30vh;
+}
+
+.mouse-banner {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(/frontend/images/mouse-banner.jpg);
 }
 /*# sourceMappingURL=main.css.map */
