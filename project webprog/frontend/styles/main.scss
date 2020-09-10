@@ -1,0 +1,114 @@
+//homepage
+
+.container-navbar {
+    background-color: #1a1a2e;
+    ;
+}
+
+.carousel-banner {
+    border-radius: 10px;
+}
+
+#navBarSearchForm {
+    width: 60% !important;
+}
+
+
+.btn-search {
+    border: #e94560 solid 1px;
+    color: #e94560;
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+
+    &:hover {
+        background-color: #e94560;
+        transition: 0.25s ease-out;
+        color: whitesmoke;
+    }
+}
+
+.card {
+
+    width: 350px;
+    height: 100px;
+    border-radius: 10px;
+    position: relative;
+
+    &:hover {
+
+        .card-bg {
+            transition-duration: 500ms;
+
+            -webkit-filter: blur(4px);
+        }
+
+        .card-title {
+            transition-duration: 500ms;
+            -webkit-text-stroke-width: 0px;
+        }
+
+        .underline--magical {
+            background-size: 100% 88%;
+        }
+    }
+
+}
+
+
+
+.card-bg,
+.card-title {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    font-weight: 500;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+
+
+
+}
+
+.underline--magical {
+    background-image: linear-gradient(120deg, #1a1a2e 0%, #e94560 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+    transition: background-size 0.25s ease-in;
+}
+
+.long {
+    font-size: 35px !important;
+
+}
+
+
+.card-bg {
+
+    object-fit: cover !important;
+    -webkit-filter: blur(1.5px);
+}
+
+//brand page
+
+.brand-logo{
+    width: 250px;
+    height: 150px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    &:hover{
+        transition-duration: 500ms;
+        filter: grayscale(0%);
+    }
+}
+
+@media only screen and (max-width: 768 px) {
+  .brand-logo{
+      max-width: 70px;
+  }
+  }
