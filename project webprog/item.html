@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="frontend/libraries/bootstrap/css/bootstrap.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="frontend/styles/main.css">
 </head>
 
@@ -191,21 +192,42 @@
   </section>
 
   <section class="content">
-    <div class="xzoom-container">
-      <img class="xzoom" id="xzoom-default" src="frontend/images/item-gallery1.jpg"
-        xoriginal="frontend/images/item-gallery1.jpg" />
+  
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="xzoom-container">
+        <img class="xzoom" id="xzoom-default" src="frontend/images/item-gallery1.jpg"
+          xoriginal="frontend/images/item-gallery1.jpg" />
+  
+  
+        <div class="xzoom-thumbs">
+          <a href="frontend/images/item-gallery1.jpg"><img class="xzoom-gallery" width="128"
+              src="frontend/images/item-gallery1.jpg" xpreview="frontend/images/item-gallery1.jpg" /></a>
+          <a href="frontend/images/item-gallery2.jpg"><img class="xzoom-gallery" width="128"
+              src="frontend/images/item-gallery2.jpg" xpreview="frontend/images/item-gallery2.jpg" /></a>
+          <a href="frontend/images/item-gallery3.jpg"><img class="xzoom-gallery" width="128"
+              src="frontend/images/item-gallery3.jpg" xpreview="frontend/images/item-gallery3.jpg" /></a>
 
 
-      <div class="xzoom-thumbs">
-        <a href="frontend/images/item-gallery1.jpg"><img class="xzoom-gallery" width="128"
-            src="frontend/images/item-gallery1.jpg" xpreview="frontend/images/item-gallery1.jpg" /></a>
-        <a href="frontend/images/item-gallery2.jpg"><img class="xzoom-gallery" width="128"
-            src="frontend/images/item-gallery2.jpg" xpreview="frontend/images/item-gallery2.jpg" /></a>
-        <a href="frontend/images/item-gallery3.jpg"><img class="xzoom-gallery" width="128"
-            src="frontend/images/item-gallery3.jpg" xpreview="frontend/images/item-gallery3.jpg" /></a>
+        </div>
       </div>
     </div>
+    <div class="col">
+      <div>
+       <br>
+       <br>
+        <h1  class="item-title">Logitech G102</h1>
+        <hr>
+       <h2 class="item-price"> <span class="props-item"><sup>HARGA</sup></span> Rp250.000 </h2>
+        
+      </div>
+    </div>
+  </div>
 
+    
+  </div>
+</div>
 
 
     </div>
@@ -225,9 +247,10 @@
   <script>
     $(document).ready(function () {
       $('.xzoom, .xzoom-gallery').xzoom({
-        zoomWidth: 500,
+        zoomWidth: 300,
         title: false,
         tint: '#333',
+        position: 'lens',
         Xoffset: 15
       });
     });
