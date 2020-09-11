@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .container-navbar {
   background-color: #1a1a2e;
 }
@@ -152,5 +156,67 @@
 
 hr {
   border-top: 1px solid #e6e6e6;
+}
+
+.mini-menus-item {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: green;
+  font-weight: 400;
+}
+
+.mini-menus-item:hover {
+  text-decoration: none;
+}
+
+.mini-menus-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: black;
+  font-weight: 500;
+}
+
+.mini-menus-sub-title {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 300;
+}
+
+.row-testi {
+  height: 15vh;
+  background-image: url(../images/krik-testi.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.row-ask {
+  height: 15vh;
+  background-image: url(../images/krik-ask.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.navbar-bottom {
+  border-radius: 10px 10px;
+  -webkit-transition: bottom 0.3s;
+  transition: bottom 0.3s;
+  bottom: -100px;
+  background: white;
+  background: linear-gradient(158deg, white 2%, #dedee1 42%, #2e2e41 80%, #1a1a2e 100%, #1a1a2e 100%);
+}
+
+.btn-primary {
+  border: #e94560 1px solid;
+  font-size: 30px;
+  background-color: #e94560;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: #16ba9f;
+  -webkit-transition: 0.25s ease-out;
+  transition: 0.25s ease-out;
+  color: white;
 }
 /*# sourceMappingURL=main.css.map */
