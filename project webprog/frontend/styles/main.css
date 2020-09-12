@@ -197,6 +197,7 @@ hr {
 }
 
 .navbar-bottom {
+  height: 70px;
   border-radius: 10px 10px;
   -webkit-transition: bottom 0.3s;
   transition: bottom 0.3s;
@@ -205,16 +206,37 @@ hr {
   background: linear-gradient(158deg, white 2%, #dedee1 42%, #2e2e41 80%, #1a1a2e 100%, #1a1a2e 100%);
 }
 
-.btn-primary {
-  border: #e94560 1px solid;
-  font-size: 30px;
-  background-color: #e94560;
+.btn-keranjang-navbar {
+  border: none;
+  font-size: 20px;
+  background-color: orange;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
+  color: white;
 }
 
-.btn-primary:hover {
-  background-color: #16ba9f;
+.btn-keranjang-navbar:hover {
+  background-color: #e94560;
+  -webkit-transition: 0.25s ease-out;
+  transition: 0.25s ease-out;
+  color: white;
+}
+
+.blank-row {
+  height: 10vh;
+}
+
+.btn-beli {
+  border: none;
+  font-size: 20px;
+  background-color: orange;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: white;
+}
+
+.btn-beli:hover {
+  background-color: #e94560;
   -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
   color: white;

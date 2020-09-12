@@ -1,7 +1,7 @@
 //homepage
 html {
     scroll-behavior: smooth;
-  }
+}
 
 .container-navbar {
     background-color: #1a1a2e;
@@ -209,23 +209,44 @@ hr {
     background-repeat: no-repeat;
 }
 
-.navbar-bottom{
+.navbar-bottom {
+    height: 70px;
     border-radius: 10px 10px;
     transition: bottom 0.3s;
-    bottom : -100px;
-    background: rgb(255,255,255);
-    background: linear-gradient(158deg, rgba(255,255,255,1) 2%, rgba(222,222,225,1) 42%, rgba(46,46,65,1) 80%, rgba(26,26,46,1) 100%, rgba(26,26,46,1) 100%);   
+    bottom: -100px;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(158deg, rgba(255, 255, 255, 1) 2%, rgba(222, 222, 225, 1) 42%, rgba(46, 46, 65, 1) 80%, rgba(26, 26, 46, 1) 100%, rgba(26, 26, 46, 1) 100%);
 }
 
-.btn-primary {
-    border: #e94560 1px solid;
-    font-size: 30px;
-    background-color: #e94560;
+.btn-keranjang-navbar {
+    border: none;
+    font-size: 20px;
+    background-color: orange;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
+    color: rgb(255, 255, 255);
 
     &:hover {
-        background-color: invert($color: #e94560);
+        background-color: #e94560;
+        transition: 0.25s ease-out;
+        color: rgb(255, 255, 255);
+    }
+}
+
+.blank-row {
+    height: 10vh;
+}
+
+.btn-beli {
+    border: none;
+    font-size: 20px;
+    background-color: orange;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+
+    &:hover {
+        background-color: #e94560;
         transition: 0.25s ease-out;
         color: rgb(255, 255, 255);
     }
