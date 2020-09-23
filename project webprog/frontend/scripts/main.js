@@ -8,6 +8,12 @@ function scrollFunction() {
   }
 }
 
+document.getElementById('transferInfo').style.display = "none"
+
+function showTransfer(){
+  var x = document.getElementById('transferInfo')
+    x.style.display = "block";
+}
 
 //All about cart
 function increment (obj) {

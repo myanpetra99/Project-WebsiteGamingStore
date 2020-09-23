@@ -104,11 +104,12 @@
               <h5 class="card-title">Ringkasan Belanja</h5>
               <h6 class="card-subtitle mb-2 text-muted">Total Belanja</h6>
               <p class="card-text total-belanja text-center">Rp250.000</p>
-              <button class="form-control btn-beli"> Beli </button>
+              <button class="form-control btn-beli btn-confirm-bayar" onclick="showTransfer()"> Lanjutkan Pembayaran </button>
             </div>
           </div>
 
-          <div class="transfer-information">
+          <div class="transfer-information" id="transferInfo">
+
             <div id="accordion">
               <div class="card">
                 <div class="card-header" id="headingOne">
@@ -137,7 +138,7 @@
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                   <div class="card-body">
-                   <b>XXXXXXXXX A/N Mas Johan</b>
+                   <b>XXXXXXXXX A/N Mas Lubby</b>
                   </div>
                 </div>
               </div>
@@ -157,8 +158,18 @@
                 </div>
               </div>
             </div>
+            <div class="card card-whatsapp" style="width: 100%">
+              <div class="card-body">
+                <h5 class="card-title">Konfirmasi Pembayaran</h5>
+                <h6 class="card-subtitle mb-2">Whatsapp</h6>
+               
+                <p class="card-text">  <img src="frontend/images/whatsapp-logo.png" width="60px" alt=""> Johan Hartanto - 081936516716</p>
+                <button class="form-control btn btn-primary mt-2" data-toggle="modal" data-target="#confirmModal"> Klik bila sudah melakukan pembayaran</button>
+              </div>
+            </div>
+          
           </div>
-          <button class="form-control btn btn-primary mt-2" data-toggle="modal" data-target="#confirmModal"> Klik bila sudah melakukan pembayaran</button>
+          
         </div>
 
 
@@ -172,7 +183,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="confirmModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="confirmModalLabel">Konfirmasi</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -182,7 +193,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Belum deh</button>
-          <a href="https://api.whatsapp.com/send?phone=081936516716&text=Saya%20Telah%20Melakukan%20Pembayaran%20Di%20website%20Anjay%20Gaming%20Store%20Dengan%20Bukti%20Sebagai%20Berikut :"><button type="button" class="btn btn-primary">Sudah Dong, Lets go</button></a>
+          <a href="https://api.whatsapp.com/send?phone=6281936516716&text=Saya%20Telah%20Melakukan%20Pembayaran%20Di%20website%20Anjay%20Gaming%20Store%20Dengan%20Bukti%20Sebagai%20Berikut%20:%0ANama%20:%0AAlamat:%0AID%20Order%20:%0A"><button type="button" class="btn btn-primary">Sudah Dong, Lets go</button></a>
         </div>
       </div>
     </div>
