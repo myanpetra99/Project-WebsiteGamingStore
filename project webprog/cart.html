@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="frontend/libraries/bootstrap/css/bootstrap.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="frontend/styles/main.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body onload="check()">
+
+  <section class="header">
+    <div class="container-fluid container-navbar ">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/landing.html">
+          <img src="frontend/images/brand-invert.png" height="60px" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul class="navbar-nav ">
+            <li class="nav-item active">
+              <a class="nav-link" href="/landing.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Contact Us (24/7)
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Instagram</a>
+                <a class="dropdown-item" href="#">Facebook Page</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Whatsapp (Fast Response)</a>
+              </div>
+            </li>
+          </ul>
+
+
+          <form class="form-inline my-2 my-lg-0">
+            <input type="text" class="form-control mr-sm-2" name="search" placeholder="Cari apa..?"
+              id="navBarSearchForm">
+            <button class="btn btn-search form-control" type="submit">GASKEUN!</button>
+          </form>
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="#">Sign in
+                <img src="frontend/images/login-logo.png" width="25px" style="filter: invert(100%)" alt="">
+              </a>
+
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card mb-3 product" style="max-width: 600px;">
+            <div class="row no-gutters">
+              <div class="col-md-4 d-flex align-items-center">
+                <img src="frontend/images/mouse-item.jpg" class=" product-img" alt="...">
+              </div>
+              <div class="col-md-6">
+                <div class="card-body product-details">
+                  <h5 class="card-title product-title">Logitech G102</h5>
+                  <p class="card-text product-price">Rp250.000</p>
+                </div>
+              </div>
+
+              <div class="col-md-2 d-flex align-items-center ml-n4">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button class="btn-minus" onclick="decrement(this); check()"> <i class="icon-feather"
+                        data-feather="minus-circle"></i></button>
+                    <input class="input-number" type="text" class="adults" value="1" onchange="check()">
+                    <div class="input-group-append">
+                      <button class="btn-plus" onclick="increment(this)"> <i class="icon-feather"
+                          data-feather="plus-circle"></i></button>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card ringkasan-belanja" style="width: 100%;">
+            <div class="card-body">
+              <h5 class="card-title">Ringkasan Belanja</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Total Belanja</h6>
+              <p class="card-text total-belanja text-center">Rp250.000</p>
+              <button class="form-control btn-beli btn-confirm-bayar" onclick="showTransfer()"> Lanjutkan Pembayaran </button>
+            </div>
+          </div>
+
+          <div class="transfer-information" id="transferInfo">
+
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                      aria-controls="collapseOne">
+                      <img src="frontend/images/logo-bca.png" style="height: 40px;">
+                    </button>
+                  </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                  <b>XXXXXXXXX A/N Michael Yan Petra</b>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                      aria-expanded="false" aria-controls="collapseTwo">
+                     <img src="frontend/images/Logo-mandiri.png" style="height: 50px;" alt="">
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                   <b>XXXXXXXXX A/N Mas Lubby</b>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                      aria-expanded="false" aria-controls="collapseThree">
+               <img src="frontend/images/logo-gopay.png" alt="" style="height: 50px;">
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="card-body">
+                  <b> No : +62XXXXXXX A/N Kang Evan</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card card-whatsapp" style="width: 100%">
+              <div class="card-body">
+                <h5 class="card-title">Konfirmasi Pembayaran</h5>
+                <h6 class="card-subtitle mb-2">Whatsapp</h6>
+               
+                <p class="card-text">  <img src="frontend/images/whatsapp-logo.png" width="60px" alt=""> Johan Hartanto - 081936516716</p>
+                <button class="form-control btn btn-primary mt-2" data-toggle="modal" data-target="#confirmModal"> Klik bila sudah melakukan pembayaran</button>
+              </div>
+            </div>
+          
+          </div>
+          
+        </div>
+
+
+
+      </div>
+    </div>
+
+  </section>
+
+  <div class="modal fade " id="confirmModal" tabindex="-1" aria-labelledby="econfirmModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">Konfirmasi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Apa Benar sudah melakukan Pembayaran?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Belum deh</button>
+          <a href="https://api.whatsapp.com/send?phone=6281936516716&text=Saya%20Telah%20Melakukan%20Pembayaran%20Di%20website%20Anjay%20Gaming%20Store%20Dengan%20Bukti%20Sebagai%20Berikut%20:%0ANama%20:%0AAlamat:%0AID%20Order%20:%0A"><button type="button" class="btn btn-primary">Sudah Dong, Lets go</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="frontend/libraries/jquery/jquery-3.4.1.min.js"></script>
+  <script src="frontend/libraries/bootstrap/js/bootstrap.js"></script>
+
+  <script>
+    feather.replace()
+  </script>
+  <script src="frontend/scripts/main.js"></script>
+</body>
+
+</html>
