@@ -5,12 +5,12 @@
 535180142 - Ghatra Vaganzha Rihi Pake
 535189102 - Michael Yan Petra
 
-5W+1H Website “Gaming Gear Store “
+<b>5W+1H Website “Gaming Gear Store “<b>
 
-<b>What? (rancangan apa yang ingin dibuat)<b>
+<b> What? (rancangan apa yang ingin dibuat) <b>
 	Kami Membuat Website “Gaming Gear Store” bertujuan untuk menjual produk bertema “gaming” keluaran terbaru yang terkenal kualitas dan merknya kepada konsumen dengan menyesuaikan tampilan layaknya E-commerce yang terkenal saat ini agar konsumen dapat nyaman berselancar di situs kami. Selain itu, website kami menjual juga seperti aksesoris telepon genggam dan Mouse/Keyboard yang pastinya bertema “gaming”
 
-When? (kapan dapat dilihat)
+	 When? (kapan dapat dilihat)
 	Website kami ditujukan bagi customer yang ingin membeli produk gaming dimana gaming gear pada masa sekarang selalu merilis terbaru, atau hanya ingin melihat produk harga gaming gear setiap harinya. Ketika ada promosi hari raya, konsumen juga dapat melihat promo di website kami. 
 Website kami berfungsi sebagai website keseharian E-commerce khusus gaming store yang selalu mengikuti pembaruan setiap saat.
 
