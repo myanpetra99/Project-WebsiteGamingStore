@@ -9,8 +9,8 @@ html {
 .navbar-landing {
   background-color: #1a1a2e;
   z-index: 999;
-  position: absolute;
-  width: 60%;
+  position: fixed;
+  width: 100%;
 }
 
 .carousel {
