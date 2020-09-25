@@ -1,6 +1,7 @@
 # Project-WebsiteGamingStore
 <ol>
    NIM dari kecil ke besar
+   <hr>
   <li>
     535180119 - Johan Hartanto
   </li>
