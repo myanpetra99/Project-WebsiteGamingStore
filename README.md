@@ -1,12 +1,22 @@
 # Project-WebsiteGamingStore
-
-
-- 535180119 - Johan Hartanto
-- 535180125 - Evander Christian Dumalang
-- 535180126 - Lubby Gennady
-- 535180142 - Ghatra Vaganzha Rihi Pake
-- 535189102 - Michael Yan Petra
-
+<ol>
+   NIM dari kecil ke besar
+  <li>
+    535180119 - Johan Hartanto
+  </li>
+   <li>
+535180125 - Evander Christian Dumalang
+  </li>
+     <li>
+535180126 - Lubby Gennady
+  </li>
+ <li>
+535180142 - Ghatra Vaganzha Rihi Pake
+  </li>
+  <li>
+535189102 - Michael Yan Petra
+  </li>
+   </ol>
 ## 5W+1H Website “Gaming Gear Store“
 
 - What? (rancangan apa yang ingin dibuat)
@@ -31,22 +41,6 @@ Website kami berfungsi sebagai website keseharian E-commerce khusus gaming store
 - Kesimpulan:
 > Website kami menjual produk yang bertema “Gaming” yang tentunya ditujukan para gamer yang ingin membeli atau melihat produk. Website kami juga dapat di akses setiap harinya dan merilis produk terbaru.
 =======
-<ol>
-   NIM dari kecil ke besar
-  <li>
-    535180119 - Johan Hartanto
-  </li>
-   <li>
-535180125 - Evander Christian Dumalang
-  </li>
-     <li>
-535180126 - Lubby Gennady
-  </li>
- <li>
-535180142 - Ghatra Vaganzha Rihi Pake
-  </li>
-  <li>
-535189102 - Michael Yan Petra
-  </li>
-</ol>
+
+
 
