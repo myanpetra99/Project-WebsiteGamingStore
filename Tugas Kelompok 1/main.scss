@@ -13,20 +13,25 @@ html {
 }
 
 section{
-    height: 100vh;
+    height: 100%;
+}
+
+.jumbotron{
+  height: 100vh;
+  
+  background:
+  /* top, transparent black, faked with gradient */ 
+  linear-gradient(
+    rgba(0, 0, 0, 0.7), 
+    rgba(0, 0, 0, 0.7)
+  ),
+  /* bottom, image */
+  url(./sect1-bg.jpg);
+  background-size: cover;
 }
 
 .section-satu{
 
-    background:
-    /* top, transparent black, faked with gradient */ 
-    linear-gradient(
-      rgba(0, 0, 0, 0.7), 
-      rgba(0, 0, 0, 0.7)
-    ),
-    /* bottom, image */
-    url(./sect1-bg.jpg);
-    background-size: cover;
 }
 
 .section-dua{
@@ -53,51 +58,29 @@ section{
 }
 
 
-.flip-card {
-    background-color: transparent;
-    width: 300px;
-    height: 200px;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  }
-  
-  /* This container is needed to position the front and back side */
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    width: 300px;
-    height: 200px;
-  }
-  
-  /* Do an horizontal flip when you move the mouse over the flip box container */
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  /* Position the front and back side */
-  .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    width: 300px;
-    height: 200px;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-  }
-  
-  /* Style the front side (fallback if image is missing) */
-  .flip-card-front {
-    background-color: #bbb;
+  .card {
     color: black;
+    
+    opacity:1;
+    .card-name{
+      font-size: 25px;
+      opacity: 0;
+      transition:1s;
+    }
+    transition:1s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
   }
   
-  /* Style the back side */
-  .flip-card-back {
-    background-color: transparent;
-    color: white;
-    transform: rotateY(180deg);
-    border: white 1px solid;
+.card{
+  &:hover{
+    img{
+      opacity:0.5;
+
+    }
+    .card-name{
+
+      opacity: 1;
+    }
   }
+}
