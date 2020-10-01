@@ -1,0 +1,86 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+section{
+    height: 100%;
+}
+
+.jumbotron{
+  height: 100vh;
+  
+  background:
+  /* top, transparent black, faked with gradient */ 
+  linear-gradient(
+    rgba(0, 0, 0, 0.7), 
+    rgba(0, 0, 0, 0.7)
+  ),
+  /* bottom, image */
+  url(./sect1-bg.jpg);
+  background-size: cover;
+}
+
+.section-satu{
+
+}
+
+.section-dua{
+    height: 100vh;
+}
+
+
+.text-header{
+    text-align: center;
+    margin-top: 30%;
+}
+
+.navbar-fixed-top.scrolled {
+  background-color: #fff !important;
+  transition: background-color 200ms linear;
+}
+
+.navbar-fixed-top.scrolled .nav-link {
+  color:#555;
+}
+
+.col-content{
+    margin-top: 10%;
+}
+
+
+  .card {
+    color: black;
+    
+    opacity:1;
+    .card-name{
+      font-size: 25px;
+      opacity: 0;
+      transition:1s;
+    }
+    transition:1s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
+.card{
+  &:hover{
+    img{
+      opacity:0.5;
+
+    }
+    .card-name{
+
+      opacity: 1;
+    }
+  }
+}

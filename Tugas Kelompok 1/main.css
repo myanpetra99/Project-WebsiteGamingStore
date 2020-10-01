@@ -1,0 +1,78 @@
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+}
+
+section {
+  height: 100%;
+}
+
+.jumbotron {
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(./sect1-bg.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./sect1-bg.jpg);
+  background-size: cover;
+}
+
+.section-dua {
+  height: 100vh;
+}
+
+.text-header {
+  text-align: center;
+  margin-top: 30%;
+}
+
+.navbar-fixed-top.scrolled {
+  background-color: #fff !important;
+  -webkit-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+}
+
+.navbar-fixed-top.scrolled .nav-link {
+  color: #555;
+}
+
+.col-content {
+  margin-top: 10%;
+}
+
+.card {
+  color: black;
+  opacity: 1;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.card .card-name {
+  font-size: 25px;
+  opacity: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.card:hover img {
+  opacity: 0.5;
+}
+
+.card:hover .card-name {
+  opacity: 1;
+}
+/*# sourceMappingURL=main.css.map */
