@@ -47,11 +47,10 @@ section {
 }
 
 .col-content {
-  margin-top: 20%;
+  margin-top: 10%;
 }
 
 .card {
-  margin-top: 20px;
   color: black;
   opacity: 1;
   -webkit-transition: 1s;
@@ -75,5 +74,13 @@ section {
 
 .card:hover .card-name {
   opacity: 1;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: white;
 }
 /*# sourceMappingURL=main.css.map */

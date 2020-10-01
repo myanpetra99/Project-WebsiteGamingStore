@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="frontend/libraries/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="frontend/libraries/owlcarousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="frontend/libraries/owlcarousel/owl.theme.default.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="frontend/styles/main.css">
+</head>
+
+<body onload="setRandomColor(); showImage(); ">
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <a href="landing.html" >
+          <h1 id="logoLogin" style="font-family: Zealot; margin: 10px;" class="text-center">AGStore</h1>
+        </a>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="d-none d-md-block banner-login">
+          <div class=""> <img id="bannerLogin" style="width: 100%; object-fit: contain; height: 90vh;"></div>
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card" style="margin-top: 30%;">
+          <ul class="nav nav-tabs" id="myTab" role="tablist" ">
+            <li class=" nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+              aria-selected="true">
+              <div class="display-4 text-center mb-4" style="font-size: 20px;">
+                Login
+              </div>
+            </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                aria-selected="false">
+                <div class="display-4 text-center mb-4" style="font-size: 20px;">
+                  Register
+                </div>
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="display-4 text-center mb-4" style="font-size: 40px;">
+                      Sign in
+                    </div>
+                    <input class="input-login mb-4" type="text" name="" id="" placeholder="Email">
+                    <input class="input-login mb-4" type="password" name="" id="" placeholder="Password">
+                    <button class="btn btn-utama mb-5" style="width: 100%; border-radius: 10px;">Login</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="display-4 text-center mb-4" style="font-size: 40px;">
+                      Register
+                    </div>
+                    <input class="input-login mb-4" type="text" name="" id="" placeholder="New Email">
+                    <input class="input-login mb-4" type="password" name="" id="" placeholder="Password">
+                    <input class="input-login mb-4" type="password" name="" id="" placeholder="Re-Type Password">
+                    <button class="btn btn-utama mb-5" style="width: 100%; border-radius: 10px;">Register</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script src="frontend/libraries/jquery/jquery-3.4.1.min.js"></script>
+  <script src="frontend/libraries/bootstrap/js/bootstrap.js"></script>
+  <script src="frontend/scripts/main.js"></script>
+
+  <script>
+    var theImages = new Array()
+
+
+    theImages[0] = './frontend/images/Banner-login2.jpg'
+    theImages[1] = './frontend/images/Banner-login.jpg'
+    theImages[2] = './frontend/images/Banner-login3.jpg'
+    theImages[3] = './frontend/images/Banner-login4.png'
+
+
+    var j = 0
+    var p = theImages.length;
+    var preBuffer = new Array()
+    for (i = 0; i < p; i++) {
+      preBuffer[i] = new Image()
+      preBuffer[i].src = theImages[i]
+    }
+    var whichImage = Math.round(Math.random() * (p - 1));
+
+
+    function showImage() {
+      document.getElementById('bannerLogin').src = theImages[whichImage]
+    }
+  </script>
+
+  <script>
+    function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+  </script>
+
+
+<script>
+  function setRandomColor() {
+  $("#logoLogin").css("color", getRandomColor());
+}
+</script>
+</body>
+
+</html>

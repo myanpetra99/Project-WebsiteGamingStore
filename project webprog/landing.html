@@ -19,10 +19,10 @@
   <section class="header">
 
     <div class="container-fluid d-flex justify-content-center">
-      <nav class="navbar navbar-expand-lg navbar-dark navbar-landing">
+      <nav class="navbar navbar-expand-lg navbar-dark navbar-landing sticky">
 
         <a class="navbar-brand" href="#">
-          <img src="frontend/images/brand-invert.png" height="60px" alt="">
+          <p style="font-family: 'zealot'; font-size:25px">AGStore</p>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
 
           <ul class="navbar-nav ">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -52,25 +52,25 @@
           <form class="form-inline my-2 my-lg-0">
             <input type="text" class="form-control mr-sm-2" name="search" placeholder="Cari apa..?"
               id="navBarSearchForm">
-            <button class="btn btn-search form-control" type="submit">GASKEUN!</button>
+            <button class="btn btn-utama form-control" type="submit">GASKEUN!</button>
           </form>
 
           <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-              <button class="nav-link form-control" data-toggle="modal" data-target="#modalLRForm"
-                style="background: none; border: none;">Login<span> <img cl src="frontend/images/login-logo.png"
-                    width="25px" style="filter: invert(100%)" alt=""></span>
-              </button>
+              <a href="login.html"> <button class="nav-link form"
+                  style="background: none; border: none;">Login<span><img src="frontend/images/login-logo.png"
+                      width="25px" style="filter: invert(100%)" alt=""></span>
+                </button></a>
 
             </li>
           </ul>
         </div>
 
-     
+
       </nav>
     </div>
 
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide"  data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleControls" data-slide-to="1"></li>
@@ -105,101 +105,9 @@
 
   </section>
 
-     <!--Modal: Login / Register Form-->
-     <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-     <div class="modal-dialog cascading-modal" role="document">
-       <div class="modal-content">
-
-         <div class="modal-c-tabs">
-
-           <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
-             <li class="nav-item">
-               <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab">
-                 Login</a>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link" data-toggle="tab" href="#panel8" role="tab">
-                 Register</a>
-             </li>
-           </ul>
-
-           <div class="tab-content">
-             <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-
-               <div class="modal-body mb-1">
-                 <div class="md-form form-sm mb-3">
-
-                   <input type="email" id="modalLRInput10" class="form-control form-control-sm validate">
-                   <label data-error="wrong" data-success="right" for="modalLRInput10">Your email</label>
-                 </div>
-
-                 <div class="md-form form-sm mb-4">
-
-                   <input type="password" id="modalLRInput11" class="form-control form-control-sm validate">
-                   <label data-error="wrong" data-success="right" for="modalLRInput11">Your password</label>
-                 </div>
-                 <div class="text-center mt-2">
-                   <button class="btn btn-info">Log in </i></button>
-                 </div>
-               </div>
-               <div class="modal-footer">
-                 <div class="options text-center text-md-right mt-1">
-                   <p>Tidak ada akun? <a href="#" class="blue-text">Sign Up</a></p>
-                   <p>Lupa <a href="#" class="blue-text">Password?</a></p>
-                 </div>
-                 <button type="button" class="btn btn-outline-info waves-effect ml-auto"
-                   data-dismiss="modal">Close</button>
-               </div>
-
-             </div>
-
-             <div class="tab-pane fade" id="panel8" role="tabpanel">
-
-               <div class="modal-body">
-                 <div class="md-form form-sm mb-3">
-                   <input type="text" id="modalLRInput12" class="form-control form-control-sm validate">
-                   <label data-error="wrong" data-success="right" for="modalLRInput12">Nama Lengkap</label>
-                 </div>
-
-                 <div class="md-form form-sm mb-3">
-                   <input type="email" id="modalLRInput13" class="form-control form-control-sm validate">
-                   <label data-error="wrong" data-success="right" for="modalLRInput13">Email</label>
-                 </div>
-
-                 <div class="md-form form-sm mb-3">
-
-                   <input type="password" id="modalLRInput14" class="form-control form-control-sm validate">
-                   <label data-error="wrong" data-success="right" for="modalLRInput14">Password</label>
-                 </div>
-
-                 <div class="md-form form-sm mb-4">
-                   <input type="password" id="modalLRInput15" class="form-control form-control-sm validate">
-                   <label data-error="wrong" data-success="right" for="modalLRInput15">Re-type Password</label>
-                 </div>
-
-                 <div class="text-center form-sm mt-2">
-                   <button class="btn btn-info">Sign up </i></button>
-                 </div>
-
-               </div>
-               <div class="modal-footer">
-                 <div class="options text-right">
-                 </div>
-                 <button type="button" class="btn btn-outline-info waves-effect ml-auto"
-                   data-dismiss="modal">Close</button>
-               </div>
-             </div>
-           </div>
-
-         </div>
-       </div>
-
-     </div>
-   </div>
-   <!--Modal: Login / Register Form-->
 
   <section class="content">
+    
 
 
     <div class="container mt-1">
@@ -274,7 +182,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-md-4">
-          <a href="Mouse-gaming.html">
+          <a href="find.html">
             <div class="card-homepage mt-2 text-center ">
               <img src="frontend/images/mouse-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
               <div class="card-homepage-title">
@@ -320,7 +228,7 @@
         </a>
 
 
-        <a href="/brand.html">
+        <a href="brand.html">
           <div class="card-homepage mt-2 text-center ">
             <img src="frontend/images/brand-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
             <div class="card-homepage-title"> <span class="underline--magical">Brand</span></div>
@@ -349,22 +257,25 @@
   <script>
     $(document).ready(function () {
       $('.owl-carousel').owlCarousel({
-        autoplay: true,
         loop: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
+        margin: 10,
+        responsiveClass: true,
         responsive: {
           0: {
             items: 1,
             nav: true
           },
           600: {
-            items: 4,
-            nav: false
+            items: 2,
+            nav: true
           },
-
+          1000: {
+            items: 4,
+            nav: false,
+            loop: false
+          }
         }
-      });
+      })
     });
   </script>
 </body>
