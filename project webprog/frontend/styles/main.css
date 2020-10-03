@@ -32,7 +32,7 @@ html {
 }
 
 .carousel {
-  position: relative;
+  position: fill;
 }
 
 .carousel-item {
@@ -84,6 +84,7 @@ html {
   -webkit-transition-duration: 500ms;
           transition-duration: 500ms;
   -webkit-filter: blur(4px);
+          filter: blur(4px);
 }
 
 .card-homepage:hover .card-homepage-title {
@@ -126,7 +127,8 @@ html {
   -o-object-fit: cover !important;
      object-fit: cover !important;
   -webkit-filter: blur(1.5px);
-}
+          filter: blur(1.5px);
+}       
 
 .card-title {
   font-family: 'Poppins', sans-serif;
