@@ -43,8 +43,8 @@
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Products
               </a>
               <div class="dropdown-menu dropdown-content mt-n2" aria-labelledby="navbarDropdown">
@@ -107,6 +107,7 @@
   </section>
 
   <section class="content">
+
     <div class="container">
       <div class="row">
         <div class="col-md-8">
@@ -139,12 +140,41 @@
                 </div>
               </div>
             </div>
+
+            <div class="card mb-3 product" style="max-width: 600px;">
+              <div class="row no-gutters">
+                <div class="col-md-4 d-flex align-items-center">
+                  <img src="frontend/images/misc-item2.jpg" class=" product-img" alt="...">
+                </div>
+                <div class="col-md-4">
+                  <div class="card-body product-details">
+                    <h5 class="card-title product-title">SteelSeries QCK</h5>
+                    <div class="card-text product-price">200.000</div>
+                  </div>
+                </div>
+                <div class="col-md-2 d-flex align-items-center ml-n4">
+                  <input style="width: 5rem;" class="product-quantity" type="number" min="1" value="1">
+                  <button class="product-removal bg-transparent border-0"><svg width="1em" height="1em"
+                      viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                      <path fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                    </svg></button>
+                </div>
+                <div class="col-md-2 d-flex align-items-center ml-4">
+                  <div class="product-line-price">
+                    200.000
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="empty-cart" style="opacity: 0;">
             <a href="product.html">
               <img src="frontend/images/cart-empty.png" alt="">
             </a>
-            
+
           </div>
         </div>
         <div class="col-md-4">
@@ -167,77 +197,92 @@
               </div>
               <br>
 
-              <button class="form-control btn-beli btn-confirm-bayar" onclick="showTransfer(), recalculateCart(), ">
+              <div class="print-element" id="Invoice">
+                <p style="font-family: 'zealot'; font-size:40px; text-align: center;">AGStore</p>
+                <hr>
+                <h4>Kode Transaksi : </h4>
+                <p style="color: purple;">AGS-<code id="output"></code></p>
+              </div>
+
+              <button class="form-control btn-beli btn-confirm-bayar" id="btnConfirm"
+                onclick="showTransfer(), recalculateCart(), submitCart(), showToast()">
                 Lanjutkan Pembayaran
               </button>
+
+
+
+
+              <div class="transfer-information" id="transferInfo">
+
+                <div id="accordion">
+                  <div class="card">
+                    <div class="card-header" id="headingOne">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                          aria-expanded="true" aria-controls="collapseOne">
+                          <img src="frontend/images/logo-bca.png" style="height: 40px;">
+                        </button>
+                      </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="card-body">
+                        <b>XXXXXXXXX A/N Michael Yan Petra</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" id="headingTwo">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                          aria-expanded="false" aria-controls="collapseTwo">
+                          <img src="frontend/images/Logo-mandiri.png" style="height: 50px;" alt="">
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                      <div class="card-body">
+                        <b>XXXXXXXXX A/N Mas Lubby</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" id="headingThree">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                          aria-expanded="false" aria-controls="collapseThree">
+                          <img src="frontend/images/logo-gopay.png" alt="" style="height: 50px;">
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                      <div class="card-body">
+                        <b> No : +62XXXXXXX A/N Kang Evan</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card card-whatsapp" style="width: 100%">
+                  <div class="card-body">
+                    <h5 class="card-title">Konfirmasi Pembayaran</h5>
+                    <h6 class="card-subtitle mb-2">Whatsapp</h6>
+                    <img src="frontend/images/whatsapp-logo.png" width="60px" alt="">
+
+                    <p class="card-text" class="text-muted">
+                      Johan Hartanto -
+                      081936516716</p>
+                    <button class="form-control btn btn-primary mt-2" data-toggle="modal" data-target="#confirmModal">
+                      Konfirmasi Sekarang</button>
+                  </div>
+                </div>
+
+              </div>
             </div>
+
+
           </div>
-
-          <div class="transfer-information" id="transferInfo">
-
-            <div id="accordion">
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                      aria-controls="collapseOne">
-                      <img src="frontend/images/logo-bca.png" style="height: 40px;">
-                    </button>
-                  </h5>
-                </div>
-
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                  <div class="card-body">
-                    <b>XXXXXXXXX A/N Michael Yan Petra</b>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingTwo">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                      aria-expanded="false" aria-controls="collapseTwo">
-                      <img src="frontend/images/Logo-mandiri.png" style="height: 50px;" alt="">
-                    </button>
-                  </h5>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                  <div class="card-body">
-                    <b>XXXXXXXXX A/N Mas Lubby</b>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingThree">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
-                      aria-expanded="false" aria-controls="collapseThree">
-                      <img src="frontend/images/logo-gopay.png" alt="" style="height: 50px;">
-                    </button>
-                  </h5>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                  <div class="card-body">
-                    <b> No : +62XXXXXXX A/N Kang Evan</b>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card card-whatsapp" style="width: 100%">
-              <div class="card-body">
-                <h5 class="card-title">Konfirmasi Pembayaran</h5>
-                <h6 class="card-subtitle mb-2">Whatsapp</h6>
-
-                <p class="card-text"> <img src="frontend/images/whatsapp-logo.png" width="60px" alt=""> Johan Hartanto -
-                  081936516716</p>
-                <button class="form-control btn btn-primary mt-2" data-toggle="modal" data-target="#confirmModal"> Klik
-                  bila sudah melakukan pembayaran</button>
-              </div>
-            </div>
-
-          </div>
-
         </div>
+
 
 
 
@@ -270,6 +315,21 @@
 
 
 
+  <div style="position: absolute; top: 3rem; right: 0;">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+      <div class="toast-header">
+        <strong class="mr-auto">Message</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        <p class="text-dark"> Your Invoice Has Been Created</p> <button onclick="window.print()">Click Here</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
   <script src="frontend/libraries/jquery/jquery-3.4.1.min.js"></script>
   <script src="frontend/libraries/bootstrap/js/bootstrap.js"></script>
 
@@ -278,6 +338,7 @@
   </script>
   <script src="frontend/scripts/main.js"></script>
   <script src="frontend/scripts/cart.js"></script>
+
 </body>
 
 </html>

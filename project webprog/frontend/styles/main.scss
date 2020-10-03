@@ -21,21 +21,20 @@ html {
 
 .navbar-landing {
     background-color: #1a1a2e;
-    
+
     z-index: 999;
     position: absolute;
     width: 60%;
     transition: 500ms;
-    &:hover{
-        
-    }
+
+    &:hover {}
 }
 
 .sticky {
     position: fixed;
     top: 0;
     width: 100%;
-  }
+}
 
 
 .carousel {
@@ -146,7 +145,7 @@ html {
     -webkit-filter: blur(1.5px);
 }
 
-.card-title{
+.card-title {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 1rem;
@@ -178,38 +177,42 @@ html {
     height: 30vh;
 }
 
-.product-banner .mouse{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url(../images/mouse-banner.jpg)
-}
-.product-banner .keyboard{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url(../images/mouse-banner.jpg)
-}
-.product-banner .headset{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url(../images/mouse-banner.jpg)
-}
-.product-banner .gaming-chair{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url(../images/mouse-banner.jpg)
-}
-.product-banner .misclleaneous{
+.product-banner .mouse {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-image: url(../images/mouse-banner.jpg)
 }
 
-.sortBy{
+.product-banner .keyboard {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/mouse-banner.jpg)
+}
+
+.product-banner .headset {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/mouse-banner.jpg)
+}
+
+.product-banner .gaming-chair {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/mouse-banner.jpg)
+}
+
+.product-banner .misclleaneous {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/mouse-banner.jpg)
+}
+
+.sortBy {
     padding: 10px;
     background-color: #d8d8d8;
     border: 1px solid black;
@@ -333,13 +336,14 @@ hr {
     color: rgb(255, 255, 255);
 
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
         &:not([disabled]) {
             background-color: #e94560;
             transition: 0.25s ease-out;
             color: rgb(255, 255, 255);
         }
-      }
+    }
 }
 
 
@@ -453,51 +457,97 @@ a {
     border-radius: 100px;
 
     &:focus {
-        
+
         border: 3px solid #e94560;
     }
 }
 
-.product .product-price:before, .product .product-line-price:before, .totals-value:before {
+.product .product-price:before,
+.product .product-line-price:before,
+.totals-value:before {
     content: 'Rp.';
-  }
+}
 
-  .col-breadcrumb{
-      border: 1px solid rgb(219, 219, 219);
-      padding-top: auto;
-      -webkit-box-shadow: 0px 6px 16px -5px rgba(0,0,0,0.1);
-      -moz-box-shadow: 0px 6px 16px -5px rgba(0,0,0,0.1);
-      box-shadow: 0px 6px 16px -5px rgba(0,0,0,0.1);
-  }
+.col-breadcrumb {
+    border: 1px solid rgb(219, 219, 219);
+    padding-top: auto;
+    -webkit-box-shadow: 0px 6px 16px -5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 6px 16px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 6px 16px -5px rgba(0, 0, 0, 0.1);
+}
 
-  //drop down Hover on NAVBAR
-  .dropbtn {
-  
-  }
-  
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
+//drop down Hover on NAVBAR
+.dropbtn {}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-  }
-  
-  /* Links inside the dropdown */
+}
 
-  
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #ddd;}
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {display: block;}
-  
-  /* Change the background color of the dropdown button when the dropdown content is shown */
+/* Links inside the dropdown */
+
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+
+
+
+
+
+@media print {
+    body*{
+        display: block;
+    }
+    body * {
+        visibility: hidden;
+    }
+
+    #Invoice * {
+        visibility: visible;
+    }
+
+    #Invoice {
+        position: absolute;
+        top: 40px;
+        left: 30px;
+        margin-left: -500px;
+        font-size: 30px;
+    
+    }
+}
+
+@media screen{
+    #Invoice{
+        display: none;
+    }
+}
+
+.toast {
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 10px;
+    color: #ffffff;
+
+  z-index: 1;
+  }

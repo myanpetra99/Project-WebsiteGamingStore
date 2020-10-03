@@ -428,7 +428,9 @@ a {
   border: 3px solid #e94560;
 }
 
-.product .product-price:before, .product .product-line-price:before, .totals-value:before {
+.product .product-price:before,
+.product .product-line-price:before,
+.totals-value:before {
   content: 'Rp.';
 }
 
@@ -468,4 +470,37 @@ a {
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
+@media print {
+  body* {
+    display: block;
+  }
+  body * {
+    visibility: hidden;
+  }
+  #Invoice * {
+    visibility: visible;
+  }
+  #Invoice {
+    position: absolute;
+    top: 40px;
+    left: 30px;
+    margin-left: -500px;
+    font-size: 30px;
+  }
+}
+
+@media screen {
+  #Invoice {
+    display: none;
+  }
+}
+
+.toast {
+  margin-top: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 10px;
+  color: #ffffff;
+  z-index: 1;
+}
 /*# sourceMappingURL=main.css.map */

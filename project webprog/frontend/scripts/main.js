@@ -55,16 +55,14 @@ function decrement (obj) {
 
 }
 
+function showToast(){
+  $('.toast').toast('show');
 
-function check(){
-    var x = $( "input.adults" ).val();
-
-    x.chil
-
-    if(x==1){
-      $(".btn-minus").prop('disabled', true);
-    }
 }
 
+
+  $('#btnConfirm').one('click', function() {
+    $(this).attr('disabled','disabled');
+});
 
 
