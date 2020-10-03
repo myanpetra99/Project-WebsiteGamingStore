@@ -12,11 +12,11 @@
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
-<body onload="check()">
+<body onload="recalculateCart()">
 
   <section class="header">
     <div class="container-fluid container-navbar ">
-      <nav class="navbar navbar-expand-lg navbar-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark navbar-sign-in">
         <a class="navbar-brand" href="/landing.html">
           <p style="font-family: 'zealot'; font-size:25px">AGStore</p>
         </a>
@@ -42,6 +42,20 @@
                 <a class="dropdown-item" href="#">Whatsapp (Fast Response)</a>
               </div>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Products
+              </a>
+              <div class="dropdown-menu dropdown-content mt-n2" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="product.html">Mouse</a>
+                <a class="dropdown-item" href="product.html">Headset</a>
+                <a class="dropdown-item" href="product.html">Keyboard</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="product.html">Gaming Chair</a>
+                <a class="dropdown-item" href="product.html">Misclleaneous</a>
+              </div>
+            </li>
           </ul>
 
 
@@ -53,29 +67,36 @@
 
           <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-           <a href="cart.html">   <button class="nav-link form" style="background: none; border: none;">Cart  <span><svg width="1em"
-            height="1em" viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-              d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-              <span class="badge badge-light float-right rounded-circle">4</span></svg></span>
-      </button></a>
+              <a href="cart.html"> <button class="nav-link form" style="background: none; border: none;">Cart <span><svg
+                      width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                      <span class="badge badge-light float-right rounded-circle">1</span></svg></span>
+                </button></a>
 
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               Hi Petra!
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Hi Petra!
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Settings <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
-                  <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
-                </svg></a>
+                <a class="dropdown-item" href="#">Settings <svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
+                    <path fill-rule="evenodd"
+                      d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
+                  </svg></a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log Out <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                </svg></a>
+                <a class="dropdown-item" href="#">Log Out <svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-box-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                    <path fill-rule="evenodd"
+                      d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                  </svg></a>
               </div>
             </li>
           </ul>
@@ -89,42 +110,66 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <div class="card mb-3 product" style="max-width: 600px;">
-            <div class="row no-gutters">
-              <div class="col-md-4 d-flex align-items-center">
-                <img src="frontend/images/mouse-item.jpg" class=" product-img" alt="...">
-              </div>
-              <div class="col-md-6">
-                <div class="card-body product-details">
-                  <h5 class="card-title product-title">Logitech G102</h5>
-                  <p class="card-text product-price">Rp250.000</p>
+          <div class="shopping-cart">
+            <div class="card mb-3 product" style="max-width: 600px;">
+              <div class="row no-gutters">
+                <div class="col-md-4 d-flex align-items-center">
+                  <img src="frontend/images/mouse-item.jpg" class=" product-img" alt="...">
                 </div>
-              </div>
-
-              <div class="col-md-2 d-flex align-items-center ml-n4">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <button class="btn-minus" onclick="decrement(this); check()"> <i class="icon-feather"
-                        data-feather="minus-circle"></i></button>
-                    <input class="input-number" type="text" class="adults" value="1" onchange="check()">
-                    <div class="input-group-append">
-                      <button class="btn-plus" onclick="increment(this)"> <i class="icon-feather"
-                          data-feather="plus-circle"></i></button>
-                      <br>
-                    </div>
+                <div class="col-md-4">
+                  <div class="card-body product-details">
+                    <h5 class="card-title product-title">Logitech G102</h5>
+                    <div class="card-text product-price">250.000</div>
+                  </div>
+                </div>
+                <div class="col-md-2 d-flex align-items-center ml-n4">
+                  <input style="width: 5rem;" class="product-quantity" type="number" min="1" value="1">
+                  <button class="product-removal bg-transparent border-0"><svg width="1em" height="1em"
+                      viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                      <path fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                    </svg></button>
+                </div>
+                <div class="col-md-2 d-flex align-items-center ml-4">
+                  <div class="product-line-price">
+                    250.000
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+          <div class="empty-cart" style="opacity: 0;">
+            <a href="product.html">
+              <img src="frontend/images/cart-empty.png" alt="">
+            </a>
+            
           </div>
         </div>
         <div class="col-md-4">
           <div class="card ringkasan-belanja" style="width: 100%;">
             <div class="card-body">
               <h5 class="card-title">Ringkasan Belanja</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Total Belanja</h6>
-              <p class="card-text total-belanja text-center">Rp250.000</p>
-              <button class="form-control btn-beli btn-confirm-bayar" onclick="showTransfer()"> Lanjutkan Pembayaran </button>
+              <div class="totals">
+                <div class="totals-item mt-3">
+                  <h6 class="card-subtitle mb-2 text-muted">Sub-Total :</h6>
+                  <div class="totals-value mt-n2" id="cart-subtotal"></div>
+                </div>
+                <div class="totals-item mt-3">
+                  <h6 class="card-subtitle mb-2 text-muted">Biaya Pengiriman :</h6>
+                  <div class="totals-value mt-n2" id="cart-shipping"></div>
+                </div>
+                <div class="totals-item totals-item-total mt-3">
+                  <h6 class="card-subtitle mb-2 text-muted">Total Belanja :</h6>
+                  <div class="totals-value total-belanja mt-n2" id="cart-total"></div>
+                </div>
+              </div>
+              <br>
+
+              <button class="form-control btn-beli btn-confirm-bayar" onclick="showTransfer(), recalculateCart(), ">
+                Lanjutkan Pembayaran
+              </button>
             </div>
           </div>
 
@@ -143,7 +188,7 @@
 
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                   <div class="card-body">
-                  <b>XXXXXXXXX A/N Michael Yan Petra</b>
+                    <b>XXXXXXXXX A/N Michael Yan Petra</b>
                   </div>
                 </div>
               </div>
@@ -152,13 +197,13 @@
                   <h5 class="mb-0">
                     <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                       aria-expanded="false" aria-controls="collapseTwo">
-                     <img src="frontend/images/Logo-mandiri.png" style="height: 50px;" alt="">
+                      <img src="frontend/images/Logo-mandiri.png" style="height: 50px;" alt="">
                     </button>
                   </h5>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                   <div class="card-body">
-                   <b>XXXXXXXXX A/N Mas Lubby</b>
+                    <b>XXXXXXXXX A/N Mas Lubby</b>
                   </div>
                 </div>
               </div>
@@ -167,13 +212,13 @@
                   <h5 class="mb-0">
                     <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
                       aria-expanded="false" aria-controls="collapseThree">
-               <img src="frontend/images/logo-gopay.png" alt="" style="height: 50px;">
+                      <img src="frontend/images/logo-gopay.png" alt="" style="height: 50px;">
                     </button>
                   </h5>
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                   <div class="card-body">
-                  <b> No : +62XXXXXXX A/N Kang Evan</b>
+                    <b> No : +62XXXXXXX A/N Kang Evan</b>
                   </div>
                 </div>
               </div>
@@ -182,14 +227,16 @@
               <div class="card-body">
                 <h5 class="card-title">Konfirmasi Pembayaran</h5>
                 <h6 class="card-subtitle mb-2">Whatsapp</h6>
-               
-                <p class="card-text">  <img src="frontend/images/whatsapp-logo.png" width="60px" alt=""> Johan Hartanto - 081936516716</p>
-                <button class="form-control btn btn-primary mt-2" data-toggle="modal" data-target="#confirmModal"> Klik bila sudah melakukan pembayaran</button>
+
+                <p class="card-text"> <img src="frontend/images/whatsapp-logo.png" width="60px" alt=""> Johan Hartanto -
+                  081936516716</p>
+                <button class="form-control btn btn-primary mt-2" data-toggle="modal" data-target="#confirmModal"> Klik
+                  bila sudah melakukan pembayaran</button>
               </div>
             </div>
-          
+
           </div>
-          
+
         </div>
 
 
@@ -213,7 +260,9 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Belum deh</button>
-          <a href="https://api.whatsapp.com/send?phone=6281936516716&text=Saya%20Telah%20Melakukan%20Pembayaran%20Di%20website%20Anjay%20Gaming%20Store%20Dengan%20Bukti%20Sebagai%20Berikut%20:%0ANama%20:%0AAlamat:%0AID%20Order%20:%0A"><button type="button" class="btn btn-primary">Sudah Dong, Lets go</button></a>
+          <a
+            href="https://api.whatsapp.com/send?phone=6281936516716&text=Saya%20Telah%20Melakukan%20Pembayaran%20Di%20website%20Anjay%20Gaming%20Store%20Dengan%20Bukti%20Sebagai%20Berikut%20:%0ANama%20:%0AAlamat:%0AID%20Order%20:%0A"><button
+              type="button" class="btn btn-primary">Sudah Dong, Lets go</button></a>
         </div>
       </div>
     </div>
@@ -228,6 +277,7 @@
     feather.replace()
   </script>
   <script src="frontend/scripts/main.js"></script>
+  <script src="frontend/scripts/cart.js"></script>
 </body>
 
 </html>
