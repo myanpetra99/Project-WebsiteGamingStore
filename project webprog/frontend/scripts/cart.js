@@ -144,6 +144,8 @@ function submitCart () {
     $('#Invoice').append('<div>'+data.Write()+'</div>');
     
   })
+  $('#Invoice').append('<div>'+'Biaya Pengiriman : Rp.'+$('#cart-shipping').text()+'</div>');
+  $('#Invoice').append('<hr>');
   $('#Invoice').append('<div>'+'Total Harga : Rp.'+$('#cart-total').text()+'</div>');
   
 }
