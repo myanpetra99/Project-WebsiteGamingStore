@@ -60,7 +60,7 @@ html {
 .card-homepage {
   width: 350px;
   height: 100px;
-  border-radius: 10px;
+  border-radius: 15px;
   position: relative;
 }
 
@@ -342,11 +342,11 @@ a {
 }
 
 .owl-carousel {
-  background-color: #40a8c4;
+  background-color: #ffffff;
 }
 
 .card-item {
-  min-height: 25rem;
-  max-height: 25rem;
+  min-height: 28rem;
+  max-height: 28rem;
 }
 /*# sourceMappingURL=main.css.map */
