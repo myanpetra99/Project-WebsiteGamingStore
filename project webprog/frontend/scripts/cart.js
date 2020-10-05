@@ -150,6 +150,8 @@ function submitCart () {
   
 }
 
+
+
 function addCartToTransaction (namaBarang, hargaBarang, qtyBarang) {
   data.addCartToTransaction(namaBarang, hargaBarang, qtyBarang)
 }
