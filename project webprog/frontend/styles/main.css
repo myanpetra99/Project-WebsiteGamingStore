@@ -2,16 +2,6 @@ html {
   scroll-behavior: smooth;
 }
 
-@font-face {
-  font-family: 'Zealot';
-  src: url("../styles/fonts/ZealotCollegeItalic-Y24O.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: 'Zealot-black';
-  src: url("../styles/fonts/ZealotOutlineItalic-MDKJ.ttf") format("truetype");
-}
-
 .container-navbar {
   background-color: #1a1a2e;
 }
@@ -21,30 +11,29 @@ html {
   z-index: 999;
   position: absolute;
   width: 60%;
-  -webkit-transition: 500ms;
-  transition: 500ms;
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
 }
 
 .carousel {
-  position: cover;
-  margin-top: 75px;
+  position: relative;
+}
+
+.carousel-item {
+  max-height: 90vh;
 }
 
 .carousel-item img {
   -o-object-fit: cover;
      object-fit: cover;
-  max-width: 100%;
-  max-height: 100%;
+  top: 0;
+  left: 0;
+  min-height: 70vh;
+  max-height: 90vh;
+  max-width: 100vw;
 }
 
 .card-img {
-  min-height: 15rem;
+  min-height: 15rem !important;
+  max-height: 15rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -53,7 +42,7 @@ html {
   width: 60% !important;
 }
 
-.btn-utama {
+.btn-search {
   border: #e94560 solid 1px;
   color: #e94560;
   background-color: transparent;
@@ -61,7 +50,7 @@ html {
   font-weight: 600;
 }
 
-.btn-utama:hover {
+.btn-search:hover {
   background-color: #e94560;
   -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
@@ -69,16 +58,16 @@ html {
 }
 
 .card-homepage {
-  max-width: 350px;
+  width: 350px;
   height: 100px;
   border-radius: 10px;
+  position: relative;
 }
 
 .card-homepage:hover .card-homepage-bg {
   -webkit-transition-duration: 500ms;
           transition-duration: 500ms;
   -webkit-filter: blur(4px);
-  filter: blur(4px);
 }
 
 .card-homepage:hover .card-homepage-title {
@@ -121,13 +110,6 @@ html {
   -o-object-fit: cover !important;
      object-fit: cover !important;
   -webkit-filter: blur(1.5px);
-  filter: blur(1.5px);
-}
-
-.card-title {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  font-size: 1rem;
 }
 
 .brand-logo {
@@ -156,45 +138,11 @@ html {
   height: 30vh;
 }
 
-.product-banner .mouse {
+.mouse-banner {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(../images/mouse-banner.jpg);
-}
-
-.product-banner .keyboard {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url(../images/mouse-banner.jpg);
-}
-
-.product-banner .headset {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url(../images/mouse-banner.jpg);
-}
-
-.product-banner .gaming-chair {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url(../images/mouse-banner.jpg);
-}
-
-.product-banner .misclleaneous {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url(../images/mouse-banner.jpg);
-}
-
-.sortBy {
-  padding: 10px;
-  background-color: #d8d8d8;
-  border: 1px solid black;
 }
 
 .xzoom-container {
@@ -315,7 +263,7 @@ hr {
   color: white;
 }
 
-.btn-beli:hover:not([disabled]), .btn-beli:active:not([disabled]) {
+.btn-beli:hover {
   background-color: #e94560;
   -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
@@ -386,7 +334,6 @@ hr {
 
 a {
   text-decoration: none !important;
-  color: #000000;
 }
 
 .jumbotron {
@@ -401,102 +348,5 @@ a {
 .card-item {
   min-height: 25rem;
   max-height: 25rem;
-}
-
-.banner-login {
-  height: 90vh;
-}
-
-.input-login {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border: 3px solid #ccc;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  outline: none;
-  border-radius: 100px;
-}
-
-.input-login:focus {
-  border: 3px solid #e94560;
-}
-
-.product .product-price:before,
-.product .product-line-price:before,
-.totals-value:before {
-  content: 'Rp.';
-}
-
-.col-breadcrumb {
-  border: 1px solid #dbdbdb;
-  padding-top: auto;
-  -webkit-box-shadow: 0px 6px 16px -5px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 6px 16px -5px rgba(0, 0, 0, 0.1);
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-@media print {
-  body* {
-    display: block;
-  }
-  body * {
-    visibility: hidden;
-  }
-  #Invoice * {
-    visibility: visible;
-  }
-  #Invoice {
-    position: absolute;
-    top: 40px;
-    left: 30px;
-    margin-left: -500px;
-    font-size: 30px;
-  }
-}
-
-@media screen {
-  #Invoice {
-    display: none;
-  }
-}
-
-.toast {
-  margin-top: 10px;
-  border-radius: 5px;
-  font-weight: bold;
-  padding: 10px;
-  color: #ffffff;
-  z-index: 1;
 }
 /*# sourceMappingURL=main.css.map */
