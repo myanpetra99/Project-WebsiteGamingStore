@@ -36,6 +36,7 @@ function increment (obj) {
 
 
 
+
 function decrement (obj) {
   var count = parseInt(
     $(obj)
