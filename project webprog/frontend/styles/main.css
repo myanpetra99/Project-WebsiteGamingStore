@@ -390,12 +390,7 @@ a {
 }
 
 .jumbotron {
-  background-color: #ffc93c;
-  border-radius: 60px 0px 60px 0px;
-}
-
-.owl-carousel {
-  background-color: #40a8c4;
+  border: 1px solid #002ba1;
 }
 
 .card-item {
@@ -498,5 +493,15 @@ a {
   padding: 10px;
   color: #ffffff;
   z-index: 1;
+}
+
+@media (max-width: 500px) {
+  .owl-carousel .owl-item {
+    text-align: center;
+  }
+  .owl-carousel .item {
+    float: none;
+    display: inline-block;
+  }
 }
 /*# sourceMappingURL=main.css.map */
