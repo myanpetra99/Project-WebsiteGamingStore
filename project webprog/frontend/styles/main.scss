@@ -422,13 +422,9 @@ a {
 }
 
 .jumbotron {
-    background-color: #ffc93c;
-    border-radius: 60px 0px 60px 0px;
+    border: 1px solid rgb(0, 43, 161);
 }
 
-.owl-carousel {
-    background-color: #40a8c4;
-}
 
 .card-item {
     min-height: 25rem;
@@ -544,3 +540,13 @@ a {
 
   z-index: 1;
   }
+
+  @media (max-width:500px) {
+    .owl-carousel .owl-item {
+        text-align:center;
+    }
+    .owl-carousel .item {
+        float: none;
+        display: inline-block;
+    }
+}

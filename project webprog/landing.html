@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selamat Datang di AGStore</title>
+  <title>Document</title>
   <link rel="stylesheet" href="frontend/libraries/bootstrap/css/bootstrap.css" />
   <link rel="stylesheet" href="frontend/libraries/owlcarousel/owl.carousel.min.css">
   <link rel="stylesheet" href="frontend/libraries/owlcarousel/owl.theme.default.min.css">
@@ -19,21 +19,20 @@
   <section class="header">
 
     <div class="container-fluid d-flex justify-content-center">
-      <nav class="navbar navbar-expand-lg navbar-dark navbar-landing">
+      <nav class="navbar navbar-expand-lg navbar-dark navbar-landing sticky">
 
         <a class="navbar-brand" href="#">
-          <img src="frontend/images/brand-invert.png" height="60px" alt="">
+          <p style="font-family: 'zealot'; font-size:25px">AGStore</p>
         </a>
-
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
           <ul class="navbar-nav ">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -47,29 +46,45 @@
                 <a class="dropdown-item" href="#">Whatsapp (Fast Response)</a>
               </div>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Products
+              </a>
+              <div class="dropdown-menu dropdown-content mt-n2" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="product.html">Mouse</a>
+                <a class="dropdown-item" href="product.html">Headset</a>
+                <a class="dropdown-item" href="product.html">Keyboard</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="product.html">Gaming Chair</a>
+                <a class="dropdown-item" href="product.html">Misclleaneous</a>
+              </div>
+            </li>
           </ul>
 
+
           <form class="form-inline my-2 my-lg-0">
-            <input type="text" class="form-control mr-sm-2 shadow bg-white rounded" name="search" placeholder="cari headset gaming" id="navBarSearchForm">
-            <button class="btn btn-search form-control" type="submit">GASKEUN!</button>
+            <input type="text" class="form-control mr-sm-2" name="search" placeholder="Cari apa..?"
+              id="navBarSearchForm">
+            <button class="btn btn-utama form-control" type="submit">GASKEUN!</button>
           </form>
 
           <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-              <button class="nav-link form-control" data-toggle="modal" data-target="#modalLRForm"
-                style="background: none; border: none;">Login<span> <img cl src="frontend/images/login-logo.png"
-                    width="25px" style="filter: invert(100%)" alt=""></span>
-              </button>
+              <a href="login.html"> <button class="nav-link form"
+                  style="background: none; border: none;">Login<span><img src="frontend/images/login-logo.png"
+                      width="25px" style="filter: invert(100%)" alt=""></span>
+                </button></a>
 
             </li>
           </ul>
         </div>
 
-     
+
       </nav>
     </div>
 
-    <div id="carouselExampleControls " class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleControls" data-slide-to="1"></li>
@@ -87,270 +102,169 @@
         </div>
       </div>
 
-      <div class="container">
-        <a class="carousel-control-prev " href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-   </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+    </div>
+    </div>
+
 
 
 
   </section>
 
-     <!--Modal: Login / Register Form-->
-     <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-     <div class="modal-dialog cascading-modal" role="document">
-       <div class="modal-content">
-
-         <div class="modal-c-tabs">
-
-           <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
-             <li class="nav-item">
-               <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab">
-                 Login</a>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link" data-toggle="tab" href="#panel8" role="tab">
-                 Register</a>
-             </li>
-           </ul>
-
-           <div class="tab-content">
-             <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-
-               <div class="modal-body mb-1">
-                 <div class="md-form form-sm mb-3">
-
-                   <input type="email" id="modalLRInput10" class="form-control form-control-sm validate">
-                   <label data-error="wrong" data-success="right" for="modalLRInput10">Your email</label>
-                 </div>
-
-                 <div class="md-form form-sm mb-4">
-
-                   <input type="password" id="modalLRInput11" class="form-control form-control-sm validate">
-                   <label data-error="wrong" data-success="right" for="modalLRInput11">Your password</label>
-                 </div>
-                 <div class="text-center mt-2">
-                   <button class="btn btn-info">Log in </i></button>
-                 </div>
-               </div>
-               <div class="modal-footer">
-                 <div class="options text-center text-md-right mt-1">
-                   <p>Tidak ada akun? <a href="#" class="blue-text">Sign Up</a></p>
-                   <p>Lupa <a href="#" class="blue-text">Password?</a></p>
-                 </div>
-                 <button type="button" class="btn btn-outline-info waves-effect ml-auto"
-                   data-dismiss="modal">Close</button>
-               </div>
-
-             </div>
-
-             <div class="tab-pane fade" id="panel8" role="tabpanel">
-
-               <div class="modal-body">
-                 <div class="md-form form-sm mb-3">
-                   <input type="text" id="modalLRInput12" class="form-control form-control-sm validate">
-                   <label data-error="wrong" data-success="right" for="modalLRInput12">Nama Lengkap</label>
-                 </div>
-
-                 <div class="md-form form-sm mb-3">
-                   <input type="email" id="modalLRInput13" class="form-control form-control-sm validate">
-                   <label data-error="wrong" data-success="right" for="modalLRInput13">Email</label>
-                 </div>
-
-                 <div class="md-form form-sm mb-3">
-
-                   <input type="password" id="modalLRInput14" class="form-control form-control-sm validate">
-                   <label data-error="wrong" data-success="right" for="modalLRInput14">Password</label>
-                 </div>
-
-                 <div class="md-form form-sm mb-4">
-                   <input type="password" id="modalLRInput15" class="form-control form-control-sm validate">
-                   <label data-error="wrong" data-success="right" for="modalLRInput15">Re-type Password</label>
-                 </div>
-
-                 <div class="text-center form-sm mt-2">
-                   <button class="btn btn-info">Sign up </i></button>
-                 </div>
-
-               </div>
-               <div class="modal-footer">
-                 <div class="options text-right">
-                 </div>
-                 <button type="button" class="btn btn-outline-info waves-effect ml-auto"
-                   data-dismiss="modal">Close</button>
-               </div>
-             </div>
-           </div>
-
-         </div>
-       </div>
-
-     </div>
-   </div>
-   <!--Modal: Login / Register Form-->
 
   <section class="content">
+    <div class="container mt-4" style="border: 1px solid rgb(0, 57, 131);">
+      <h1 class="display-4 text-center" style="color: #07689f;">Hot Deals!</h1>
+      <p class="lead text-center" style="color: #07689f;">Lagi pada promo nih gan! di swipe aja</p>
+      <div class="owl-carousel owl-theme pt-2">
 
 
-    <div class="container mt-1">
-      <div class="jumbotron mt-5">
-        <div class="container">
-          <h1 class="display-4 text-center" style="color: #07689f;">Hot Deals!</h1>
-          <p class="lead text-center" style="color: #07689f;">Lagi pada promo nih gan! di swipe aja</p>
-          <div class="owl-carousel owl-theme pt-2 pl-2">
+        <div class="card card-item" style="width: 14rem;">
+          <img src="frontend/images/mouse-item.jpg" class="card-img-top card-img" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Logitech G102</h5>
 
-
-            <div class="card card-item" style="width: 14rem;">
-              <img src="frontend/images/mouse-item.jpg" class="card-img-top card-img" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-center">Logitech G102</h5>
-
-                <p class="card-text text-center">Rp.250.000</p>
-                <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
-              </div>
-            </div>
-
-            <div class="card card-item" style="width: 14rem;">
-              <img src="frontend/images/keyboard-item.jpg" class="card-img-top card-img" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-center">Keychron K2</h5>
-
-                <p class="card-text text-center">Rp.1000.000</p>
-                <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
-              </div>
-            </div>
-
-
-
-
-            <div class="card card-item" style="width: 14rem;">
-              <img src="frontend/images/headset-item.jpg" class="card-img-top  card-img" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-center">Hyper X stinger-core</h5>
-
-                <p class="card-text text-center">Rp.550.000</p>
-                <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
-              </div>
-            </div>
-
-
-
-
-            <div class="card card-item" style="width: 14rem;">
-              <img src="frontend/images/misc-item.jpg" class="card-img-top card-img" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-center">Rexus Headset Stand + USB port</h5>
-
-                <p class="card-text text-center">Rp.140.000</p>
-                <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
-              </div>
-            </div>
-
-
-
-            <div class="card card-item" style="width: 14rem;">
-              <img src="frontend/images/misc-item2.jpg" class="card-img-top card-img" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-center">SteelSeries QCK Medium</h5>
-
-                <p class="card-text text-center">Rp.200.000</p>
-                <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
-              </div>
-            </div>
-
-
-
-
-            <div class="card card-item" style="width: 14rem;">
-              <img src="frontend/images/misc-item2.jpg" class="card-img-top card-img" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-center">SteelSeries QCK Medium</h5>
-
-                <p class="card-text text-center">Rp.200.000</p>
-                <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
-              </div>
-            </div>
-
-
+            <p class="card-text text-center"><b>Rp.250.000</b></p>
+            <a href="item.html" class="btn btn-primary d-flex justify-content-center mt-auto">Beli Sekarang</a>
           </div>
         </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-4">
-          <a href="Mouse-gaming.html">
-            <div class="card-homepage mt-2 text-center ">
-              <img src="frontend/images/mouse-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
-              <div class="card-homepage-title">
-                <span class="underline--magical">Mouse</span></div>
-          </a>
 
+        <div class="card card-item" style="width: 14rem;">
+          <img src="frontend/images/keyboard-item.jpg" class="card-img-top card-img" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Keychron K2</h5>
+
+            <p class="card-text text-center"><b>Rp.1000.000</b></p>
+            <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+          </div>
         </div>
-        <a href="">
-          <div class="card-homepage mt-2 text-center ">
-            <img src="frontend/images/keyboard-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px"
-              alt="">
-            <div class="card-homepage-title"> <span class="underline--magical">Keyboard</span></div>
+
+
+
+
+        <div class="card card-item" style="width: 14rem;">
+          <img src="frontend/images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Hyper X stinger-core</h5>
+
+            <p class="card-text text-center"><b>Rp.550.000</b></p>
+            <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
           </div>
-        </a>
+        </div>
 
 
-      </div>
-      <div class="col-md-4">
-        <a href="">
-          <div class="card-homepage mt-2 text-center ">
-            <img src="frontend/images/headset-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
-            <div class="card-homepage-title long"> <span class="underline--magical">Headset/Earphone</span></div>
+
+
+        <div class="card card-item" style="width: 14rem;">
+          <img src="frontend/images/misc-item.jpg" class="card-img-top card-img" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Rexus Headset Stand + USB port</h5>
+
+            <p class="card-text text-center"><b>Rp.140.000</b></p>
+            <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
           </div>
-        </a>
+        </div>
 
 
-        <a href="">
-          <div class="card-homepage mt-2 text-center ">
-            <img src="frontend/images/chair-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
-            <div class="card-homepage-title long"> <span class="underline--magical">Gaming Chair</span></div>
+
+        <div class="card card-item" style="width: 14rem;">
+          <img src="frontend/images/misc-item2.jpg" class="card-img-top card-img" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">SteelSeries QCK Medium</h5>
+
+            <p class="card-text text-center"><b>Rp.200.000</b></p>
+            <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
           </div>
-        </a>
-
-      </div>
-
-      <div class="col-md-4">
-
-        <a href="">
-          <div class="card-homepage mt-2 text-center ">
-            <img src="frontend/images/misc-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
-            <div class="card-homepage-title long"> <span class="underline--magical">Miscellaneous</span></div>
-          </div>
-        </a>
+        </div>
 
 
-        <a href="/brand.html">
-          <div class="card-homepage mt-2 text-center ">
-            <img src="frontend/images/brand-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
-            <div class="card-homepage-title"> <span class="underline--magical">Brand</span></div>
-          </div>
-        </a>
       </div>
     </div>
 
-    <br>
-    <br>  
+
+    <div class="container mt-3">
+
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <a href="product.html">
+            <div class="card-homepage mt-2 text-center ">
+              <img src="frontend/images/mouse-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
+              <div class="card-homepage-title long"> <span class="underline--magical">Mouse</span></div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+
+          <a href="">
+            <div class="card-homepage mt-2 text-center ">
+              <img src="frontend/images/headset-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px"
+                alt="">
+              <div class="card-homepage-title long"> <span class="underline--magical">Headset </span></div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+          <a href="brand.html">
+            <div class="card-homepage mt-2 text-center ">
+              <img src="frontend/images/keyboard-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px"
+                alt="">
+              <div class="card-homepage-title"> <span class="underline--magical">Keyboard </span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <a href="">
+            <div class="card-homepage mt-2 text-center ">
+              <img src="frontend/images/chair-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
+              <div class="card-homepage-title long"> <span class="underline--magical">Gaming Chair</span></div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+
+          <a href="">
+            <div class="card-homepage mt-2 text-center ">
+              <img src="frontend/images/misc-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
+              <div class="card-homepage-title long"> <span class="underline--magical">Miscellaneous</span></div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+          <a href="brand.html">
+            <div class="card-homepage mt-2 text-center ">
+              <img src="frontend/images/brand-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
+              <div class="card-homepage-title"> <span class="underline--magical">Brand</span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+
 
   </section>
-
-
-  <section class="content">
+  <hr>
+  <div class="section">
     <div class="container">
-      <h1 class="display-4 text-center" style="color: #000000;">Newest Updates</h1>
-      <p class="lead text-center" style="color: #07689f;"></p>
-      <div class="owl-carousel owl-theme pt-2 pl-2">
+      <div class="newest-update-title">
+        <h1 class="display-4 text-center" style="color: #07689f ;">Newest Updates</h1>
+        <p class="lead text-center" style="color: #07689f;">Cek dulu gan! Baru keluar nih!</p>
+      </div>
+      <div class="owl-carousel owl-theme pt-2">
 
 
         <div class="card card-item" style="width: 14rem;">
@@ -363,7 +277,6 @@
             <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
           </div>
         </div>
-
         <div class="card card-item" style="width: 14rem;">
           <img src="frontend/images/keyboard-item.jpg" class="card-img-top card-img" alt="...">
           <div class="card-body">
@@ -374,7 +287,6 @@
             <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
           </div>
         </div>
-
         <div class="card card-item" style="width: 14rem;">
           <img src="frontend/images/headset-item.jpg" class="card-img-top  card-img" alt="...">
           <div class="card-body">
@@ -385,7 +297,6 @@
             <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
           </div>
         </div>
-
         <div class="card card-item" style="width: 14rem;">
           <img src="frontend/images/headset-item.jpg" class="card-img-top  card-img" alt="...">
           <div class="card-body">
@@ -396,7 +307,6 @@
             <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
           </div>
         </div>
-
         <div class="card card-item" style="width: 14rem;">
           <img src="frontend/images/headset-item.jpg" class="card-img-top  card-img" alt="...">
           <div class="card-body">
@@ -407,22 +317,10 @@
             <a href="item.html" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
           </div>
         </div>
-
-        
-
-
-      </div>
-    </div>
-  </section>
-
-  
-
-  <div class="section">
-    <div class="container-fluid">
-      <div class="row">
       </div>
     </div>
   </div>
+
 
 
 
@@ -434,22 +332,28 @@
   <script>
     $(document).ready(function () {
       $('.owl-carousel').owlCarousel({
-        autoplay: true,
+        center: true,
         loop: true,
-        autoplayTimeout: 5000,
+        margin: 10,
+        responsiveClass: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
         autoplayHoverPause: true,
         responsive: {
           0: {
-            items: 1,
+            items: 2,
             nav: true
           },
           600: {
-            items: 4,
-            nav: false
+            items: 3,
+            nav: true
           },
-
+          1000: {
+            items: 4,
+            nav: false,
+          }
         }
-      });
+      })
     });
   </script>
 </body>
