@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   scroll-behavior: smooth;
 }
@@ -44,7 +45,8 @@ html {
 }
 
 .card-img {
-  min-height: 15rem;
+  min-height: 10rem;
+  max-height: 10rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -394,12 +396,16 @@ a {
 }
 
 .card-item {
-  min-height: 25rem;
-  max-height: 25rem;
+  min-height: 20rem;
+  max-height: 20rem;
 }
 
 .banner-login {
   height: 90vh;
+}
+
+.card-footer {
+  background-color: transparent;
 }
 
 .input-login {
@@ -716,5 +722,51 @@ ul.social-footer2 li a {
   height: 30px;
   width: 30px;
   text-align: center;
+}
+
+#message {
+  display: none;
+  color: #000;
+  position: relative;
+  padding: 20px;
+}
+
+#message2 {
+  display: none;
+  color: #000;
+  position: relative;
+  padding: 20px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+#message2 p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
 }
 /*# sourceMappingURL=main.css.map */

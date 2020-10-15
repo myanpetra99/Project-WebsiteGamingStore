@@ -1,0 +1,18 @@
+[
+  {
+    "nama":"Logitech G102",
+    "url":"item.html",
+    "imgname" : "mouse-item",
+    "category":"mouse",
+    "brand":"Logitech",
+    "harga":250000
+  },
+  {
+    "nama":"Hyper X Cloud Core",
+    "url":"item.html",
+    "imgname" : "headset-item",
+    "category":"headset",
+    "brand":"Hyper X",
+    "harga":650000
+  }
+]
