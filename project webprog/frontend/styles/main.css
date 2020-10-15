@@ -461,6 +461,24 @@ a {
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
+@media only screen and (min-width: 777px) {
+  .user-pic {
+    margin-right: -2rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .user-pic {
+    margin-right: -5rem;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .user-pic {
+    margin-right: -7rem;
+  }
+}
+
 @media print {
   body* {
     display: block;
@@ -568,7 +586,8 @@ footer ul {
 }
 
 /* Footer transparent */
-footer.transparent .footer-top, footer.transparent .main-footer {
+footer.transparent .footer-top,
+footer.transparent .main-footer {
   background: transparent;
 }
 
@@ -651,7 +670,8 @@ footer.light .footer-copyright {
   width: 50%;
 }
 
-.widget-title.text-center span, .widget-title.text-center span::after {
+.widget-title.text-center span,
+.widget-title.text-center span::after {
   margin-left: auto;
   margin-right: auto;
   left: 0;
