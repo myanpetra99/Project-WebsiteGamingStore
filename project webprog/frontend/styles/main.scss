@@ -50,8 +50,8 @@ html {
 
 
 .card-img {
-    min-height: 10rem;
-    max-height: 10rem;
+    min-height: 12rem;
+    max-height: 12rem;
     object-fit: cover;
 }
 
@@ -440,6 +440,7 @@ a {
 
 .card-footer{
     background-color: transparent;
+    border-top: none;
 }
 
 .input-login {
