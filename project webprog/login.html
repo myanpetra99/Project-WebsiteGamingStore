@@ -82,15 +82,16 @@
                     </div>
                    <form action="">
                     <input class="input-login mb-4" type="email" required name="" id="emailReg" placeholder="New Email">
-                    <input class="input-login mb-4" type="password" id="psw" name="psw" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                    <input class="input-login mb-4" type="password" id="passReg" name="passReg" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
                     <div id="message">
-                      <h3>Password must contain the following:</h3>
+                      <h5>Password must contain the following:</h5>
                       <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
                       <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
                       <p id="number" class="invalid">A <b>number</b></p>
                       <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                     </div>
                     <input class="input-login mb-4" type="password" required name="" id="rePassReg" placeholder="Re-Type Password">
+                    <div id="message2"><p id="reValidate" class="invalid">Password tidak sama</p></div>
                     <input class="input-login mb-4" type="text" required name="" id="nameReg"  placeholder="Nama Lengkap (Untuk Pengiriman Barang)">
                     <input class="input-login mb-4" type="text" required name="" id="addressReg" placeholder="Alamat (Untuk Pengiriman Barang)">
                     <input class="input-login mb-4" maxlength="5" required type="tel" placeholder="Kode Pos">
@@ -163,20 +164,38 @@
 <!--validate-->>
 
 <script>
-  var myInput = document.getElementById("psw");
+  var myInput = document.getElementById("passReg");
+  var myInput2 = document.getElementById("rePassReg");
   var letter = document.getElementById("letter");
   var capital = document.getElementById("capital");
   var number = document.getElementById("number");
   var length = document.getElementById("length");
+  var reValidate = document.getElementById("reValidate");
   
   // When the user clicks on the password field, show the message box
   myInput.onfocus = function() {
     document.getElementById("message").style.display = "block";
   }
   
+  myInput2.onfocus = function() {
+    document.getElementById("message2").style.display = "block";
+    if(myInput2.value == myInput.value && myInput2.value != '') {
+      reValidate.classList.remove("invalid");
+      reValidate.classList.add("valid");
+      reValidate.innerText="password sama";
+    } else {
+      reValidate.classList.remove("valid");
+      reValidate.classList.add("invalid")
+      reValidate.innerText="password tidak sama";
+  }
+  }
   // When the user clicks outside of the password field, hide the message box
   myInput.onblur = function() {
     document.getElementById("message").style.display = "none";
+  }
+
+  myInput2.onblur = function() {
+    document.getElementById("message2").style.display = "none";
   }
   
   // When the user starts to type something inside the password field
@@ -219,6 +238,22 @@
       length.classList.remove("valid");
       length.classList.add("invalid");
     }
+  }
+
+  
+  myInput2.onkeyup = function() {
+    // Validate lowercase letters
+    if(myInput2.value == myInput.value) {
+      reValidate.classList.remove("invalid");
+      reValidate.classList.add("valid");
+      reValidate.innerText="password sama";
+    } else {
+      reValidate.classList.remove("valid");
+      reValidate.classList.add("invalid")
+      reValidate.innerText="password tidak sama";
+  }
+  
+    // Validate capital letters
   }
   </script>
 

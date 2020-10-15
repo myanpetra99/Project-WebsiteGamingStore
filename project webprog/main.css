@@ -724,10 +724,21 @@ ul.social-footer2 li a {
   color: #000;
   position: relative;
   padding: 20px;
-  margin-top: 10px;
+}
+
+#message2 {
+  display: none;
+  color: #000;
+  position: relative;
+  padding: 20px;
 }
 
 #message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+#message2 p {
   padding: 10px 35px;
   font-size: 18px;
 }
