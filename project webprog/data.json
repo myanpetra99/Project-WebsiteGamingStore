@@ -14,5 +14,29 @@
     "category":"headset",
     "brand":"Hyper X",
     "harga":650000
+  },
+  {
+    "nama":"Rexus Headset Stand + USB",
+    "url":"item.html",
+    "imgname" : "misc-item",
+    "category":"miscellaneous",
+    "brand":"Rexus",
+    "harga":180000
+  },
+  {
+    "nama":"SteelSeries QCK Medium",
+    "url":"item.html",
+    "imgname" : "misc-item2",
+    "category":"miscellaneous",
+    "brand":"SteelSeries",
+    "harga":180000
+  },
+  {
+    "nama":"DX Racer Gaming Chair",
+    "url":"item.html",
+    "imgname" : "chair-card-bg",
+    "category":"Gaming Chair",
+    "brand":"DX Racer",
+    "harga":180000
   }
 ]
