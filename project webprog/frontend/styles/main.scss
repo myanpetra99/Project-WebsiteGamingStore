@@ -291,7 +291,7 @@ hr {
 }
 
 .row-ask {
-    height: 5vh;
+    height: fit-content;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -469,6 +469,10 @@ a {
     content: 'Rp.';
 }
 
+.history-total:before {
+    content: 'Rp.';
+}
+
 .col-breadcrumb {
     border: 1px solid rgb(219, 219, 219);
     padding-top: auto;
@@ -527,6 +531,19 @@ a {
         margin-right: -7rem;
     }
 }
+
+#profileImage {
+    font-family: Arial, Helvetica, sans-serif;
+    object-fit: contain; 
+    max-width: 3rem;
+    min-height: 3rem;
+    font-size: 2rem;
+    max-height: 3rem;
+    border-radius: 100%;
+    background: #0c540c;
+    color: #fff;
+    text-align: center;
+  }
 
 
 @media print {
@@ -868,3 +885,4 @@ ul.social-footer2 li a {
 .separator::after {
     margin-left: .25em;
 }
+

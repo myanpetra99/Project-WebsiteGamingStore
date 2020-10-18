@@ -1,18 +1,23 @@
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+  scrollFunction()
+}
 
-function scrollFunction() {
-  if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350) {
-    document.getElementById("navbarBot").style.bottom = "0";
+function scrollFunction () {
+  if (
+    document.body.scrollTop > 350 ||
+    document.documentElement.scrollTop > 350
+  ) {
+    document.getElementById('navbarBot').style.bottom = '0'
   } else {
-    document.getElementById("navbarBot").style.bottom = "-100px";
+    document.getElementById('navbarBot').style.bottom = '-100px'
   }
 }
 
-document.getElementById('transferInfo').style.display = "none"
+document.getElementById('transferInfo').style.display = 'none'
 
-function showTransfer(){
+function showTransfer () {
   var x = document.getElementById('transferInfo')
-    x.style.display = "block";
+  x.style.display = 'block'
 }
 
 //All about cart
@@ -30,12 +35,8 @@ function increment (obj) {
     .find('input')
     .val(count + 1)
 
-
-    $(".btn-minus").prop('disabled', false);
+  $('.btn-minus').prop('disabled', false)
 }
-
-
-
 
 function decrement (obj) {
   var count = parseInt(
@@ -50,20 +51,15 @@ function decrement (obj) {
       .parent()
       .find('input')
       .val(count - 1)
-     
   }
-
 }
 
-function showToast(){
-  $('.toast').toast('show');
-
+function showToast () {
+  $('.toast').toast('show')
 }
 
-
-  $('#btnConfirm').one('click', function() {
-    $(this).attr('disabled','disabled');
-});
-
+$('#btnConfirm').one('click', function () {
+  $(this).attr('disabled', 'disabled')
+})
 
 
