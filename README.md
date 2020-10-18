@@ -41,7 +41,6 @@ Website kami berfungsi sebagai website keseharian E-commerce khusus gaming store
 
 - Kesimpulan:
 > Website kami menjual produk yang bertema “Gaming” yang tentunya ditujukan para gamer yang ingin membeli atau melihat produk. Website kami juga dapat di akses setiap harinya dan merilis produk terbaru.
-=======
 
 
 
