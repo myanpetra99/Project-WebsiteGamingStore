@@ -116,6 +116,12 @@ let data = {
   }
 }
 
+function clearCart(){
+  $('.shopping-cart').children().remove()
+
+  checkCart()
+}
+
 function submitCart () {
   $('.product').each(function () {
     addCartToTransaction(
@@ -190,14 +196,34 @@ function addCartToTransaction (namaBarang, hargaBarang, qtyBarang) {
   document.addEventListener( "DOMContentLoaded", function() {
    var btn = document.querySelector( ".btn-confirm-bayar" ),
      output = document.querySelector( "#output" );
-     
+   var idOrder =''
    btn.addEventListener( "click", function() {
      var generator = new IDGenerator();
      output.innerHTML = generator.generate();
-     
+     idOrder = output.innerHTML
+     generateWa(idOrder)
    }, false); 
     
   });
   
   
 })();
+
+function generateWa(idOrder){
+  var total = $('#cart-total').text()
+  var nama = 'Michael Yan'
+  var alamat = 'Jl Grogol raya no 2'
+  var linkWa = 'https://api.whatsapp.com/send?phone=6281936516716&text=Saya%20Telah%20Melakukan%20Pembayaran%20Di%20website%20AGStore%20Dengan%20Bukti%20Sebagai%20Berikut%20:%0ANama:%20+'+nama+'%0AAlamat%20:%20'+alamat+'%0AID%20Order%20:%20AGS-'+idOrder+'%0ATotal%20Harga%20:%20'+total
+  $(".link-wa-confirm").attr("href", linkWa)
+
+  var uri = linkWa.split(' ').join('%20');
+
+
+  var qr = window.qr = new QRious({
+    element: document.getElementById('qrious'),
+    size: 250,
+    value: uri
+  });
+}
+
+

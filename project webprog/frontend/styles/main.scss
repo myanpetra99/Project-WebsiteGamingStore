@@ -775,6 +775,8 @@ ul.social-footer2 li a {
 }
 
 #message {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
     display: none;
     color: #000;
     position: relative;
@@ -782,10 +784,12 @@ ul.social-footer2 li a {
 }
 
 #message2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
     display: none;
     color: #000;
     position: relative;
-    padding: 20px;
+    padding: 0px 0px 0px 20px;
 }
 
 #message p {
@@ -818,4 +822,49 @@ ul.social-footer2 li a {
     position: relative;
     left: -35px;
     content: "✖";
+}
+
+#messageUser {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    display: none;
+    color: #000;
+    position: relative;
+    padding: 20px;
+}
+
+#messageUser2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    display: none;
+    color: #000;
+    position: relative;
+    
+}
+
+#messageUser p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+#messageUser2 p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+}
+.separator::before {
+    margin-right: .25em;
+}
+.separator::after {
+    margin-left: .25em;
 }

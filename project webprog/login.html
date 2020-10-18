@@ -19,7 +19,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <a href="landing.html" >
+        <a href="landing.html">
           <h1 id="logoLogin" style="font-family: Zealot; margin: 10px;" class="text-center">AGStore</h1>
         </a>
       </div>
@@ -38,14 +38,14 @@
       </div>
       <div class="col-md-6">
         <div class="card" style="margin-top: 10%;">
-          <ul class="nav nav-tabs" id="myTab" role="tablist" >
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class=" nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-              aria-selected="true">
-              <div class="display-4 text-center mb-4" style="font-size: 20px;">
-                Login
-              </div>
-            </a>
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true">
+                <div class="display-4 text-center mb-4" style="font-size: 20px;">
+                  Login
+                </div>
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
@@ -64,11 +64,12 @@
                     <div class="display-4 text-center mb-4" style="font-size: 40px;">
                       Sign in
                     </div>
-                  <form action="">
-                    <input class="input-login mb-4" type="text" required name="" id="" placeholder="Email">
-                    <input class="input-login mb-4" type="password" required name="" id="" placeholder="Password">
-                    <button type="submit" class="btn btn-utama mb-5" style="width: 100%; border-radius: 10px;">Login</button>
-                  </form>
+                    <form action="">
+                      <input class="input-login mb-4" type="text" required name="" id="" placeholder="Email">
+                      <input class="input-login mb-4" type="password" required name="" id="" placeholder="Password">
+                      <button type="submit" class="btn btn-utama mb-5"
+                        style="width: 100%; border-radius: 10px;">Login</button>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -80,25 +81,37 @@
                     <div class="display-4 text-center mb-4" style="font-size: 40px;">
                       Register
                     </div>
-                   <form action="">
-                    <input class="input-login mb-4" type="email" required name="" id="emailReg" placeholder="New Email">
-                    <input class="input-login mb-4" type="password" id="passReg" name="passReg" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-                    <div id="message">
-                      <h5>Password must contain the following:</h5>
-                      <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                      <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                      <p id="number" class="invalid">A <b>number</b></p>
-                      <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-                    </div>
-                    <input class="input-login mb-4" type="password" required name="" id="rePassReg" placeholder="Re-Type Password">
-                    <div id="message2"><p id="reValidate" class="invalid">Password tidak sama</p></div>
-                    <input class="input-login mb-4" type="text" required name="" id="nameReg"  placeholder="Nama Lengkap (Untuk Pengiriman Barang)">
-                    <input class="input-login mb-4" type="text" required name="" id="addressReg" placeholder="Alamat (Untuk Pengiriman Barang)">
-                    <input class="input-login mb-4" maxlength="5" required type="tel" placeholder="Kode Pos">
-                    <input class="input-login mb-4" maxlength="12" required  type="tel" placeholder="No.Telp (Untuk Pengiriman Barang)">
+                    <form action="">
+                      <input class="input-login mb-4" type="email" required name="" id="emailReg"
+                        placeholder="New Email">
+                      <input class="input-login mb-4" type="password" id="passReg" name="passReg" placeholder="Password"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                        required>
+                      <div id="message">
+                        <h5 class="text-muted">Password harus mengandung setidaknya:</h5>
+                        <p id="letter" class="invalid">Sebuah <b>huruf kecil</b></p>
+                        <p id="capital" class="invalid">Sebuah <b>huruf Kapital</b> </p>
+                        <p id="number" class="invalid">Sebuah <b>angka</b></p>
+                        <p id="length" class="invalid">minimal <b>8 karakter</b></p>
+                        
+                      </div>
+                      <input class="input-login mb-4" type="password" required name="" id="rePassReg"
+                        placeholder="Re-Type Password">
+                      <div id="message2">
+                        <p id="reValidate" class="invalid">Password tidak sama</p>
+                      </div>
+                      <input class="input-login mb-4" type="text" required name="" id="nameReg"
+                        placeholder="Nama Lengkap (Untuk Pengiriman Barang)">
+                      <input class="input-login mb-4" type="text" required name="" id="addressReg"
+                        placeholder="Alamat (Untuk Pengiriman Barang)">
+                      <input class="input-login mb-4" maxlength="5" required type="tel" placeholder="Kode Pos">
+                      <input class="input-login mb-4" maxlength="12" required type="tel"
+                        placeholder="No.Telp (Untuk Pengiriman Barang)">
 
-                    <button type="submit" class="btn btn-utama mb-5" id="btnReg" style="width: 100%; border-radius: 10px;" onclick="validate()">Register</button>
-                   </form>
+                      <button type="submit" class="btn btn-utama mb-5" id="btnReg"
+                        style="width: 100%; border-radius: 10px;" onclick="validate()">Register</button>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -141,24 +154,24 @@
     }
   </script>
 
-</script>
+  </script>
   <script>
     function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
   </script>
 
 
-<script>
-  function setRandomColor() {
-  $("#logoLogin").css("color", getRandomColor());
-}
-</script>
+  <script>
+    function setRandomColor() {
+      $("#logoLogin").css("color", getRandomColor());
+    }
+  </script>
 </body>
 
 <!--validate-->>
@@ -171,67 +184,67 @@
   var number = document.getElementById("number");
   var length = document.getElementById("length");
   var reValidate = document.getElementById("reValidate");
-  
+
   // When the user clicks on the password field, show the message box
-  myInput.onfocus = function() {
+  myInput.onfocus = function () {
     document.getElementById("message").style.display = "block";
   }
-  
-  myInput2.onfocus = function() {
+
+  myInput2.onfocus = function () {
     document.getElementById("message2").style.display = "block";
-    if(myInput2.value == myInput.value && myInput2.value != '') {
+    if (myInput2.value == myInput.value && myInput2.value != '') {
       reValidate.classList.remove("invalid");
       reValidate.classList.add("valid");
-      reValidate.innerText="password sama";
+      reValidate.innerText = "password sama";
     } else {
       reValidate.classList.remove("valid");
       reValidate.classList.add("invalid")
-      reValidate.innerText="password tidak sama";
-  }
+      reValidate.innerText = "password tidak sama";
+    }
   }
   // When the user clicks outside of the password field, hide the message box
-  myInput.onblur = function() {
+  myInput.onblur = function () {
     document.getElementById("message").style.display = "none";
   }
 
-  myInput2.onblur = function() {
+  myInput2.onblur = function () {
     document.getElementById("message2").style.display = "none";
   }
-  
+
   // When the user starts to type something inside the password field
-  myInput.onkeyup = function() {
+  myInput.onkeyup = function () {
     // Validate lowercase letters
     var lowerCaseLetters = /[a-z]/g;
-    if(myInput.value.match(lowerCaseLetters)) {
+    if (myInput.value.match(lowerCaseLetters)) {
       letter.classList.remove("invalid");
       letter.classList.add("valid");
     } else {
       letter.classList.remove("valid");
       letter.classList.add("invalid");
-  }
-  
+    }
+
     // Validate capital letters
     var upperCaseLetters = /[A-Z]/g;
-    if(myInput.value.match(upperCaseLetters)) {
+    if (myInput.value.match(upperCaseLetters)) {
       capital.classList.remove("invalid");
       capital.classList.add("valid");
     } else {
       capital.classList.remove("valid");
       capital.classList.add("invalid");
     }
-  
+
     // Validate numbers
     var numbers = /[0-9]/g;
-    if(myInput.value.match(numbers)) {
+    if (myInput.value.match(numbers)) {
       number.classList.remove("invalid");
       number.classList.add("valid");
     } else {
       number.classList.remove("valid");
       number.classList.add("invalid");
     }
-  
+
     // Validate length
-    if(myInput.value.length >= 8) {
+    if (myInput.value.length >= 8) {
       length.classList.remove("invalid");
       length.classList.add("valid");
     } else {
@@ -240,22 +253,22 @@
     }
   }
 
-  
-  myInput2.onkeyup = function() {
+
+  myInput2.onkeyup = function () {
     // Validate lowercase letters
-    if(myInput2.value == myInput.value) {
+    if (myInput2.value == myInput.value) {
       reValidate.classList.remove("invalid");
       reValidate.classList.add("valid");
-      reValidate.innerText="password sama";
+      reValidate.innerText = "password sama";
     } else {
       reValidate.classList.remove("valid");
       reValidate.classList.add("invalid")
-      reValidate.innerText="password tidak sama";
-  }
-  
+      reValidate.innerText = "password tidak sama";
+    }
+
     // Validate capital letters
   }
-  </script>
+</script>
 
 
 </html>
