@@ -477,22 +477,22 @@ a {
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.nav-item .nav-link.active {
+.nav-login .nav-link.active {
   background-color: white;
 }
 
-.nav-item .nav-link.active:hover {
+.nav-login .nav-link.active:hover {
   background-color: white;
   color: black;
 }
 
-.nav-item .nav-link {
+.nav-login .nav-link {
   background-color: #727272;
   color: #a0a0a0;
   height: 40px;
 }
 
-.nav-item .nav-link:hover {
+.nav-login .nav-link:hover {
   background-color: #505050;
   color: white;
 }
