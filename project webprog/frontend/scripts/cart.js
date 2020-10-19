@@ -42,7 +42,7 @@ function recalculateCart () {
 
 function checkCart () {
   if ($('.shopping-cart').children().length == 0) {
-    $('.empty-cart').css('opacity', 1)
+    $('.empty-cart').css('display', 'block')
     $('.btn-beli').attr('disabled', true)
 
     var x = document.getElementsByName('radios')
@@ -51,7 +51,7 @@ function checkCart () {
       x[i].disabled = true
     }
   } else {
-    $('.empty-cart').css('opacity', 0)
+    $('.empty-cart').css('display', 'none')
     $('.btn-beli').attr('disabled', false)
   }
 }
