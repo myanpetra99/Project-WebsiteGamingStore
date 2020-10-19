@@ -871,4 +871,37 @@ ul.social-footer2 li a {
 .separator::after {
   margin-left: .25em;
 }
+
+.card-profile {
+  color: #e6d1d1;
+  max-width: 300px;
+  opacity: 1;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  -webkit-transition: 1s;
+  transition: 1s;
+  background: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(52%, white));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, white 52%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.card-profile .card-name {
+  font-size: 25px;
+  opacity: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.card-profile:hover img {
+  opacity: 0.5;
+}
+
+.card-profile:hover .card-name {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #ebebeb;
+  opacity: 1;
+}
 /*# sourceMappingURL=main.css.map */
