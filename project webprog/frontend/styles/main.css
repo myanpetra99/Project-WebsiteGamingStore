@@ -477,6 +477,26 @@ a {
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
+.nav-item .nav-link.active {
+  background-color: white;
+}
+
+.nav-item .nav-link.active:hover {
+  background-color: white;
+  color: black;
+}
+
+.nav-item .nav-link {
+  background-color: #727272;
+  color: #a0a0a0;
+  height: 40px;
+}
+
+.nav-item .nav-link:hover {
+  background-color: #505050;
+  color: white;
+}
+
 @media only screen and (min-width: 777px) {
   .user-pic {
     margin-right: -2rem;
@@ -835,7 +855,8 @@ ul.social-footer2 li a {
   text-align: center;
 }
 
-.separator::before, .separator::after {
+.separator::before,
+.separator::after {
   content: '';
   -webkit-box-flex: 1;
       -ms-flex: 1;

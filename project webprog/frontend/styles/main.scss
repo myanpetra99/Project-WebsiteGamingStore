@@ -143,7 +143,7 @@ html {
 
 .card-title {
     text-overflow: ellipsis;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
@@ -441,7 +441,7 @@ a {
     height: 90vh;
 }
 
-.card-footer{
+.card-footer {
     background-color: transparent;
     border-top: none;
 }
@@ -513,6 +513,27 @@ a {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 
+.nav-item {
+    .nav-link.active {
+        background-color: white;
+        &:hover{
+            background-color:white;
+            color: black;
+        }
+        
+    }
+
+    .nav-link {
+        background-color: rgb(114, 114, 114);
+        &:hover{
+            background-color: rgb(80, 80, 80);
+            color: white;
+        }
+        color: rgb(160, 160, 160);
+        height: 40px;
+    }
+
+}
 
 @media only screen and (min-width: 777px) {
     .user-pic {
@@ -534,7 +555,7 @@ a {
 
 #profileImage {
     font-family: Arial, Helvetica, sans-serif;
-    object-fit: contain; 
+    object-fit: contain;
     max-width: 3rem;
     min-height: 3rem;
     font-size: 2rem;
@@ -543,7 +564,7 @@ a {
     background: #0c540c;
     color: #fff;
     text-align: center;
-  }
+}
 
 
 @media print {
@@ -856,7 +877,7 @@ ul.social-footer2 li a {
     display: none;
     color: #000;
     position: relative;
-    
+
 }
 
 #messageUser p {
@@ -874,15 +895,18 @@ ul.social-footer2 li a {
     align-items: center;
     text-align: center;
 }
-.separator::before, .separator::after {
+
+.separator::before,
+.separator::after {
     content: '';
     flex: 1;
     border-bottom: 1px solid #000;
 }
+
 .separator::before {
     margin-right: .25em;
 }
+
 .separator::after {
     margin-left: .25em;
 }
-

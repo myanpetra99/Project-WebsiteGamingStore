@@ -38,17 +38,17 @@
       </div>
       <div class="col-md-6">
         <div class="card" style="margin-top: 10%;">
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class=" nav-item">
-              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+          <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+            <li class=" nav-item w-50">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#login" role="tab" aria-controls="home"
                 aria-selected="true">
                 <div class="display-4 text-center mb-4" style="font-size: 20px;">
-                  Login
+                  Sign In
                 </div>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+            <li class="nav-item w-50">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#register" role="tab" aria-controls="profile"
                 aria-selected="false">
                 <div class="display-4 text-center mb-4" style="font-size: 20px;">
                   Register
@@ -57,12 +57,12 @@
             </li>
           </ul>
           <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="home-tab">
               <div class="container">
                 <div class="row">
                   <div class="col">
                     <div class="display-4 text-center mb-4" style="font-size: 40px;">
-                      Sign in
+                      Sign In
                     </div>
                     <form action="">
                       <input class="input-login mb-4" type="text" required name="" id="" placeholder="Email">
@@ -74,7 +74,7 @@
                 </div>
               </div>
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="profile-tab">
               <div class="container">
                 <div class="row">
                   <div class="col">
@@ -108,6 +108,11 @@
                       <input class="input-login mb-4" maxlength="5" required type="tel" placeholder="Kode Pos">
                       <input class="input-login mb-4" maxlength="12" required type="tel"
                         placeholder="No.Telp (Untuk Pengiriman Barang)">
+                        
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                          <label class="form-check-label text-muted" for="exampleCheck1">Dengan ini, saya menyatakan telah mengisi data yang benar, dan bertanggung jawab atas data yang saya masukkan</label>
+                        </div>
 
                       <button type="submit" class="btn btn-utama mb-5" id="btnReg"
                         style="width: 100%; border-radius: 10px;" onclick="validate()">Register</button>
