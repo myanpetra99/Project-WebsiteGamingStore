@@ -121,18 +121,18 @@
 
   <section class="content">
 
-    <div class="container mt-5">
+    <div class="container mt-3">
       <div class="row">
         <div class="col">
-          <div class="card">
-            <div class="card-header ">
-              Minggu, 18 Oktober 2020 23:48:17
+          <div class="card mt-3 card-transaction-history">
+            <div class="card-header ">Minggu, 18 Oktober 2020 23:48:17
             </div>
             <div class="card w-100">
               <div class="card-body">
-                <h5 class="card-title">id Order :<span id="idOrder" style="color: brown;"><b> AGS-23412345</b></span>
-                  <div>Status Transaksi : <span class="text-success">Sukses</span></div>Total : <span
-                    class="history-total">559000</span> (Include Shipping)</span>
+                <h5 class="card-title">id Order :<span class="id-Order" style="color: brown;">AGS-23412345</span>
+                  <div>Status Transaksi : <span class="text-success transaction-status">Success</span>
+                  <div class="button-confirmation"></div>Total :
+                    <span class="history-total">559000</span> (Include Shipping)</div>
                 </h5>
                 <div class="shopping-cart">
                   <div class="card mb-3 product" style="max-width: 600px;">
@@ -178,15 +178,16 @@
               </div>
             </div>
           </div>
-          <div class="card mt-5">
-            <div class="card-header">
-              Kamis, 22 Oktober 2020 14:30:00
+          <div class="card mt-3 card-transaction-history">
+            <div class="card-header">Kamis, 22 Oktober 2020 14:30:00
             </div>
             <div class="card w-100">
               <div class="card-body">
-                <h5 class="card-title">id Order : <span id="idOrder" style="color: brown;"><b>AGS-23412345</b></span>
-                  <div>Status Transaksi : <span class="text-warning">Pending</span></div>Total : <span
-                  class="history-total">159000</span> (Include Shipping)
+                <h5 class="card-title">id Order : <span class="id-Order" style="color: brown;">AGS-23412345</span>
+                  <div>Status Transaksi : <span class="text-warning transaction-status">Pending</span>
+                    <div class="button-confirmation"></div>
+                  </div>Total :
+                  <span class="history-total">159000</span> (Include Shipping)</div>
                 </h5>
                 <div class="shopping-cart">
                   <div class="card mb-3 product" style="max-width: 600px;">
@@ -259,7 +260,7 @@
             </div>
           </div>
 
-         
+
 
           <div class="col-xs-12 col-sm-6 col-md-4">
 
@@ -356,16 +357,58 @@
   <script src="frontend/libraries/jquery/jquery-3.4.1.min.js"></script>
   <script src="frontend/libraries/bootstrap/js/bootstrap.js"></script>
   <script src="frontend/libraries/qrious/qrious.js"></script>
+
   <script>
+    $(document).ready(function () {
+      $('.card-transaction-history').each(function () {
+        var r = $(
+          '<p class="text-muted" style="font-size:13px">Jika telah melakukan Konfirmasi Pembayaran, Mohon menunggu paling lama 1x24 Jam.</p>' +
+          '<p class="text-muted" style="font-size:13px;margin-top: -10px" >jika belum, dapat mengkonfirmasi pembayaran dibawah ini</p><a class="link-wa-confirm" href="https://api.whatsapp.com/send?phone=6281936516716&text=Saya%20Telah%20Melakukan%20Pembayaran%20Di%20website%20Anjay%20Gaming%20Store%20Dengan%20Bukti%20Sebagai%20Berikut%20:%0ANama%20:%0AAlamat:%0AID%20Order%20:%0A"><button type="button" class="btn btn-info">Whatsapp Web</button></a></div><p class="text-muted" style="font-size:14px">atau <a href="confirmation.html">Klik disini</a></p>'
+        );
+        if ($(this).children().children().children().children().children('.transaction-status').text() ==
+          'Pending') {
+          $(this).children().children().children().children().children('.button-confirmation').append(r)
+        }
+        var nama = 'Michael Yan'
+        var alamat = 'Jl Grogol raya no 2'
+        var tanggalOrder = $(this).children('.card-header').text()
+        var idOrder = $(this).children().children().children().children('.id-Order').text()
+        var total = $(this).children().children().children().children('.history-total').text()
+        alert(total)
+        generateWa(nama,alamat,tanggalOrder,idOrder,total)
+      })
+    })
+  </script>
 
+  <script>
+    function generateWa(nama,alamat,tanggalOrder,idOrder,total) {
+      var linkWa =
+        'https://api.whatsapp.com/send?phone=6281936516716&text=Saya%20Telah%20Melakukan%20Pembayaran%20Di%20website%20AGStore%20Dengan%20Bukti%20Sebagai%20Berikut%20:%0ANama:%20+' +
+        nama +
+        '%0AAlamat%20:%20' +
+        alamat +
+        '%0ATanggal%20Order%20:%20' +
+        tanggalOrder +
+        '%0AID%20Order%20:%20' +
+        idOrder +
+        '%0ATotal%20Harga%20:%20Rp.' +
+        total
+      $('.link-wa-confirm').attr('href', linkWa)
 
+      var uri = linkWa.split(' ').join('%20')
+
+      var qr = (window.qr = new QRious({
+        element: document.getElementById('qrious'),
+        size: 250,
+        value: uri
+      }))
+    }
   </script>
 
   <script>
     feather.replace()
   </script>
   <script src="frontend/scripts/main.js"></script>
-  <script src="frontend/scripts/cart.js"></script>
 
 
 </body>
