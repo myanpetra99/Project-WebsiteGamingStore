@@ -79,7 +79,7 @@ function updateQuantity (quantityInput) {
     .children('.product-line-price')
     .each(function () {
       $(this).fadeOut(fadeTime, function () {
-        $(this).text(linePrice.toFixed(2))
+        $(this).text(linePrice.toFixed(3))
         recalculateCart()
         $(this).fadeIn(fadeTime)
       })
