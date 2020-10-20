@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   scroll-behavior: smooth;
 }
@@ -44,7 +45,8 @@ html {
 }
 
 .card-img {
-  min-height: 15rem;
+  min-height: 12rem;
+  max-height: 12rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -125,6 +127,9 @@ html {
 }
 
 .card-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   font-size: 1rem;
@@ -263,13 +268,15 @@ hr {
 
 .row-testi {
   height: 15vh;
-  background-image: url(../images/krik-testi.png);
+  background-image: url(../images/krik-testi.jpg);
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .row-ask {
-  height: 5vh;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -394,12 +401,17 @@ a {
 }
 
 .card-item {
-  min-height: 25rem;
-  max-height: 25rem;
+  min-height: 20rem;
+  max-height: 20rem;
 }
 
 .banner-login {
   height: 90vh;
+}
+
+.card-footer {
+  background-color: transparent;
+  border-top: none;
 }
 
 .input-login {
@@ -422,6 +434,10 @@ a {
 .product .product-price:before,
 .product .product-line-price:before,
 .totals-value:before {
+  content: 'Rp.';
+}
+
+.history-total:before {
   content: 'Rp.';
 }
 
@@ -461,6 +477,26 @@ a {
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
+.nav-login .nav-link.active {
+  background-color: white;
+}
+
+.nav-login .nav-link.active:hover {
+  background-color: white;
+  color: black;
+}
+
+.nav-login .nav-link {
+  background-color: #727272;
+  color: #a0a0a0;
+  height: 40px;
+}
+
+.nav-login .nav-link:hover {
+  background-color: #505050;
+  color: white;
+}
+
 @media only screen and (min-width: 777px) {
   .user-pic {
     margin-right: -2rem;
@@ -477,6 +513,20 @@ a {
   .user-pic {
     margin-right: -7rem;
   }
+}
+
+#profileImage {
+  font-family: Arial, Helvetica, sans-serif;
+  -o-object-fit: contain;
+     object-fit: contain;
+  max-width: 3rem;
+  min-height: 3rem;
+  font-size: 2rem;
+  max-height: 3rem;
+  border-radius: 100%;
+  background: #0c1154;
+  color: #fff;
+  text-align: center;
 }
 
 @media print {
@@ -716,5 +766,142 @@ ul.social-footer2 li a {
   height: 30px;
   width: 30px;
   text-align: center;
+}
+
+#message {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  display: none;
+  color: #000;
+  position: relative;
+  padding: 20px;
+}
+
+#message2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  display: none;
+  color: #000;
+  position: relative;
+  padding: 0px 0px 0px 20px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+#message2 p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+
+#messageUser {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  display: none;
+  color: #000;
+  position: relative;
+  padding: 20px;
+}
+
+#messageUser2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  display: none;
+  color: #000;
+  position: relative;
+}
+
+#messageUser p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+#messageUser2 p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+.separator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-bottom: 1px solid #000;
+}
+
+.separator::before {
+  margin-right: .25em;
+}
+
+.separator::after {
+  margin-left: .25em;
+}
+
+.card-profile {
+  color: #e6d1d1;
+  max-width: 300px;
+  opacity: 1;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  -webkit-transition: 1s;
+  transition: 1s;
+  background: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(52%, white));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, white 52%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.card-profile .card-name {
+  font-size: 25px;
+  opacity: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.card-profile:hover img {
+  opacity: 0.5;
+}
+
+.card-profile:hover .card-name {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #ebebeb;
+  opacity: 1;
 }
 /*# sourceMappingURL=main.css.map */

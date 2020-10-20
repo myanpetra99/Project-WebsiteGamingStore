@@ -1,7 +1,9 @@
 # Project-WebsiteGamingStore
 <ol>
-   NIM dari kecil ke besar
    <hr>
+    <li>
+535189102 - Michael Yan Petra
+  </li>
   <li>
     535180119 - Johan Hartanto
   </li>
@@ -13,9 +15,6 @@
   </li>
  <li>
 535180142 - Ghatra Vaganzha Rihi Pake
-  </li>
-  <li>
-535189102 - Michael Yan Petra
   </li>
    </ol>
 
@@ -42,7 +41,6 @@ Website kami berfungsi sebagai website keseharian E-commerce khusus gaming store
 
 - Kesimpulan:
 > Website kami menjual produk yang bertema “Gaming” yang tentunya ditujukan para gamer yang ingin membeli atau melihat produk. Website kami juga dapat di akses setiap harinya dan merilis produk terbaru.
-=======
 
 
 

@@ -50,7 +50,8 @@ html {
 
 
 .card-img {
-    min-height: 15rem;
+    min-height: 12rem;
+    max-height: 12rem;
     object-fit: cover;
 }
 
@@ -141,6 +142,9 @@ html {
 }
 
 .card-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 1rem;
@@ -281,13 +285,13 @@ hr {
 
 .row-testi {
     height: 15vh;
-    background-image: url(../images/krik-testi.png);
+    background-image: url(../images/krik-testi.jpg);
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .row-ask {
-    height: 5vh;
+    height: fit-content;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -428,13 +432,18 @@ a {
 
 
 .card-item {
-    min-height: 25rem;
-    max-height: 25rem;
+    min-height: 20rem;
+    max-height: 20rem;
 }
 
 //Login Page
 .banner-login {
     height: 90vh;
+}
+
+.card-footer {
+    background-color: transparent;
+    border-top: none;
 }
 
 .input-login {
@@ -457,6 +466,10 @@ a {
 .product .product-price:before,
 .product .product-line-price:before,
 .totals-value:before {
+    content: 'Rp.';
+}
+
+.history-total:before {
     content: 'Rp.';
 }
 
@@ -500,6 +513,27 @@ a {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 
+.nav-login {
+    .nav-link.active {
+        background-color: white;
+        &:hover{
+            background-color:white;
+            color: black;
+        }
+        
+    }
+
+    .nav-link {
+        background-color: rgb(114, 114, 114);
+        &:hover{
+            background-color: rgb(80, 80, 80);
+            color: white;
+        }
+        color: rgb(160, 160, 160);
+        height: 40px;
+    }
+
+}
 
 @media only screen and (min-width: 777px) {
     .user-pic {
@@ -517,6 +551,19 @@ a {
     .user-pic {
         margin-right: -7rem;
     }
+}
+
+#profileImage {
+    font-family: Arial, Helvetica, sans-serif;
+    object-fit: contain;
+    max-width: 3rem;
+    min-height: 3rem;
+    font-size: 2rem;
+    max-height: 3rem;
+    border-radius: 100%;
+    background: #0c1154;
+    color: #fff;
+    text-align: center;
 }
 
 
@@ -764,3 +811,135 @@ ul.social-footer2 li a {
     width: 30px;
     text-align: center;
 }
+
+#message {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    display: none;
+    color: #000;
+    position: relative;
+    padding: 20px;
+}
+
+#message2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    display: none;
+    color: #000;
+    position: relative;
+    padding: 0px 0px 0px 20px;
+}
+
+#message p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+#message2 p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
+}
+
+#messageUser {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    display: none;
+    color: #000;
+    position: relative;
+    padding: 20px;
+}
+
+#messageUser2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    display: none;
+    color: #000;
+    position: relative;
+
+}
+
+#messageUser p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+#messageUser2 p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+}
+
+.separator::before {
+    margin-right: .25em;
+}
+
+.separator::after {
+    margin-left: .25em;
+}
+
+.card-profile {
+    color: rgb(230, 209, 209);
+    max-width: 300px;
+    opacity: 1;
+    height: max-content;
+  
+    .card-name {
+      font-size: 25px;
+      opacity: 0;
+      transition: 1s;
+    }
+  
+    transition:1s;
+    background: rgb(255,255,255);
+background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 52%);
+    transition: 0.3s;
+  }
+  
+  .card-profile {
+    &:hover {
+      img {
+        opacity: 0.5;
+  
+      }
+  
+      .card-name {
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: rgb(235, 235, 235);
+        opacity: 1;
+      }
+    }
+  }
