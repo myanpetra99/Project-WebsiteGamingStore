@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<%- include('../../../partials/admin/head'); %>
+
+
+<body onload="startTime()">
+
+  <%- include('../../../partials/admin/sidenav'); %>
+  <%- include('../../../partials/admin/header',{name:name}); %>
+
+  <div class="content">
+    <h1 style="font-family: 'Poppins';" class="text-center">Detail Brand <%= brand.title %></h1>
+    <div class="container">
+      <h2 class="text-muted">Thumbnail Brand :<img src="data:image/<%=brand.img.contentType%>;base64, 
+        <%=brand.img.data.toString('base64')%> " style="max-width: 200px;"> </h2>
+      <h2 class="text-muted">Tanggal Input Brand : <%= brand.createdAt.toLocaleDateString() %></h2>
+      <a href="/dashboard/product/brand/show" class="btn btn-secondary">Semua brand</a>
+      <a href="/dashboard/product/brand/<%= brand.id %>/edit" class="btn btn-danger">Edit</a>
+    </div>
+  </div>
+
+  <%- include('../../../partials/admin/footer'); %>
+</body>
+
+
+</html>

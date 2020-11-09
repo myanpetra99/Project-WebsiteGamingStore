@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <%- include('../partials/head', {title : 'Settings profile - AGS'}); %>
+
+<body>
+
+    <% if (isLoggedIn) { %>
+        <%- include('../partials/header', {isLoggedIn : isLoggedIn,
+            name: name}); %>
+        <% } else { %>
+            <%- include('../partials/header', {isLoggedIn : isLoggedIn}); %>
+        <% } %>
+
+
+    <section class="content" style="margin-top: 75px;">
+        <div class="container mt-5" >
+            <div class="row" >
+                <div class="col">
+                    <h2 class=" mt-5">My Profile</h2>
+                    <div class="card">
+                        
+                        <div class="col">
+                            <form action="">
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-2 col-form-label">Nama</label>
+                                    <div class="col-10">
+                                        <input class="input-login form-control" type="text" value="<%= name %>"
+                                            id="nameInput" readonly>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="emailInput" class="col-2 col-form-label">Email</label>
+                                    <div class="col-10">
+                                        <input class="input-login form-control email" type="email" value="<%= email %>"
+                                            id="emailInput" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-tel-input" class="col-2 col-form-label">Nomor Telepon</label>
+                                    <div class="col-10">
+                                        <input class=" input-login form-control" type="tel" value="<%= phone %>"
+                                            id="telInput">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-password-input" class="col-2 col-form-label">Old
+                                        Password</label>
+                                    <div class="col-10">
+                                        <input class=" input-login form-control" type="password" value=""
+                                            id="oldPasswordInput">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-password-input" class="col-2 col-form-label">New
+                                        Password</label>
+                                    <div class="col-10">
+                                        <input class=" input-login form-control" type="password" value=""
+                                            id="newPasswordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                            required>
+                                        <div id="messageUser">
+                                            <h5>Password harus mengandung setidaknya:</h5>
+                                            <p id="letter" class="invalid">Sebuah <b>huruf kecil</b></p>
+                                            <p id="capital" class="invalid">Sebuah <b>huruf Kapital</b> </p>
+                                            <p id="number" class="invalid">Sebuah <b>angka</b></p>
+                                            <p id="length" class="invalid">minimal <b>8 karakter</b></p>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-password-input" class="col-2 col-form-label">Re-type new
+                                        Password</label>
+                                    <div class="col-10">
+                                        <input class=" input-login form-control" type="password" value=""
+                                            id="reNewPasswordInput">
+                                        <div id="messageUser2">
+                                            <p id="reValidate" class="invalid">Password tidak sama</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-number-input" class="col-2 col-form-label">Alamat</label>
+                                    <div class="col-10">
+                                        <input class="input-login form-control" type="text" value="<%= address %>"
+                                            id="addressInput">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-datetime-local-input" class="col-2 col-form-label">Kode
+                                        Pos</label>
+                                    <div class="col-10">
+                                        <input class="input-login form-control" maxlength="5" required type="tel"
+                                            value="<%= zip %>" placeholder="Kode Pos" id="zipInput">
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary form-control mb-5" type="submit">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <%- include('../partials/footer',{isLoggedIn : isLoggedIn}); %>
+
+
+    <script>
+        var myInput = document.getElementById("newPasswordInput");
+        var myInput2 = document.getElementById("reNewPasswordInput");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+        var reValidate = document.getElementById("reValidate");
+
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function () {
+            document.getElementById("messageUser").style.display = "block";
+        }
+
+        myInput2.onfocus = function () {
+            document.getElementById("messageUser2").style.display = "block";
+            if (myInput2.value == myInput.value && myInput2.value != '') {
+                reValidate.classList.remove("invalid");
+                reValidate.classList.add("valid");
+                reValidate.innerText = "password sama";
+            } else {
+                reValidate.classList.remove("valid");
+                reValidate.classList.add("invalid")
+                reValidate.innerText = "password tidak sama";
+            }
+        }
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function () {
+            document.getElementById("messageUser").style.display = "none";
+        }
+
+        myInput2.onblur = function () {
+            document.getElementById("messageUser2").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function () {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+        }
+
+
+        myInput2.onkeyup = function () {
+            // Validate lowercase letters
+            if (myInput2.value == myInput.value) {
+                reValidate.classList.remove("invalid");
+                reValidate.classList.add("valid");
+                reValidate.innerText = "password sama";
+            } else {
+                reValidate.classList.remove("valid");
+                reValidate.classList.add("invalid")
+                reValidate.innerText = "password tidak sama";
+            }
+
+            // Validate capital letters
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var email = $('#emailInput').val();
+            var hiddenEmail = "";
+            for (i = 0; i < email.length; i++) {
+                if (i > 2 && i < email.indexOf("@")) {
+                    hiddenEmail += "*";
+                } else {
+                    hiddenEmail += email[i];
+                }
+            }
+            console.log(hiddenEmail)
+            $('#emailInput').attr("value", hiddenEmail).placeholder()
+        })
+
+
+        $(document).ready(function () {
+            var phone = $('#telInput').val();
+            var hiddenPhone = "";
+            for (i = 0; i < phone.length; i++) {
+                if (i < phone.length - 3) {
+                    hiddenPhone += "*";
+                } else {
+                    hiddenPhone += phone[i];
+                }
+            }
+            $('#telInput').attr("value", hiddenPhone).placeholder()
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<%- include('../../partials/admin/head'); %>
+
+
+  <body onload="startTime()">
+
+    <%- include('../../partials/admin/sidenav'); %>
+    <%- include('../../partials/admin/header',{name:name}); %>
+  
+    <div class="content">
+      <h1 style="font-family: 'Poppins';" class="text-center">Dashboard</h1>
+      <div class="container">
+  
+        <div class="row">
+          <div class="col-3">
+            <div class="card" style="max-width: 18rem;">
+              <div class="card-header bg-info">
+              </div>
+              <div class="card-body row text-center">
+                <div class="col">
+                  <div class="text-value-xl"><%= manyUser %></div>
+                  <div class="text-uppercase text-muted small">User</div>
+                </div>
+              </div>
+              <div class="card-body row text-center">
+                <div class="col">
+                  <div class="text-value-xl"><%= manyAdmin %></div>
+                  <div class="text-uppercase text-muted small">ADMIN</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card" style="max-width: 30rem;">
+              <div class="card-header bg-primary">
+              </div>
+              <div class="card-body row text-center">
+                <div class="col">
+                  <div class="text-value-xl">0</div>
+                  <div class="text-uppercase text-muted small">Transaction Made</div>
+                </div>
+                <div class="container-fluid">
+                  <div class="row mt-3">
+                    <div class="col-md-4">
+                      <div class="card" style="max-width: 18rem;">
+                        <div class="card-header bg-danger">
+                        </div>
+                        <div class="card-body row text-center">
+                          <div class="col">
+                            <div class="text-value-xl">0</div>
+                            <div class="text-uppercase text-muted small"> Failed</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="card" style="max-width: 18rem;">
+                        <div class="card-header bg-warning">
+                        </div>
+                        <div class="card-body row text-center">
+                          <div class="col">
+                            <div class="text-value-xl">0</div>
+                            <div class="text-uppercase text-muted small"> Pending</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="card" style="max-width: 18rem;">
+                        <div class="card-header bg-success">
+                        </div>
+                        <div class="card-body row text-center">
+                          <div class="col">
+                            <div class="text-value-xl">0</div>
+                            <div class="text-uppercase text-muted small"> Success</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
+  
+  
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card" style="max-width: 18rem;">
+              <div class="card-header bg-dark">
+              </div>
+              <div class="card-body row text-center">
+                <div class="col">
+                  <div class="text-value-xl"><%= manyProduct %></div>
+                  <div class="text-uppercase text-muted small">Total Products</div>
+                </div>
+              </div>
+              <div class="card-body row text-center">
+                <div class="col">
+                  <div class="text-value-xl">0</div>
+                  <div class="text-uppercase text-muted small">Category</div>
+                </div>
+              </div>
+              <div class="card-body row text-center">
+                <div class="col">
+                  <div class="text-value-xl"><%= manyBrand %></div>
+                  <div class="text-uppercase text-muted small">Brands</div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+      </div>
+      </div>  
+
+      <%- include('../../partials/admin/footer'); %>
+  </body>
+
+       
+</html>

@@ -1,0 +1,945 @@
+//homepage
+html {
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: 'Zealot';
+    src: url('../styles/fonts/ZealotCollegeItalic-Y24O.ttf') format('truetype');
+
+
+}
+
+@font-face {
+    font-family: 'Zealot-black';
+    src: url('../styles/fonts/ZealotOutlineItalic-MDKJ.ttf') format('truetype');
+}
+
+.container-navbar {
+    background-color: #1a1a2e;
+}
+
+.navbar-landing {
+    background-color: #1a1a2e;
+
+    z-index: 999;
+    position: absolute;
+    width: 60%;
+    transition: 500ms;
+
+}
+
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+
+.carousel {
+    position: cover;
+    margin-top: 75px;
+
+}
+
+.carousel-item img {
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.card-img {
+    min-height: 12rem;
+    max-height: 12rem;
+    object-fit: cover;
+}
+
+#navBarSearchForm {
+    width: 60% !important;
+}
+
+
+.btn-utama {
+    border: #e94560 solid 1px;
+    color: #e94560;
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+
+    &:hover {
+        background-color: #e94560;
+        transition: 0.25s ease-out;
+        color: whitesmoke;
+    }
+}
+
+.card-homepage {
+
+    max-width: 350px;
+    height: 100px;
+    border-radius: 10px;
+
+    &:hover {
+
+        .card-homepage-bg {
+            transition-duration: 500ms;
+
+            -webkit-filter: blur(4px);
+            filter: blur(4px);
+        }
+
+        .card-homepage-title {
+            transition-duration: 500ms;
+            -webkit-text-stroke-width: 0px;
+        }
+
+        .underline--magical {
+            background-size: 100% 88%;
+        }
+    }
+
+}
+
+
+
+.card-homepage-bg,
+.card-homepage-title {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    font-weight: 500;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+
+
+
+}
+
+.underline--magical {
+    background-image: linear-gradient(120deg, #1a1a2e 0%, #e94560 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+    transition: background-size 0.25s ease-in;
+}
+
+.long {
+    font-size: 35px !important;
+
+}
+
+
+.card-homepage-bg {
+
+    object-fit: cover !important;
+    -webkit-filter: blur(1.5px);
+    filter: blur(1.5px);
+}
+
+.card-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+//brand page
+
+.brand-logo {
+    width: 250px;
+    height: 150px;
+    object-fit: contain;
+    filter: grayscale(100%);
+
+    &:hover {
+        transition-duration: 500ms;
+        filter: grayscale(0%);
+    }
+}
+
+@media only screen and (max-width: 768 px) {
+    .brand-logo {
+        max-width: 70px;
+    }
+}
+
+//PAGE home/product  ( product.html )
+
+.banner {
+    height: 30vh;
+}
+
+.product-banner .mouse {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/mouse-banner.jpg)
+}
+
+.product-banner .keyboard {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/mouse-banner.jpg)
+}
+
+.product-banner .headset {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/mouse-banner.jpg)
+}
+
+.product-banner .gaming-chair {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/mouse-banner.jpg)
+}
+
+.product-banner .misclleaneous {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/mouse-banner.jpg)
+}
+
+.sortBy {
+    padding: 10px;
+    background-color: #d8d8d8;
+    border: 1px solid black;
+}
+
+
+//Page Item
+.xzoom-container {
+    display: block;
+
+    .xzoom {
+        width: 500px;
+        box-shadow: none;
+        margin-bottom: 10px;
+    }
+
+    .xactive {
+        border: 2px solid #1abc9c;
+        box-shadow: none;
+    }
+}
+
+.item-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+
+}
+
+.item-price {
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: rgb(255, 81, 0);
+}
+
+.props-item {
+    color: #9e9e9e;
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+hr {
+    border-top: 1px solid rgb(230, 230, 230);
+}
+
+.mini-menus-item {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: green;
+    font-weight: 400;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+}
+
+.mini-menus-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: black;
+    font-weight: 500;
+}
+
+.mini-menus-sub-title {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 300;
+}
+
+.row-testi {
+    height: 15vh;
+    background-image: url(../images/krik-testi.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.row-ask {
+    height: fit-content;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navbar-bottom {
+    height: 5rem;
+    border-radius: 10px 10px;
+    transition: bottom 0.3s;
+    bottom: -100px;
+    background: rgb(255, 255, 255);
+    -webkit-box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.13);
+    -moz-box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.13);
+    box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.13);
+}
+
+.btn-keranjang-navbar {
+    border: none;
+    background-color: orange;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+
+    &:hover {
+        background-color: #e94560;
+        transition: 0.25s ease-out;
+        color: rgb(255, 255, 255);
+    }
+}
+
+.blank-row {
+    height: 10vh;
+}
+
+.btn-beli {
+    border: none;
+    font-size: 20px;
+    background-color: orange;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+
+
+    &:hover,
+    &:active {
+        &:not([disabled]) {
+            background-color: #e94560;
+            transition: 0.25s ease-out;
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+
+
+//cart
+.product {
+
+    margin-top: 10px;
+    border-top: #9e9e9e 1px solid !important;
+    border-bottom: #9e9e9e 5px solid !important;
+    border: none;
+
+    .product-img {
+        margin-left: 30px;
+        max-width: 100px;
+        max-height: 100px;
+        object-fit: contain;
+        border-radius: 10px;
+
+    }
+
+    .product-details {
+
+        .product-title {
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .product-price {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            color: orange;
+            -webkit-text-stroke: 1px rgb(255, 136, 0);
+        }
+    }
+
+    .icon-feather {
+        &:hover {
+            color: gray
+        }
+    }
+}
+
+
+
+
+
+.input-number {
+    width: 40px;
+    border: none;
+    border-bottom: 1px rgba(107, 107, 107, 0.534) solid;
+    text-align: center;
+}
+
+.total-belanja {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: orange;
+    font-size: 20px;
+    -webkit-text-stroke: 1px rgb(255, 136, 0);
+}
+
+.ringkasan-belanja {
+    margin-top: 20px;
+}
+
+#transferInfo {
+    transition-duration: 1000ms;
+
+}
+
+.card-whatsapp {
+    background-color: #0D9F16;
+    color: white;
+
+}
+
+a {
+    text-decoration: none !important;
+    color: #000000;
+}
+
+.jumbotron {
+    border: 1px solid rgb(0, 43, 161);
+}
+
+
+.card-item {
+    min-height: 20rem;
+    max-height: 20rem;
+}
+
+//Login Page
+.banner-login {
+    height: 90vh;
+}
+
+.card-footer {
+    background-color: transparent;
+    border-top: none;
+}
+
+.input-login {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 100px;
+
+    &:focus {
+
+        border: 3px solid #e94560;
+    }
+}
+
+.product .product-price:before,
+.product .product-line-price:before,
+.totals-value:before {
+    content: 'Rp.';
+}
+
+.history-total:before {
+    content: 'Rp.';
+}
+
+.col-breadcrumb {
+    border: 1px solid rgb(219, 219, 219);
+    padding-top: auto;
+    -webkit-box-shadow: 0px 6px 16px -5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 6px 16px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 6px 16px -5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+
+.nav-login {
+    .nav-link.active {
+        background-color: white;
+        &:hover{
+            background-color:white;
+            color: black;
+        }
+        
+    }
+
+    .nav-link {
+        background-color: rgb(114, 114, 114);
+        &:hover{
+            background-color: rgb(80, 80, 80);
+            color: white;
+        }
+        color: rgb(160, 160, 160);
+        height: 40px;
+    }
+
+}
+
+@media only screen and (min-width: 777px) {
+    .user-pic {
+        margin-right: -2rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .user-pic {
+        margin-right: -5rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .user-pic {
+        margin-right: -7rem;
+    }
+}
+
+#profileImage {
+    font-family: Arial, Helvetica, sans-serif;
+    object-fit: contain;
+    max-width: 3rem;
+    min-height: 3rem;
+    font-size: 2rem;
+    max-height: 3rem;
+    border-radius: 100%;
+    background: #0c1154;
+    color: #fff;
+    text-align: center;
+}
+
+
+@media print {
+    body* {
+        display: block;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    #Invoice * {
+        visibility: visible;
+    }
+
+    #Invoice {
+        position: absolute;
+        top: 40px;
+        left: 30px;
+        margin-left: -500px;
+        font-size: 30px;
+
+    }
+}
+
+@media screen {
+    #Invoice {
+        display: none;
+    }
+}
+
+.toast {
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 10px;
+    color: #ffffff;
+
+    z-index: 1;
+}
+
+@media (max-width:500px) {
+    .owl-carousel .owl-item {
+        text-align: center;
+    }
+
+    .owl-carousel .item {
+        float: none;
+        display: inline-block;
+    }
+}
+
+footer .main-footer {
+    padding: 20px 0;
+    background: #252525;
+    margin-top: 5rem;
+}
+
+footer ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+/* Copy Right Footer */
+.footer-copyright {
+    background: #222;
+    padding: 5px 0;
+}
+
+.footer-copyright .logo {
+    display: inherit;
+}
+
+.footer-copyright nav {
+    float: right;
+    margin-top: 5px;
+}
+
+.footer-copyright nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-copyright nav ul li {
+    border-left: 1px solid #505050;
+    display: inline-block;
+    line-height: 12px;
+    margin: 0;
+    padding: 0 8px;
+}
+
+.footer-copyright nav ul li a {
+    color: #969696;
+}
+
+.footer-copyright nav ul li:first-child {
+    border: medium none;
+    padding-left: 0;
+}
+
+.footer-copyright p {
+    color: #969696;
+    margin: 2px 0 0;
+}
+
+/* Footer Top */
+.footer-top {
+    background: #252525;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #222;
+}
+
+/* Footer transparent */
+footer.transparent .footer-top,
+footer.transparent .main-footer {
+    background: transparent;
+}
+
+footer.transparent .footer-copyright {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Footer light */
+footer.light .footer-top {
+    background: #f9f9f9;
+}
+
+footer.light .main-footer {
+    background: #f9f9f9;
+}
+
+footer.light .footer-copyright {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Footer 4 */
+.footer- .logo {
+    display: inline-block;
+}
+
+/*==================== 
+	Widgets 
+====================== */
+.widget {
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.widget.widget-last {
+    margin-bottom: 0px;
+}
+
+.widget.no-box {
+    padding: 0;
+    background-color: transparent;
+    margin-bottom: 40px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+}
+
+.widget.subscribe p {
+    margin-bottom: 18px;
+}
+
+.widget li a {
+    color: #ff8d1e;
+}
+
+.widget li a:hover {
+    color: #4b92dc;
+}
+
+.widget-title {
+    margin-bottom: 20px;
+}
+
+.widget-title span {
+    background: #839FAD none repeat scroll 0 0;
+    display: block;
+    height: 1px;
+    margin-top: 25px;
+    position: relative;
+    width: 20%;
+}
+
+.widget-title span::after {
+    background: inherit;
+    content: "";
+    height: inherit;
+    position: absolute;
+    top: -4px;
+    width: 50%;
+}
+
+.widget-title.text-center span,
+.widget-title.text-center span::after {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.widget .badge {
+    float: right;
+    background: #7f7f7f;
+}
+
+.typo-light h1,
+.typo-light h2,
+.typo-light h3,
+.typo-light h4,
+.typo-light h5,
+.typo-light h6,
+.typo-light p,
+.typo-light div,
+.typo-light span,
+.typo-light small {
+    color: #fff;
+}
+
+ul.social-footer2 {
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+ul.social-footer2 li {
+    display: inline-block;
+    padding: 0;
+}
+
+ul.social-footer2 li a:hover {
+    background-color: #ff8d1e;
+}
+
+ul.social-footer2 li a {
+    display: block;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+}
+
+#message {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    display: none;
+    color: #000;
+    position: relative;
+    padding: 20px;
+}
+
+#message2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    display: none;
+    color: #000;
+    position: relative;
+    padding: 0px 0px 0px 20px;
+}
+
+#message p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+#message2 p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
+}
+
+#messageUser {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    display: none;
+    color: #000;
+    position: relative;
+    padding: 20px;
+}
+
+#messageUser2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    display: none;
+    color: #000;
+    position: relative;
+
+}
+
+#messageUser p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+#messageUser2 p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+}
+
+.separator::before {
+    margin-right: .25em;
+}
+
+.separator::after {
+    margin-left: .25em;
+}
+
+.card-profile {
+    color: rgb(230, 209, 209);
+    max-width: 300px;
+    opacity: 1;
+    height: max-content;
+  
+    .card-name {
+      font-size: 25px;
+      opacity: 0;
+      transition: 1s;
+    }
+  
+    transition:1s;
+    background: rgb(255,255,255);
+background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 52%);
+    transition: 0.3s;
+  }
+  
+  .card-profile {
+    &:hover {
+      img {
+        opacity: 0.5;
+  
+      }
+  
+      .card-name {
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: rgb(235, 235, 235);
+        opacity: 1;
+      }
+    }
+  }

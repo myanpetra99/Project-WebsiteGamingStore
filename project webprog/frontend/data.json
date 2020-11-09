@@ -1,0 +1,42 @@
+[
+  {
+    "nama":"Logitech G102",
+    "url":"/item",
+    "imgname" : "mouse-item",
+    "category":"mouse",
+    "brand":"Logitech",
+    "harga":250000
+  },
+  {
+    "nama":"Hyper X Cloud Core",
+    "url":"/item",
+    "imgname" : "headset-item",
+    "category":"headset",
+    "brand":"Hyper X",
+    "harga":650000
+  },
+  {
+    "nama":"Rexus Headset Stand + USB",
+    "url":"/item",
+    "imgname" : "misc-item",
+    "category":"miscellaneous",
+    "brand":"Rexus",
+    "harga":180000
+  },
+  {
+    "nama":"SteelSeries QCK Medium",
+    "url":"/item",
+    "imgname" : "misc-item2",
+    "category":"miscellaneous",
+    "brand":"SteelSeries",
+    "harga":180000
+  },
+  {
+    "nama":"DX Racer Gaming Chair",
+    "url":"/item",
+    "imgname" : "chair-card-bg",
+    "category":"Gaming Chair",
+    "brand":"DX Racer",
+    "harga":180000
+  }
+]

@@ -1,0 +1,45 @@
+<div id="mySidenav" class="sidenav">
+     
+    <p style="font-family: 'zealot'; font-size:25px" class="active text-center">Admin</p>
+    <a href="/dashboard" class="active text-center">Dashboard</a>
+    <a href="#" class="text-center dropdown-btn dropdown-toggle" id="dropB1"  type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+    <div class="dropdown-container" id="dropC">
+      <a href="/dashboard/product">List Product</a>
+      <a href="/dashboard/product/create">Tambah Produk +</a>
+      <a href="/dashboard/product/brand/show">List Brand</a>
+      <a href="/dashboard/product/brand/create">Tambah Brand +</a>
+      <a href="/dashboard/product/category/show">List Kategori</a>
+      <a href="/dashboard/product/category/create">Tambah Kategori +</a>
+    </div>
+    <a href="/dashboard/gallery" class="text-center">Gallery Products</a>
+    <a href="/transaction" class="text-center">Transaction</a>
+    <a href="/dashboard/confirmation-payment" class="text-center">Confirmation List</a>
+    <a href="/dashboard/website-misc" class="text-center">Website Misc</a>
+  </div>
+
+  <script>
+    var dropBtn = document.getElementById("dropB1");
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var dropContainer = document.getElementById('dropC')
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("activeNav");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+
+
+var sidenav = document.getElementById('mySidenav')
+  sidenav.addEventListener("mouseleave", function() {
+    dropContainer.style.display = "none"
+    dropBtn.classList.remove("activeNav");
+  });
+
+  </script>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <%- include('../partials/head', {title : 'Welcome to AGStore'}); %>
+
+<body>
+
+  <% if (isLoggedIn) { %>
+    <%- include('../partials/header', {isLoggedIn : isLoggedIn,
+        name: name}); %>
+    <% } else { %>
+        <%- include('../partials/header', {isLoggedIn : isLoggedIn}); %>
+    <% } %>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleControls" data-slide-to="1"></li>
+      <li data-target="#carouselExampleControls" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="images/banner1.png" class="d-block w-100 carousel-banner" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="images/banner2.jpg" class="d-block w-100 carousel-banner" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="images/banner3.jpg" class="d-block w-100 carousel-banner" alt="...">
+      </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+
+  </div>
+
+    <section class="content">
+      <div class="container mt-4" style="border: 1px solid rgb(0, 57, 131);">
+        <h1 class="display-4 text-center" style="color: #07689f;">Hot Deals!</h1>
+        <p class="lead text-center" style="color: #07689f;">Lagi pada promo nih gan! di swipe aja</p>
+        <div class="owl-carousel owl-theme pt-2">
+
+
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/mouse-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Logitech G102</h5>
+              <p class="card-text text-center">Rp.250.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/keyboard-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Keychron K2</h5>
+              <p class="card-text text-center">Rp.1000.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+
+
+
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Hyper X stinger-core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+
+
+
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/misc-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Rexus Headset Stand + USB port</h5>
+              <p class="card-text text-center">Rp.140.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+
+
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/misc-item2.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">SteelSeries QCK Medium</h5>
+              <p class="card-text text-center">Rp.200.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="container mt-3">
+
+        <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <a href="product/mouse">
+              <div class="card-homepage mt-2 text-center ">
+                <img src="images/mouse-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
+                <div class="card-homepage-title long"> <span class="underline--magical">Mouse</span></div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-4 col-sm-12">
+
+            <a href="/product/headset">
+              <div class="card-homepage mt-2 text-center ">
+                <img src="images/headset-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
+                <div class="card-homepage-title long"> <span class="underline--magical">Headset </span></div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-4 col-sm-12">
+            <a href="/product/keyboard">
+              <div class="card-homepage mt-2 text-center ">
+                <img src="images/keyboard-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
+                <div class="card-homepage-title"> <span class="underline--magical">Keyboard </span></div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <a href="/product/gaming-chair">
+              <div class="card-homepage mt-2 text-center ">
+                <img src="images/chair-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
+                <div class="card-homepage-title long"> <span class="underline--magical">Gaming Chair</span></div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-4 col-sm-12">
+
+            <a href="/product/misc">
+              <div class="card-homepage mt-2 text-center ">
+                <img src="images/misc-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
+                <div class="card-homepage-title long"> <span class="underline--magical">Miscellaneous</span></div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-4 col-sm-12">
+            <a href="/brand">
+              <div class="card-homepage mt-2 text-center ">
+                <img src="images/brand-card-bg.jpg" class="card-homepage-bg" width="350px" height="100px" alt="">
+                <div class="card-homepage-title"> <span class="underline--magical">Brand</span></div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+    </section>
+    <hr>
+    <div class="section">
+      <div class=" container">
+        <div class="newest-update-title">
+          <h1 class="display-4 text-center" style="color: #07689f ;">Latest Updates</h1>
+          <p class="lead text-center" style="color: #07689f;">Cek dulu gan! Baru keluar nih!</p>
+        </div>
+        <hr>
+        <div class="display-4">Mouse</div>
+        <div class="owl-carousel owl-theme pt-2 mt-3"
+          style="background: rgb(255,0,0);
+          background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(255,84,84,1) 0%, rgba(255,185,185,1) 0%, rgba(255,255,255,1) 47%, rgba(255,255,255,1) 52%);">
+
+
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/mouse-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Logitech G102</h5>
+              <p class="card-text text-center">Rp.250.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/keyboard-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Keychron K2</h5>
+              <p class="card-text text-center">Rp.1000.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="display-4">Keyboard</div>
+        <div class="owl-carousel owl-theme pt-2 mt-3"
+          style="background: rgb(168,255,0);
+          background: linear-gradient(0deg, rgba(168,255,0,1) 0%, rgba(84,255,109,1) 0%, rgba(198,255,185,1) 0%, rgba(255,255,255,1) 47%, rgba(255,255,255,1) 52%);">
+
+
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/mouse-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Logitech G102</h5>
+              <p class="card-text text-center">Rp.250.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/keyboard-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Keychron K2</h5>
+              <p class="card-text text-center">Rp.1000.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="display-4">Headset</div>
+        <div class="owl-carousel owl-theme pt-2 mt-3" style="background: rgb(254,255,0);
+          background: linear-gradient(0deg, rgba(254,255,0,1) 0%, rgba(255,255,191,1) 0%, rgba(255,255,255,1) 52%);">
+
+
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/mouse-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Logitech G102</h5>
+              <p class="card-text text-center">Rp.250.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/keyboard-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Keychron K2</h5>
+              <p class="card-text text-center">Rp.1000.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="display-4">Gaming Chair</div>
+        <div class="owl-carousel owl-theme pt-2  mt-3" style="background: rgb(0,255,76);
+          background: linear-gradient(0deg, rgba(0,255,76,1) 0%, rgba(191,246,255,1) 0%, rgba(255,255,255,1) 52%);">
+
+
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/mouse-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Logitech G102</h5>
+              <p class="card-text text-center">Rp.250.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/keyboard-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Keychron K2</h5>
+              <p class="card-text text-center">Rp.1000.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="display-4">Other</div>
+        <div class="owl-carousel owl-theme pt-2 mt-3" style="background: rgb(102,0,255);
+          background: linear-gradient(0deg, rgba(102,0,255,1) 0%, rgba(194,191,255,1) 0%, rgba(255,255,255,1) 52%);">
+
+
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/mouse-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Logitech G102</h5>
+              <p class="card-text text-center">Rp.250.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/keyboard-item.jpg" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Keychron K2</h5>
+              <p class="card-text text-center">Rp.1000.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="card card-item" style="width: 14rem;">
+            <img src="images/headset-item.jpg" class="card-img-top  card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">HyperX Stinger Core</h5>
+              <p class="card-text text-center">Rp.550.000</p>
+            </div>
+            <div class="card-footer">
+              <a href="/item" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  <%- include('../partials/footer',{isLoggedIn : isLoggedIn}); %>
+
+
+  <script>
+    $(document).ready(function () {
+      $('.owl-carousel').owlCarousel({
+        center: true,
+        loop: true,
+        margin: 10,
+        responsiveClass: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        responsive: {
+          0: {
+            items: 2,
+            nav: true
+          },
+          600: {
+            items: 3,
+            nav: true
+          },
+          1000: {
+            items: 4,
+            nav: false,
+          }
+        }
+      })
+    });
+  </script>
+</body>
+
+</html>

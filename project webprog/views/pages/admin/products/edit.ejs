@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../partials/admin/head'); %>
+
+
+  <body onload="startTime()">
+
+    <%- include('../../../partials/admin/sidenav'); %>
+    <%- include('../../../partials/admin/header',{name:name}); %>
+  
+    <div class="content">
+      <h1 style="font-family: 'Poppins';" class="text-center">Edit Produk</h1>
+      <div class="container">
+
+        <form action="/dashboard/product/<%= product.id %>/edit?_method=PUT" method="POST">
+          <div class="form-group">
+            <label for="nama">Nama Produk : </label>
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="" value="<%= product.nama %>">
+          </div>
+          <div class="form-group">
+            <label for="img">Upload Image</label> 
+            <input type="file" id="image" 
+                   name="image" value="<%= product.img %>" required> 
+          </div>
+          <div class="form-group">
+            <label for="sku">SKU Produk : </label>
+            <input type="text" value="<%= product.sku %>" class="form-control" id="sku" name="sku" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="price">Harga produk : </label>
+            <input type="number" value="<%= product.price %>" class="form-control" id="price" name="price" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="weight">Berat produk : </label>
+            <input type="number" value="<%= product.weight %>" class="form-control" id="weight" name="weight" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="desc">Deskripsi Produk : </label>
+            <textarea class="form-control" value="" id="desc" name="desc" rows="3"><%= product.desc %></textarea>
+          </div>
+          <div class="form-group">
+            <label for="brand">Merk : </label>
+            <input type="text" class="form-control" value="<%= product.brand %>" id="brand" name="brand" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="category">Kategori Produk : </label>
+            <input type="text" class="form-control" value="<%= product.category %>" id="category" name="category" placeholder="">
+          </div>
+          <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <a href="/dashboard/product" class="btn btn-secondary">Cancel</a>
+          </div>
+         
+        </form>
+  
+      </div>
+      </div>  
+
+      <%- include('../../../partials/admin/footer'); %>
+  </body>
+
+
+</html>
