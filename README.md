@@ -1,5 +1,5 @@
 To Start Server,
-Please Enter command "npm run devStart", to run with Nodemon
+Please Enter command <b> "npm run devStart" </b>, to run with Nodemon
 
 # Project-WebsiteGamingStore
 <ol>
