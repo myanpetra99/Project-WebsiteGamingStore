@@ -32,7 +32,8 @@ app.use(express.json())
 const Users = require('./models/user')
 var auth = require('./middleware/Auth')
 var dashboardRouter = require('./routes/admin/dashboard')
-
+const Products = require('./models/product')
+const Galleries = require('./models/gallery')
 app.use(dashboardRouter)
 
 
@@ -41,41 +42,69 @@ mongoose.connect('mongodb://127.0.0.1/Agstore', {
 })
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-//models product
-
-
-//fake local db
-
-//dummy data product
-app.locals.productdata = require('./data.json')
-
-
-//for Login
-
-
-
 
 //PUBLIC SECTION
 //route index
-app.get('/', auth.softAuthenticate, function(req, res) {
-    res.render('pages/index',
-    {name: req.user.name,
-        isLoggedIn: true});
+app.get('/', function(req, res) {
+    if(req.isAuthenticated()){
+        res.render('pages/index',
+        {name: req.user.name,
+            isLoggedIn: true});
+    }
+    else{
+        res.render('pages/index',
+    {isLoggedIn: false});
+    }
+    
 });
 
 
 //route product
-app.get('/product', auth.softAuthenticate, function(req, res) {
-    res.render('pages/product',
+app.get('/product', async function(req, res) {
+    const products = await Products.find()
+    if(req.isAuthenticated()){
+        res.render('pages/product',
     {name: req.user.name,
-        isLoggedIn: true});
+        isLoggedIn: true, products:products});
+    }else{
+        res.render('pages/product',
+    {isLoggedIn: false, products:products});
+    }
+
+    
 });
 
 //route item
-app.get('/item', auth.softAuthenticate, function(req, res) {
-    res.render('pages/item',
-    {name: req.user.name,
-        isLoggedIn: true});
+
+app.get('/product/item/:slug', async (req,res)=>{
+    const galleries = await Galleries.find({ slug: req.params.slug})
+    const product = await Products.findOne({ slug: req.params.slug})
+    if(product == null) res.redirect('/product')
+    
+    if(req.isAuthenticated()){
+        res.render('pages/item',
+        {name: req.user.name,
+            isLoggedIn: true, product:product, galleries:galleries});
+    }   
+    else{
+        res.render('pages/item',
+        {isLoggedIn: false, product:product, galleries:galleries});
+    }
+})
+
+
+
+app.get('/item', function(req, res) {
+    if(req.isAuthenticated()){
+        res.render('pages/item',
+        {name: req.user.name,
+            isLoggedIn: true});
+    }
+    else{
+        res.render('pages/item',
+        {isLoggedIn: false});
+    }
+   
 });
 
 
@@ -122,14 +151,24 @@ app.post('/register',async (req,res) =>{
 
 
 //route about
-app.get('/about',auth.softAuthenticate, function(req, res) {
+app.get('/about', function(req, res) {
+  if(req.isAuthenticated()){
     res.render('pages/about', {name: req.user.name,
         isLoggedIn: true});
+  }
+  else{
+    res.render('pages/about', {isLoggedIn: false});
+  }
 });
 //route confirmation
-app.get('/confirmation',auth.softAuthenticate, function(req, res) {
+app.get('/confirmation',function(req, res) {
+   if(req.isAuthenticated()){
     res.render('pages/confirmation', {name: req.user.name,
         isLoggedIn: true});
+   }
+   else{
+    res.render('pages/confirmation', {isLoggedIn: false});
+   }
 });
 
 //route cart

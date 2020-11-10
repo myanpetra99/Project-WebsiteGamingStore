@@ -15,7 +15,7 @@
         
       <!--Pop Up Navbar on scroll!-->
   <nav class="navbar fixed-bottom  navbar-bottom" id="navbarBot">
-    <p class="item-title nama-barang">Logitech G102 <span class="item-price border-left">Rp250.000</span></p>
+    <p class="item-title nama-barang"><%= product.nama %> <span class="item-price border-left">Rp<%= product.price %></span></p>
    <span> <a href="/buy-now"><button class="btn-keranjang-navbar" style="font-size: 20px;">Beli Sekarang</button></a><a href="/cart"><button class="btn-utama ml-2" style="font-size: 20px;">Masukin Keranjang</button></a></span>
              
   </nav>
@@ -27,7 +27,7 @@
             <ol class="breadcrumb bg-transparent">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
               <li class="breadcrumb-item"><a href="/product">Product</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Logitech G102</li>
+              <li class="breadcrumb-item active" aria-current="page"><%= product.nama %></li>
             </ol>
           </nav>
         </div>
@@ -41,19 +41,25 @@
       <div class="row">
         <div class="col">
           <div class="xzoom-container">
-            <img class="xzoom" id="xzoom-default" src="images/item-gallery1.jpg"
-              xoriginal="images/item-gallery1.jpg" />
+            <img src="data:image/<%=product.img.contentType%>;base64, 
+        <%=product.img.data.toString('base64')%> " class="xzoom" xoriginal="data:image/<%=product.img.contentType%>;base64, 
+        <%=product.img.data.toString('base64')%> ">
 
 
             <div class="xzoom-thumbs">
-              <a href="images/item-gallery1.jpg"><img class="xzoom-gallery" width="128"
-                  src="images/item-gallery1.jpg" xpreview="images/item-gallery1.jpg" /></a>
-              <a href="images/item-gallery2.jpg"><img class="xzoom-gallery" width="128"
-                  src="images/item-gallery2.jpg" xpreview="images/item-gallery2.jpg" /></a>
-              <a href="images/item-gallery3.jpg"><img class="xzoom-gallery" width="128"
-                  src="images/item-gallery3.jpg" xpreview="images/item-gallery3.jpg" /></a>
-
-
+              <a href="data:image/<%=product.img.contentType%>;base64, 
+                <%=product.img.data.toString('base64')%>">
+                <img class="xzoom-gallery" width="128"
+                  src="data:image/<%=product.img.contentType%>;base64, 
+                  <%=product.img.data.toString('base64')%>" xpreview="data:image/<%=product.img.contentType%>;base64, 
+                  <%=product.img.data.toString('base64')%>" /></a>
+                  <% galleries.forEach(gallery =>{ %>
+                    <a href="data:image/<%=gallery.img.contentType%>;base64, 
+                      <%=gallery.img.data.toString('base64')%>"><img class="xzoom-gallery" width="128"
+                      src="data:image/<%=gallery.img.contentType%>;base64, 
+                      <%=gallery.img.data.toString('base64')%>" xpreview="data:image/<%=gallery.img.contentType%>;base64, 
+                      <%=gallery.img.data.toString('base64')%>" /></a>
+                    <% }) %>
             </div>
           </div>
         </div>
@@ -61,9 +67,9 @@
           <div>
             <br>
             <br>
-            <h1 class="item-title ">Logitech G102</h1>
+            <h1 class="item-title "><%= product.nama %></h1>
             
-            <h2 class="item-price"> <span class="props-item"><sup>HARGA</sup></span> Rp250.000 </h2>
+            <h2 class="item-price"> <span class="props-item"><sup>HARGA</sup></span> Rp<%= product.price %> </h2>
              <a href="/buy-now"> <button class="btn-beli mt-3">Beli Sekarang</button></a>
             <br>
             <a href="/cart"> <button class="btn-utama mt-3" style="background-color: none !important; ">Masukin keranjang</button></a>
@@ -91,10 +97,13 @@
 
       <div class="row">
         <div class="col">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat odio ante. Maecenas tempus vehicula
-            pellentesque. Nulla facilisi. Donec placerat nunc vitae risus faucibus faucibus. Pellentesque hendrerit
-            venenatis cursus. Sed sed rhoncus tellus. Nullam elementum viverra metus quis pharetra. Integer at nibh mi.
-          </p>
+          <div class="text-muted">Deskripsi Produk : </div>
+          <%= product.desc %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="text-muted">Berat Barang : </div> <%= product.weight %> (Gram)
         </div>
       </div>
       <hr>
@@ -109,7 +118,7 @@
             Testimony (0)
 
             <br>
-            <span class="mini-menus-sub-title">Logitech G102 Mouse Gaming</span>
+            <span class="mini-menus-sub-title"><%= product.nama %></span>
           </span>
         </div>
       </div>
@@ -129,7 +138,7 @@
           <span class="mini-menus-title">
             Diskusi (5)
             <br>
-            <span class="mini-menus-sub-title">Logitech G102 Mouse Gaming</span>
+            <span class="mini-menus-sub-title"><%= product.nama %></span>
           </span>
         </div>
       </div>
@@ -241,7 +250,7 @@
 
   </section>
 
-  <script src="vendor/xzoom/dist/xzoom.min.js"></script>
+
 
   <script>
     $(document).ready(function () {

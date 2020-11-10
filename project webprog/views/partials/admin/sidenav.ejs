@@ -13,7 +13,13 @@
   
 
     </div>
-    <a href="/dashboard/gallery" class="text-center">Gallery Products</a>
+    <a href="#" class="text-center dropdown-btn dropdown-toggle" id="dropB2"  type="button" id="dropdownMenu2" data-toggle="dropdown2" aria-haspopup="true" aria-expanded="false">Gallery</a>
+    <div class="dropdown-container" id="dropD">
+      <a href="/dashboard/gallery">List Photo</a>
+      <a href="/dashboard/gallery/add">Tambah Photo/Gallery +</a>
+  
+
+    </div>
     <a href="/transaction" class="text-center">Transaction</a>
     <a href="/dashboard/confirmation-payment" class="text-center">Confirmation List</a>
     <a href="/dashboard/website-misc" class="text-center">Website Misc</a>
@@ -21,8 +27,10 @@
 
   <script>
     var dropBtn = document.getElementById("dropB1");
+    var dropBtn2 = document.getElementById("dropB2");
     var dropdown = document.getElementsByClassName("dropdown-btn");
     var dropContainer = document.getElementById('dropC')
+    var dropContainer2 = document.getElementById('dropD')
 var i;
 
 for (i = 0; i < dropdown.length; i++) {
@@ -42,6 +50,8 @@ var sidenav = document.getElementById('mySidenav')
   sidenav.addEventListener("mouseleave", function() {
     dropContainer.style.display = "none"
     dropBtn.classList.remove("activeNav");
+    dropContainer2.style.display = "none"
+    dropBtn2.classList.remove("activeNav");
   });
 
   </script>

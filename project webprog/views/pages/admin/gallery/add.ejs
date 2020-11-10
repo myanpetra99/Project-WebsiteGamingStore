@@ -10,28 +10,36 @@
     <%- include('../../../partials/admin/header',{name:name}); %>
   
     <div class="content">
-      <h1 style="font-family: 'Poppins';" class="text-center">Edit Merk/Brand</h1>
+      <h1 style="font-family: 'Poppins';" class="text-center">Tambah Gallery/Foto</h1>
       <div class="container">
+    
 
-        <form action="/dashboard/product/brand/<%= brand.id %>/edit?_method=PUT" method="POST"  enctype="multipart/form-data">
+        <form action="/dashboard/gallery/add" method="POST" enctype="multipart/form-data">
           <div class="form-group">
-            <label for="nama">Nama Brand : </label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="" value="<%= brand.title %>">
+            <label for="title">Pilih Produk : </label>
+            <select name="title" id="title">
+            <% products.forEach(product =>{ %>
+        <option value="<%= product.nama %>"><%= product.nama %></option>
+              <% }) %>
+            </select>
+            <a href="/dashboard/product/create">Tidak menemukan produk? Tambah produk+</a>
           </div>
           <div class="form-group">
             <label for="img">Upload Image</label> 
             <input type="file" id="image" 
-                   name="image" value="<%= brand.img %>" required> 
+                   name="image" value="" required> 
           </div>
+        
           <div class="form-group">
         <button class="btn btn-primary" type="submit">Submit</button>
-        <a href="/dashboard/product/brand" class="btn btn-secondary">Cancel</a>
+        <a href="/dashboard/gallery" class="btn btn-secondary">Cancel</a>
           </div>
-         
+      
         </form>
   
       </div>
       </div>  
+ 
 
       <%- include('../../../partials/admin/footer'); %>
   </body>

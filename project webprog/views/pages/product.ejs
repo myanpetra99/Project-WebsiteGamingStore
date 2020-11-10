@@ -82,16 +82,17 @@
             </div>
             <div id="update">
              <div class="row mt-2">
-                <% productdata.products.forEach(function(item){ %>
+              <% products.forEach(product =>{ %>
                 <div class="col-md-3-sm-6 ml-3 mt-3">
                 <div class="card card-item" style="width: 14rem;">
-                <img class="card-img-top card-img" src="images/<%= item.imgname %>.jpg" />
+                  <img class="card-img-top card-img" src="data:image/<%=product.img.contentType%>;base64, 
+                  <%= product.img.data.toString('base64') %>">
                 <div class="card-body">
-                <h5 class="card-title text-center"><%= item.nama %></h5>
-                <p class="card-text text-center"><b>Rp <%= item.harga %></b></p>
+                <h5 class="card-title text-center"><%= product.nama %></h5>
+                <p class="card-text text-center"><b>Rp <%= product.price %></b></p>
                 </div>
                 <div class="card-footer">
-                <a href="/<%= item.url %>" class="btn btn-primary d-flex justify-content-center mt-3">Beli Sekarang</a>
+                <a href="/product/item/<%= product.slug %>" class="btn btn-primary d-flex justify-content-center mt-3">Beli Sekarang</a>
                 </div>
                 </div>
                 </div>
