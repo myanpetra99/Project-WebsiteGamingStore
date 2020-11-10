@@ -12,6 +12,7 @@ var multer = require('multer')
 const mongoose = require('mongoose')
 var asyncc = require('async')
 const user = require('../../models/user')
+const Categories = require('../../models/category')
 
 var storage = multer.diskStorage({ 
     destination: (req, file, cb) => { 
@@ -30,6 +31,7 @@ router.get('/dashboard',auth.ensureAuthenticate, authAdmin.isAdmin('ADMIN'), fun
     var br
     var u
     var ua
+    var cat
     var tasks = [
         function(callback) {
             db.collection('products').countDocuments().then((docs) =>{
@@ -70,8 +72,17 @@ router.get('/dashboard',auth.ensureAuthenticate, authAdmin.isAdmin('ADMIN'), fun
                     console.log(e)
                    }
                    callback()
+        })},
+        function(callback) {
+            db.collection('categories').countDocuments().then((docscat) =>{
+                try{
+                    cat = docscat
+                   }
+                   catch (e){
+                    console.log(e)
+                   }
+                   callback()
         })}
-
     ];
 
     asyncc.parallel(tasks, function(err) { //This function gets called after the two tasks have called their "task callbacks"
@@ -79,7 +90,7 @@ router.get('/dashboard',auth.ensureAuthenticate, authAdmin.isAdmin('ADMIN'), fun
             // Here `locals` will be an object with `users` and `colors` keys
             // Example: `locals = {users: [...], colors: [...]}`
             res.render('pages/admin/dashboard', {name: req.user.name,
-                isLoggedIn: true, manyProduct:prod, manyBrand:br, manyUser:u, manyAdmin:ua});
+                isLoggedIn: true, manyProduct:prod, manyBrand:br, manyUser:u, manyAdmin:ua, manyCategory:cat});
         });
 
    
@@ -99,20 +110,25 @@ router.post('/dashboard/product/create',upload.single('image'), async (req,res,n
     next()
    },saveProductAndRedirect('create'))
 
-router.get('/dashboard/product/create',auth.ensureAuthenticate, authAdmin.isAdmin('ADMIN'), function(req, res) {
+router.get('/dashboard/product/create',auth.ensureAuthenticate, authAdmin.isAdmin('ADMIN'), async function(req, res) {
+    const categories = await Categories.find()
+    const brands = await Brands.find()
     res.render('pages/admin/products/create', {name: req.user.name,
-        isLoggedIn: true , product: new Products()});
+        isLoggedIn: true , product: new Products(), categories:categories , brands:brands});
+   
 });
 
-router.put('/dashboard/product/:id/edit', async (req,res,next)=>{
+router.put('/dashboard/product/:id/edit',upload.single('image'), async (req,res,next)=>{
 req.product = await Products.findById(req.params.id)
 next()
 }, saveProductAndRedirect('edit'))
 
 router.get('/dashboard/product/:id/edit',auth.ensureAuthenticate, authAdmin.isAdmin('ADMIN'), async function(req, res) {
+    const categories = await Categories.find()
+    const brands = await Brands.find()
     const product = await Products.findById(req.params.id)
     res.render('pages/admin/products/edit',{name: req.user.name,
-        isLoggedIn: true ,product:product})
+        isLoggedIn: true ,product:product,  categories:categories , brands:brands})
 });
 
 router.get('/dashboard/product/:slug',auth.ensureAuthenticate, authAdmin.isAdmin('ADMIN'), async (req,res)=>{
@@ -146,7 +162,7 @@ router.post('/dashboard/product/brand/create',upload.single('image'), async (req
     next()
    },saveBrandAndRedirect('create'))
    
-router.put('/dashboard/product/brand/:id/edit', async (req,res,next)=>{
+router.put('/dashboard/product/brand/:id/edit',upload.single('image'), async (req,res,next)=>{
     req.brand = await Brands.findById(req.params.id)
     next()
     }, saveBrandAndRedirect('edit'))
@@ -170,6 +186,18 @@ router.delete('/dashboard/product/brand/:id/delete', async (req, res)=>{
     await Brands.findByIdAndDelete(req.params.id)
     res.redirect('/dashboard/product/brand/show')
 })
+
+
+//CATEGORY CRUD
+router.get('/dashboard/product/category/create',auth.ensureAuthenticate,authAdmin.isAdmin('ADMIN'), function(req,res){
+    res.render('pages/admin/products/category', {name: req.user.name,
+        isLoggedIn: true , category: new Categories()});
+})
+
+router.post('/dashboard/product/category/create', async (req,res,next)=>{
+    req.category = new Categories()
+    next()
+   },saveCategoryAndRedirect('create'))
 
 
 function saveProductAndRedirect(pathx){
@@ -210,6 +238,22 @@ function saveBrandAndRedirect(pathy){
         console.log(e)
     }
     }
+}
+
+
+function saveCategoryAndRedirect(pathz){
+    return async (req,res)=>{
+        let category = req.category
+             category.title = req.body.title
+     try{
+        category = await category.save()
+        res.redirect(`/dashboard/product/create`)
+     }catch (e){
+         res.render(`pages/admin/products/${pathz}`,{name: req.user.name,
+             isLoggedIn: true, category:category})
+         console.log(e)
+     }
+     }
 }
 
 module.exports = router

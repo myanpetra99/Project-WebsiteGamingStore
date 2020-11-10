@@ -13,7 +13,7 @@
       <h1 style="font-family: 'Poppins';" class="text-center">Edit Produk</h1>
       <div class="container">
 
-        <form action="/dashboard/product/brand/<%= brand.id %>/edit?_method=PUT" method="POST">
+        <form action="/dashboard/product/brand/<%= brand.id %>/edit?_method=PUT" method="POST"  enctype="multipart/form-data">
           <div class="form-group">
             <label for="nama">Nama Brand : </label>
             <input type="text" class="form-control" id="title" name="title" placeholder="" value="<%= brand.title %>">
