@@ -11,75 +11,58 @@
       <%- include('../partials/header', {isLoggedIn : isLoggedIn}); %>
   <% } %>
 
-<body onload="recalculateCart()">
+<body onload=" recalculateCart()">
 
   <section class="content" style="margin-top: 75px;" >
 
     <div class="container">
+      <br>
       <h2>Keranjangku <span class="badge badge-danger"><div class="keranjangku"></div></span></h2>
       <div class="row">
         <div class="col-md-8">
           <div class="shopping-cart">
-            <div class="card mb-3 product" style="max-width: 600px;">
-              <div class="row no-gutters">
-                <div class="col-md-4 d-flex align-items-center">
-                  <img src="images/mouse-item.jpg" class=" product-img" alt="...">
-                </div>
-                <div class="col-md-4">
-                  <div class="card-body product-details">
-                    <h5 class="card-title product-title">Logitech G102</h5>
-                    <div class="card-text product-price">250.000</div>
-                  </div>
-                </div>
-                <div class="col-md-2 d-flex align-items-center ml-n4">
-                  <input style="width: 5rem;" class="product-quantity" type="number" min="1" value="1">
-                  <button class="product-removal bg-transparent border-0"><svg width="1em" height="1em"
-                      viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                      <path fill-rule="evenodd"
-                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                    </svg></button>
-                </div>
-                <div class="col-md-2 d-flex align-items-center ml-4">
-                  <div class="product-line-price">
-                    250.000
-                  </div>
-                </div>
-              </div>
-            </div>
+            <% carts.forEach(product =>{ %>
 
             <div class="card mb-3 product" style="max-width: 600px;">
               <div class="row no-gutters">
                 <div class="col-md-4 d-flex align-items-center">
-                  <img src="images/misc-item2.jpg" class=" product-img" alt="...">
+                  <img src="data:image/<%=product.img.contentType%>;base64, 
+                  <%=product.img.data.toString('base64')%>" class=" product-img" alt="...">
                 </div>
                 <div class="col-md-4">
                   <div class="card-body product-details">
-                    <h5 class="card-title product-title">SteelSeries QCK</h5>
-                    <div class="card-text product-price">200.000</div>
+                    <h5 class="card-title product-title"><%= product.nama %></h5>
+                    <div class="card-text product-price"><%= product.price %></div>
                   </div>
                 </div>
                 <div class="col-md-2 d-flex align-items-center ml-n4">
-                  <input style="width: 5rem;" class="product-quantity" type="number" min="1" value="1">
-                  <button class="product-removal bg-transparent border-0"><svg width="1em" height="1em"
+                  <input style="width: 5rem;" class="product-quantity" type="number" min="1" value="<%= product.qty %>">
+                  <form action="/cart/<%= product._id %>/delete?_method=DELETE" method="POST"> <button class="product-removal bg-transparent border-0" type="submit"><svg width="1em" height="1em"
                       viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
                       <path fill-rule="evenodd"
                         d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
                     </svg></button>
+            </form>
                 </div>
                 <div class="col-md-2 d-flex align-items-center ml-4">
-                  <div class="product-line-price">
-                    200.000
+                  <form action="/cart/<%=product.productID %>/decrease" method="POST" id="formDecrease"><button class="bg-transparent border-0" type="submit"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                  </svg></button></form>
+            <form action="/cart/<%=product.productID %>/increase" method="POST" id="formIncrease"><button class="bg-transparent border-0" type="submit"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg></button></form>
+                  <div class="product-line-price" style="visibility: hidden;">
+                    <%=  product.price %>
                   </div>
                 </div>
               </div>
             </div>
+            <% }) %>
           </div>
           <div class="empty-cart" style="display: none;">
-            <a href="product.html">
+            <a href="/product">
               <img src="images/cart-empty.png" alt="">
             </a>
 

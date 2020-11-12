@@ -18,6 +18,7 @@
     "jsdom": "^16.4.0",
     "marked": "^1.2.3",
     "method-override": "^3.0.0",
+    "mongodb": "^3.6.3",
     "mongoose": "^5.10.13",
     "multer": "^1.4.2",
     "multer-gridfs-storage": "^4.2.0",

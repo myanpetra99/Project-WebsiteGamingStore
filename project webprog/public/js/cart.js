@@ -1,9 +1,6 @@
-var biayaKirim = 9
+var biayaKirim = 9000
 var fadeTime = 300
 
-$('.product-quantity').change(function () {
-  updateQuantity(this)
-})
 
 $('.product-removal').click(function () {
   removeItem(this)
@@ -13,23 +10,41 @@ function recalculateCart () {
   howmanyproduct();
   var subtotal = 0
 
+
   $('.product').each(function () {
-    subtotal += parseFloat(
+    var qty =  $(this)
+    .children()
+    .children()
+    .children('.product-quantity')
+    .val()
+
+    if(qty==1){
+      $(this).children().children().children('#formDecrease').css('display', 'none')
+    }
+    if(qty<1){
+      $(this).children().children().children('#formDecrease').css('display', 'block')
+    }
+
+   var price = parseFloat(
       $(this)
         .children()
         .children()
         .children('.product-line-price')
         .text()
     )
+
+    
+
+    subtotal += qty*price
   })
 
   var shipping = subtotal > 0 ? biayaKirim : 0
   var total = subtotal + shipping
 
   $('.totals-value').fadeOut(fadeTime, function () {
-    $('#cart-subtotal').html(subtotal.toFixed(3))
-    $('#cart-shipping').html(shipping.toFixed(3))
-    $('#cart-total').html(total.toFixed(3))
+    $('#cart-subtotal').html(subtotal)
+    $('#cart-shipping').html(shipping)
+    $('#cart-total').html(total)
     if (total == 0) {
       $('.checkout').fadeOut(fadeTime)
     } else {
@@ -57,35 +72,6 @@ function checkCart () {
   }
 }
 
-function updateQuantity (quantityInput) {
-  var productRow = $(quantityInput)
-    .parent()
-    .parent()
-    .parent()
-
-  var price = parseFloat(
-    productRow
-      .children()
-      .children()
-      .children()
-      .children('.product-price')
-      .text()
-  )
-  var quantity = $(quantityInput).val()
-  var linePrice = price * quantity
-
-  productRow
-    .children()
-    .children()
-    .children('.product-line-price')
-    .each(function () {
-      $(this).fadeOut(fadeTime, function () {
-        $(this).text(linePrice.toFixed(3))
-        recalculateCart()
-        $(this).fadeIn(fadeTime)
-      })
-    })
-}
 
 function removeItem (removeButton) {
   var productRow = $(removeButton)
@@ -329,11 +315,11 @@ let output = document.querySelector('#cart-shipping')
 
 function update () {
   if (radio1.checked) {
-    biayaKirim = 9
+    biayaKirim = 9000
   } else if (radio2.checked) {
-    biayaKirim = 15
+    biayaKirim = 15000
   } else {
-    biayaKirim = 25
+    biayaKirim = 25000
   }
   recalculateCart()
 }
@@ -349,4 +335,25 @@ function howmanyproduct(){
     .val())
   })
 $('.keranjangku').html(counter)
+}
+
+function formatNumber(num, precision, separator) {
+  var parts;
+  // Judging whether it is a number
+  if (!isNaN(parseFloat(num)) && isFinite(num)) {
+      // Convert data like. 5, 5. into 0. 5, 5, which is accurate for data processing, and why
+      // Do not write if (! IsNaN (num = parseFloat (num)) & isFinite (num) directly in judgment
+      // Because parseFloat has a strange accuracy problem, such as parseFloat (12312312.1234567119)
+      // The value becomes 12312312312.123456713
+      num = Number(num);
+      // Processing decimal digits
+      num = (typeof precision !== 'undefined' ? num.toFixed(precision) : num).toString();
+      // Separating decimal and integer parts of numbers
+      parts = num.split('.');
+      // The integer part is separated by [separator], borrowing a famous regular expression
+      parts[0] = parts[0].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + (separator || ','));
+
+      return parts.join('.');
+  }
+  return NaN;
 }

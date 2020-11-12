@@ -3,7 +3,7 @@ if (process.env.NODE_ENV !== 'production'){
     require('dotenv').config()
 }
 
-
+var ObjectID = require('mongodb').ObjectID
 var express = require('express');
 var path = require('path');
 var app = express();
@@ -34,6 +34,8 @@ var auth = require('./middleware/Auth')
 var dashboardRouter = require('./routes/admin/dashboard')
 const Products = require('./models/product')
 const Galleries = require('./models/gallery')
+const Cart = require('./models/cart');
+const user = require('./models/user');
 app.use(dashboardRouter)
 
 
@@ -47,6 +49,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //route index
 app.get('/', function(req, res) {
     if(req.isAuthenticated()){
+        console.log(`ID user Yang lagi dipakai: ${req.user.id}`)
         res.render('pages/index',
         {name: req.user.name,
             isLoggedIn: true});
@@ -173,10 +176,41 @@ app.get('/confirmation',function(req, res) {
 
 //route cart
 app.get('/cart',auth.ensureAuthenticate, function(req, res) {
-    res.render('pages/cart', {name: req.user.name,
-        isLoggedIn: true});
+let userId = req.user.id
+
+
+var displayCart = []
+db.collection('carts').aggregate([
+    { "$match" : { "customerID" : userId } },
+    { "$addFields": { "prodID": { "$toObjectId": "$productID" }}},
+    { "$lookup": {
+      "from": "products",
+      "localField": "prodID",
+      "foreignField": "_id",
+      "as": "fromItems"
+    }},
+    {
+        "$replaceRoot": { "newRoot": { "$mergeObjects": [ { "$arrayElemAt": [ "$fromItems", 0 ] }, "$$ROOT" ] } }
+     },{ "$project": { "fromItems": 0 } }
+  ]).toArray(function(err, result) {
+    if (err) throw err;
+
+displayCart = result
+console.log(displayCart)
+res.render('pages/cart', {name: req.user.name,
+    isLoggedIn: true, carts: displayCart});
+  });
+
+
+
 });
 
+
+app.delete('/cart/:id/delete', async (req, res)=>{
+    await Cart.findByIdAndDelete(req.params.id)
+
+    res.redirect('/cart')
+})
 //route buy-now
 app.get('/buy-now',auth.ensureAuthenticate, function(req, res) {
     res.render('pages/buy-now', {name: req.user.name,
@@ -210,8 +244,86 @@ app.delete('/logout',(req,res)=>{
 })
 //------------PUBLIC SECTION END
 
+//Add to cart
+app.post('/add-to-cart/:id', async (req,res,next) =>{
+    const cartCollection = db.collection("carts");
+    const update = { "$inc": { "qty": 1 } };
+    const options = { "upsert": true };
 
-//Middleware
+    const product = await Products.findById(req.params.id)
+    const query = { "customerID": req.user.id, "productID": product.id };
+    let findCart = await Cart.findOne({customerID: req.user.id, productID: product.id})
+    if(findCart == null)
+    {
+        let newCart = new Cart({
+            customerID: req.user.id,
+            productID: product.id,
+        })
+        try{
+            newCart.save()
+            console.log('new Cart Saved!')
+          res.redirect(`/cart`)
+      }catch (e){
+          res.redirect('/')
+          console.log('ERror')
+          console.log(e)
+          res.redirect(`/product/item/${product.slug}`)
+      }
+    }else{
+        cartCollection.updateOne(query,update,options).then(result=>{
+            console.log('Cart Exist!!')
+        })
+     res.redirect(`/cart`)
+    }
+        
+})
+
+
+app.post('/cart/:id/increase', async (req,res,next) =>{
+
+    const cartCollection = db.collection("carts");
+    const update = { "$inc": { "qty": 1 } };
+    const options = { "upsert": true };
+
+    const query = { "customerID": req.user.id, "productID": req.params.id };
+    
+      try {
+        cartCollection.updateOne(query,update,options).then(result=>{
+            console.log('Cart Updated +1')
+        })
+      } catch (error) {
+          console.log('cart Failed Update!')
+          console.log(error)
+      }
+     res.redirect(`/cart`)
+    }
+        
+)
+
+app.post('/cart/:id/decrease', async (req,res,next) =>{
+
+    const cartCollection = db.collection("carts");
+    const update = { "$inc": { qty: -1 } };
+    const options = { "upsert": true };
+
+    const query = { "customerID": req.user.id, "productID": req.params.id };
+    
+      try {
+        cartCollection.updateOne(query,update,options).then(result=>{
+            console.log('Cart Updated -1')
+        })
+      } catch (error) {
+          console.log('cart Failed Update!')
+          console.log(error)
+      }
+     res.redirect(`/cart`)
+    }
+        
+)
+
+//Function save Cart
+
+
 
 
 
