@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const checkoutSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema({
     customerID: {
         type: String,
         required: true
@@ -18,8 +18,8 @@ const checkoutSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date
+        default: Date.now
     }
 })
 
-module.exports = mongoose.model('Checkout',checkoutSchema)
+module.exports = mongoose.model('Order',orderSchema)

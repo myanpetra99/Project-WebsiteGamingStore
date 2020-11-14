@@ -1,6 +1,7 @@
+const { ObjectId } = require('mongodb')
 const mongoose = require('mongoose')
 
-const commentSchema = new mongoose.Schema({
+const subCommentSchema = new mongoose.Schema({
     customerName: {
         type: String,
         required: true
@@ -8,6 +9,9 @@ const commentSchema = new mongoose.Schema({
     productSlug:{
         type:String,
         required: true
+    },
+    parentComment:{
+        type: mongoose.Schema.ObjectId
     },
     textComment:{
        type:String,
@@ -19,4 +23,4 @@ const commentSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Comment',commentSchema)
+module.exports = mongoose.model('Subcomment',subCommentSchema)

@@ -36,6 +36,8 @@ const Products = require('./models/product')
 const Galleries = require('./models/gallery')
 const Cart = require('./models/cart');
 const user = require('./models/user');
+const Comment = require('./models/comment')
+const Subcomment = require('./models/subcomment')
 app.use(dashboardRouter)
 
 
@@ -79,18 +81,19 @@ app.get('/', async function(req, res) {
 
 //route product
 app.get('/product', async function(req, res) {
-    var badgeCart
-    const userid = req.user.id
-    await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
-        try{
-            badgeCart = docs
-        }
-        catch (e){
-         console.log(e)
-        }
-    })
+   
     const products = await Products.find()
     if(req.isAuthenticated()){
+        var badgeCart
+        const userid = req.user.id
+        await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+            try{
+                badgeCart = docs
+            }
+            catch (e){
+             console.log(e)
+            }
+        })
         res.render('pages/product',
     {name: req.user.name,
         isLoggedIn: true, products:products, badgecart:badgeCart});
@@ -105,9 +108,11 @@ app.get('/product', async function(req, res) {
 //route item
 
 app.get('/product/item/:slug', async (req,res)=>{
-
+  
     const galleries = await Galleries.find({ slug: req.params.slug})
     const product = await Products.findOne({ slug: req.params.slug})
+    const comment = await Comment.find({productSlug: req.params.slug})
+    const subcomment = await Subcomment.find({productSlug: req.params.slug})
     if(product == null) res.redirect('/product')
     
     if(req.isAuthenticated()){
@@ -124,39 +129,47 @@ app.get('/product/item/:slug', async (req,res)=>{
 
         res.render('pages/item',
         {name: req.user.name,
-            isLoggedIn: true, product:product, galleries:galleries,badgecart:badgeCart});
+            isLoggedIn: true, product:product, galleries:galleries,badgecart:badgeCart, comments:comment, subcomments:subcomment});
     }   
     else{
         res.render('pages/item',
-        {isLoggedIn: false, product:product, galleries:galleries});
+        {isLoggedIn: false, product:product, galleries:galleries, comments:comment, subcomments:subcomment});
     }
 })
 
 
+app.post('/product/item/:slug/comment', async(req,res)=>{
 
-app.get('/item', async function(req, res) {
-    if(req.isAuthenticated()){
-        var badgeCart
-        const userid = req.user.id
-        await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
-            try{
-                badgeCart = docs
-            }
-            catch (e){
-             console.log(e)
-            }
-        })
+    let newComment = new Comment({
+        customerName : req.user.name,
+        productSlug: req.params.slug,
+        textComment : req.body.textComment,
+    })
+    try{
+        newComment.save()
+    res.redirect(`/product/item/${req.params.slug}`)
+}catch (e){
+    res.redirect(`/product/item/${req.params.slug}`)
+    console.log(e)
+}
+})
 
-        res.render('pages/item',
-        {name: req.user.name,
-            isLoggedIn: true, badgecart:badgeCart});
-    }
-    else{
-        res.render('pages/item',
-        {isLoggedIn: false});
-    }
-   
-});
+app.post('/product/item/:slug/:id/subcomment', async(req,res)=>{
+
+    let newSubComment = new Subcomment({
+        customerName : req.user.name,
+        productSlug: req.params.slug,
+        parentComment: req.params.id,
+        textComment : req.body.textComment,
+    })
+    try{
+        newSubComment.save()
+    res.redirect(`/product/item/${req.params.slug}`)
+}catch (e){
+    res.redirect(`/product/item/${req.params.slug}`)
+    console.log(e)
+}
+})
 
 
 //route login
@@ -245,6 +258,7 @@ app.get('/confirmation', async function(req, res) {
 
 //route cart
 app.get('/cart',auth.ensureAuthenticate, async function(req, res) {
+
 let userId = req.user.id
 var badgeCart
 const userid = req.user.id
@@ -276,7 +290,7 @@ db.collection('carts').aggregate([
 displayCart = result
 console.log(displayCart)
 res.render('pages/cart', {name: req.user.name,
-    isLoggedIn: true, carts: displayCart, badgecart:badgeCart});
+    isLoggedIn: true, carts: displayCart, badgecart:badgeCart, phone:req.user.phone, address:req.user.address, zip:req.user.zip});
   });
 
 
@@ -443,14 +457,12 @@ app.get('/buy-now/:slug', async (req,res)=>{
 })
  
 
-app.post('/product/item/:slug/comment', async(req,res,next)=>{
-
-})
 
 
 app.post('/cart/:id/checkout', async (req,res,next)=>{
     
 })
+
 //Localhost and port
 const hostname = '127.0.0.1';
 const port = 8080;

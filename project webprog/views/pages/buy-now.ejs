@@ -64,18 +64,22 @@
           <div class="card ringkasan-belanja" style="width: 100%;">
             <div class="card-body">
               <div class="grid">
-                <b id="rukan">Rumah</b>&nbsp;
-                  <span class="border" style="background-color: cyan; color:white;font-weight: bold;">Utama</span>
+                <b id="rukan" class="card-title">Detail Penerima</b>&nbsp;
+                  <span class="border" style="background-color: rgb(39, 28, 133); color:white;font-weight: bold;">Tertuju</span>
               </div>
-                <div id="nama">nama</div>
-                <div id="telepon">08132941203</div>
-                <div id="alamat" style="font-weight:200;">Jl.Kemayoran no.103 rt 7 rw 8</div>
-                <div id="kecamatan" style="font-weight:200;">Tambora, Jakarta Pusat, 13902</div>
+              <h9 class="card-subtitle mb-2 text-muted">Nama  :</h9>
+                <div id="nama">  <%=  name %></div>
+                <h9 class="card-subtitle mb-2 text-muted">No.Telp  :</h9>
+                <div id="telepon">  <%=   phone %></div>
+                <h9 class="card-subtitle mb-2 text-muted">Alamat  :</h9>
+                <div id="alamat" style="font-weight:200;">  <%=  address %></div>
+                <h9 class="card-subtitle mb-2 text-muted">Kode Pos   :</h9>
+                <div id="kodepos" style="font-weight:200;">  <%=  zip %></div>
                 <hr>
               <h5 class="card-title">Ringkasan Belanja</h5>
               <div class="totals">
                 <div class="totals-item mt-3">
-                  <h6 class="card-subtitle mb-2 text-muted">Sub-Total :</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Sub-Total (<span class="keranjangku"></span> Produk)</h6>
                   <div class="totals-value mt-n2" id="cart-subtotal"></div>
                 </div>
                 <div class="totals-item mt-3">

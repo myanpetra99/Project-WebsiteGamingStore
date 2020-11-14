@@ -224,8 +224,8 @@ function submitCart () {
   )
   $('#Invoice').append('<hr>')
   $('.data-penerima').append('<div>' + 'Nama Penerima :' + nama + '</div>')
-  $('.data-penerima').append('<div>' + 'Alamat Penerima :' + alamat + '</div>')
-
+  $('.data-penerima').append('<div>' + 'Alamat Penerima :' + alamat +','+ kodepos+ '</div>')
+  $('.data-penerima').append('<div>' + 'No yang dapat dihubungi :' + telepon + '</div>')
   $('#Invoice').append(
     '<div>' + 'Biaya Pengiriman : Rp.' + $('#cart-shipping').text() + '</div>'
   )
@@ -282,8 +282,10 @@ function addCartToTransaction (namaBarang, hargaBarang, qtyBarang) {
     )
   })
 })()
-var nama = 'Michael Yan'
-var alamat = 'Jl Grogol raya no 2'
+var nama = $('#nama').text()
+var alamat = $('#alamat').text()
+var telepon = $('#telepon').text()
+var kodepos = $('#kodepos').text()
 
 function generateWa (idOrder) {
   var total = $('#cart-total').text()
