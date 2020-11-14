@@ -47,12 +47,27 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 //PUBLIC SECTION
 //route index
-app.get('/', function(req, res) {
+
+
+
+app.get('/', async function(req, res) {
     if(req.isAuthenticated()){
+        var badgeCart
+        const userid = req.user.id
+        await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+            try{
+                badgeCart = docs
+            }
+            catch (e){
+             console.log(e)
+            }
+        })
+
         console.log(`ID user Yang lagi dipakai: ${req.user.id}`)
+        console.log(badgeCart)
         res.render('pages/index',
         {name: req.user.name,
-            isLoggedIn: true});
+            isLoggedIn: true, badgecart: badgeCart});
     }
     else{
         res.render('pages/index',
@@ -64,11 +79,21 @@ app.get('/', function(req, res) {
 
 //route product
 app.get('/product', async function(req, res) {
+    var badgeCart
+    const userid = req.user.id
+    await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+        try{
+            badgeCart = docs
+        }
+        catch (e){
+         console.log(e)
+        }
+    })
     const products = await Products.find()
     if(req.isAuthenticated()){
         res.render('pages/product',
     {name: req.user.name,
-        isLoggedIn: true, products:products});
+        isLoggedIn: true, products:products, badgecart:badgeCart});
     }else{
         res.render('pages/product',
     {isLoggedIn: false, products:products});
@@ -80,14 +105,26 @@ app.get('/product', async function(req, res) {
 //route item
 
 app.get('/product/item/:slug', async (req,res)=>{
+
     const galleries = await Galleries.find({ slug: req.params.slug})
     const product = await Products.findOne({ slug: req.params.slug})
     if(product == null) res.redirect('/product')
     
     if(req.isAuthenticated()){
+        var badgeCart
+        const userid = req.user.id
+        await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+            try{
+                badgeCart = docs
+            }
+            catch (e){
+             console.log(e)
+            }
+        })
+
         res.render('pages/item',
         {name: req.user.name,
-            isLoggedIn: true, product:product, galleries:galleries});
+            isLoggedIn: true, product:product, galleries:galleries,badgecart:badgeCart});
     }   
     else{
         res.render('pages/item',
@@ -97,11 +134,22 @@ app.get('/product/item/:slug', async (req,res)=>{
 
 
 
-app.get('/item', function(req, res) {
+app.get('/item', async function(req, res) {
     if(req.isAuthenticated()){
+        var badgeCart
+        const userid = req.user.id
+        await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+            try{
+                badgeCart = docs
+            }
+            catch (e){
+             console.log(e)
+            }
+        })
+
         res.render('pages/item',
         {name: req.user.name,
-            isLoggedIn: true});
+            isLoggedIn: true, badgecart:badgeCart});
     }
     else{
         res.render('pages/item',
@@ -154,20 +202,41 @@ app.post('/register',async (req,res) =>{
 
 
 //route about
-app.get('/about', function(req, res) {
+app.get('/about', async function(req, res) {
   if(req.isAuthenticated()){
+
+    var badgeCart
+    const userid = req.user.id
+    await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+        try{
+            badgeCart = docs
+        }
+        catch (e){
+         console.log(e)
+        }
+    })
     res.render('pages/about', {name: req.user.name,
-        isLoggedIn: true});
+        isLoggedIn: true, badgecart:badgeCart});
   }
   else{
     res.render('pages/about', {isLoggedIn: false});
   }
 });
 //route confirmation
-app.get('/confirmation',function(req, res) {
+app.get('/confirmation', async function(req, res) {
    if(req.isAuthenticated()){
+    var badgeCart
+    const userid = req.user.id
+    await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+        try{
+            badgeCart = docs
+        }
+        catch (e){
+         console.log(e)
+        }
+    })
     res.render('pages/confirmation', {name: req.user.name,
-        isLoggedIn: true});
+        isLoggedIn: true, badgecart:badgeCart});
    }
    else{
     res.render('pages/confirmation', {isLoggedIn: false});
@@ -175,9 +244,18 @@ app.get('/confirmation',function(req, res) {
 });
 
 //route cart
-app.get('/cart',auth.ensureAuthenticate, function(req, res) {
+app.get('/cart',auth.ensureAuthenticate, async function(req, res) {
 let userId = req.user.id
-
+var badgeCart
+const userid = req.user.id
+await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+    try{
+        badgeCart = docs
+    }
+    catch (e){
+     console.log(e)
+    }
+})
 
 var displayCart = []
 db.collection('carts').aggregate([
@@ -198,7 +276,7 @@ db.collection('carts').aggregate([
 displayCart = result
 console.log(displayCart)
 res.render('pages/cart', {name: req.user.name,
-    isLoggedIn: true, carts: displayCart});
+    isLoggedIn: true, carts: displayCart, badgecart:badgeCart});
   });
 
 
@@ -211,30 +289,44 @@ app.delete('/cart/:id/delete', async (req, res)=>{
 
     res.redirect('/cart')
 })
-//route buy-now
-app.get('/buy-now',auth.ensureAuthenticate, function(req, res) {
-    res.render('pages/buy-now', {name: req.user.name,
-        isLoggedIn: true});
-});
-
-
 
 
 //route user
-app.get('/user',auth.ensureAuthenticate, function(req, res) {
+app.get('/user',auth.ensureAuthenticate, async function(req, res) {
+
+    var badgeCart
+    const userid = req.user.id
+    await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+        try{
+            badgeCart = docs
+        }
+        catch (e){
+         console.log(e)
+        }
+    })
     res.render('pages/user', {
         name: req.user.name, 
         email : req.user.email,
         address : req.user.address,
         zip: req.user.zip,
         phone: req.user.phone,
-        isLoggedIn: true});
+        isLoggedIn: true, badgecart:badgeCart});
 });
 
 //route history
-app.get('/history',auth.ensureAuthenticate, function(req, res) {
+app.get('/history',auth.ensureAuthenticate, async function(req, res) {
+    var badgeCart
+    const userid = req.user.id
+    await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+        try{
+            badgeCart = docs
+        }
+        catch (e){
+         console.log(e)
+        }
+    })
     res.render('pages/history', {name: req.user.name,
-        isLoggedIn: true});
+        isLoggedIn: true, badgecart:badgeCart});
 });
 
 //POST delete Login (logout)
@@ -321,12 +413,44 @@ app.post('/cart/:id/decrease', async (req,res,next) =>{
         
 )
 
-//Function save Cart
+//Instant Cart
+
+//route buy-now
+
+app.get('/buy-now/:slug', async (req,res)=>{
+    
+    const product = await Products.findOne({ slug: req.params.slug})
+    var badgeCart
+    const userid = req.user.id
+    await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+        try{
+            badgeCart = docs
+        }
+        catch (e){
+         console.log(e)
+        }
+    })
+    
+    if(product == null) res.redirect('/product')
+    
+    if(req.isAuthenticated()){
+        res.render('pages/buy-now', {name: req.user.name,
+            isLoggedIn: true, product:product,badgecart:badgeCart});
+    }   
+    else{
+        res.redirect('/login')
+    }
+})
+ 
+
+app.post('/product/item/:slug/comment', async(req,res,next)=>{
+
+})
 
 
-
-
-
+app.post('/cart/:id/checkout', async (req,res,next)=>{
+    
+})
 //Localhost and port
 const hostname = '127.0.0.1';
 const port = 8080;

@@ -8,7 +8,7 @@
 
   <% if (isLoggedIn) { %>
     <%- include('../partials/header', {isLoggedIn : isLoggedIn,
-        name: name}); %>
+        name: name, badgecart: badgecart}); %>
     <% } else { %>
         <%- include('../partials/header', {isLoggedIn : isLoggedIn}); %>
     <% } %>

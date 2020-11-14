@@ -18,7 +18,9 @@
     <p class="item-title nama-barang"><%= product.nama %> <span class="item-price border-left">Rp<%= product.price %></span></p>
    <span>
      
-    <a href="/buy-now"><button class="btn-keranjang-navbar" style="font-size: 20px;">Beli Sekarang</button></a>
+<a href="/buy-now/<%= product.slug %>"> <button class="btn-keranjang-navbar" style="font-size: 20px;" type="submit">Beli Sekarang</button></a>
+
+    
     
     <form action="/add-to-cart/<%= product.id %>" method="POST">
     <button class="btn-utama ml-2" style="font-size: 20px;" type="submit">Masukin Keranjang</button></span>
@@ -75,7 +77,7 @@
             <h1 class="item-title "><%= product.nama %></h1>
             
             <h2 class="item-price"> <span class="props-item"><sup>HARGA</sup></span> Rp<%= product.price %> </h2>
-             <a href="/buy-now"> <button class="btn-beli mt-3">Beli Sekarang</button></a>
+             <a href="/buy-now/<%= product.slug %>"> <button class="btn-beli mt-3">Beli Sekarang</button></a>
             <br>
             <form action="/add-to-cart/<%= product.id %>" method="POST">
            <button class="btn-utama mt-3" style="background-color: none !important;" type="submit">Masukin keranjang</button>

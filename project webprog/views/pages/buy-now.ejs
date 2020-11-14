@@ -19,30 +19,42 @@
       <div class="row">
         <div class="col-md-8">
           <div class="shopping-cart">
+
             <div class="card mb-3 product" style="max-width: 600px;">
               <div class="row no-gutters">
                 <div class="col-md-4 d-flex align-items-center">
-                  <img src="images/mouse-item.jpg" class=" product-img" alt="...">
+                  <img src="data:image/<%=product.img.contentType%>;base64, 
+                  <%=product.img.data.toString('base64')%>" class=" product-img" alt="...">
                 </div>
                 <div class="col-md-4">
                   <div class="card-body product-details">
-                    <h5 class="card-title product-title">Logitech G102</h5>
-                    <div class="card-text product-price">250.000</div>
+                    <h5 class="card-title product-title"><%= product.nama %></h5>
+                    <div class="card-text product-price"><%= product.price %></div>
                   </div>
                 </div>
                 <div class="col-md-2 d-flex align-items-center ml-n4">
                   <input style="width: 5rem;" class="product-quantity" type="number" min="1" value="1">
                 </div>
                 <div class="col-md-2 d-flex align-items-center ml-4">
-                  <div class="product-line-price">
-                    250.000
+                 <div class="btn btn-dec"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
+                  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                </svg></div>
+                  <div class="btn btn-inc">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                  </div>
+                  <div class="product-line-price" style="visibility: hidden;">
+                    <%= product.price %>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="empty-cart" style="display: none;">
-            <a href="product.html">
+          <div class="empty-cart" style="display: block;">
+            <a href="/product">
               <img src="images/cart-empty.png" alt="">
             </a>
 
@@ -235,16 +247,18 @@
   </div>
 
 
-  <script src="vendor/qrious/qrious.js"></script>
+  <script src="/vendor/qrious/qrious.js"></script>
 
 
   <script>
     feather.replace()
   </script>
-  <script src="js/main.js"></script>
-  <script src="js/cart.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/instantCart.js"></script>
 
+<script>
 
+</script>
 </body>
 
   <%- include('../partials/footer',{isLoggedIn : isLoggedIn}); %>

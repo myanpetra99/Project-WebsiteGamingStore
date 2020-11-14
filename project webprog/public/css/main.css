@@ -903,4 +903,12 @@ ul.social-footer2 li a {
   -webkit-text-stroke-color: #ebebeb;
   opacity: 1;
 }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  height: 80px;
+  opacity: 0;
+}
 /*# sourceMappingURL=main.css.map */

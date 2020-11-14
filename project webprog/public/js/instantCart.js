@@ -1,15 +1,19 @@
 var biayaKirim = 9000
 var fadeTime = 300
+$('.product-quantity').change(function () {
+    updateQuantity(this)
+  })
 
-
-$('.product-removal').click(function () {
-  removeItem(this)
-})
 
 function recalculateCart () {
   howmanyproduct();
   var subtotal = 0
-
+if($('.product-quantity').val()==1){
+    $('.btn-dec').css("display","none");   
+}
+else{
+    $('.btn-dec').css("display","block");  
+}
 
   $('.product').each(function () {
     var qty =  $(this)
@@ -21,7 +25,7 @@ function recalculateCart () {
     if(qty==1){
       $(this).children().children().children('#formDecrease').css('display', 'none')
     }
-    if(qty>1){
+    if(qty<1){
       $(this).children().children().children('#formDecrease').css('display', 'block')
     }
 
@@ -35,7 +39,7 @@ function recalculateCart () {
 
     
 
-    subtotal += qty*price
+    subtotal =    price
   })
 
   var shipping = subtotal > 0 ? biayaKirim : 0
@@ -72,17 +76,36 @@ function checkCart () {
   }
 }
 
+function updateQuantity (quantityInput) {
+    var productRow = $(quantityInput)
+      .parent()
+      .parent()
+      .parent()
+  
+    var price = parseFloat(
+      productRow
+        .children()
+        .children()
+        .children()
+        .children('.product-price')
+        .text()
+    )
+    var quantity = $(quantityInput).val()
+    var linePrice = price * quantity
+  
+    productRow
+      .children()
+      .children()
+      .children('.product-line-price')
+      .each(function () {
+        $(this).fadeOut(fadeTime, function () {
+          $(this).text(linePrice)
+          recalculateCart()
+          $(this).fadeIn(fadeTime)
+        })
+      })
+  }
 
-function removeItem (removeButton) {
-  var productRow = $(removeButton)
-    .parent()
-    .parent()
-    .parent()
-  productRow.slideUp(fadeTime, function () {
-    productRow.remove()
-    recalculateCart()
-  })
-}
 
 let data = {
   ID: '',
@@ -135,7 +158,7 @@ function submitCart () {
           .children()
           .children('.product-line-price')
           .text()
-      ).toFixed(3),
+      ),
       $(this)
         .children()
         .children()
@@ -357,3 +380,23 @@ function formatNumber(num, precision, separator) {
   }
   return NaN;
 }
+
+$(".btn-inc").on("click", function() {
+
+    var oldValue = $(".product-quantity").val()
+    
+      var newVal = parseFloat(oldValue) + 1;
+    
+      $(".product-quantity").val(newVal)
+      $(".product-quantity").trigger("change");
+    });
+    
+    $(".btn-dec").on("click", function() {
+    
+    var oldValue = $(".product-quantity").val()
+    
+      var newVal = parseFloat(oldValue) - 1;
+    
+      $(".product-quantity").val(newVal)
+      $(".product-quantity").trigger("change");
+    });
