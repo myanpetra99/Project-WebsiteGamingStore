@@ -1,7 +1,7 @@
 To Start Server,
 Please Enter command <b> "npm run devStart" </b>, to run with Nodemon
 <br>
-mongoDB Collections name : <b>Agstore</b>
+mongoDB server name : <b>Agstore</b>
 
 # Project-WebsiteGamingStore
 <ol>
