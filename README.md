@@ -1,4 +1,5 @@
 <p></p><center><a href="https://ibb.co/MG7L5sC"><img src="https://i.ibb.co/ww41rRz/AGS.png" alt="AGS" border="0"></a></center>
+<br>
 <center><b>Gaming Gear E-commerce coming to town</b></center><p></p><b>
 <h2>Installation</h2>
 <p><code>npm install</code> installs dependencies listed in package.json</p>
