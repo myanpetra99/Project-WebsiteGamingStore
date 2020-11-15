@@ -16,27 +16,31 @@
             <div class="container mt-3">
               <div class="row">
                 <div class="col">
+                  <% transactions.forEach(order =>{ %>
                   <div class="card mt-3 card-transaction-history">
-                    <div class="card-header ">Minggu, 18 Oktober 2020 23:48:17
+                    <% let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}; %>
+                    <div class= "card-header "><%=  order.createdAt.toLocaleString("id-ID", options) %>, Pukul <%=  order.createdAt.toLocaleTimeString("id-ID")%>
                     </div>
                     <div class="card w-100">
                       <div class="card-body">
-                        <h5 class="card-title">Id Order :<span class="id-Order" style="color: brown;">AGS-23412345</span>
-                          <div>Status Transaksi : <span class="transaction-status">Success</span>
+                        <h5 class="card-title">Id Order :<span class="id-Order" style="color: brown;"> <%=  order._id %></span>
+                          <div>Status Transaksi : <span class="transaction-status"><%=  order.status %></span>
                           <div class="button-confirmation"></div>Total :
-                            <span class="history-total">459000</span> (Include Shipping)</div>
+                            <span class="history-total"> <%=  order.total %></span> (Include Shipping)</div>
                         </h5>
                         <div class="shopping-cart">
+                          <% order.fromCart.forEach(product =>{ %>
                           <div class="card mb-3 product" style="max-width: 600px;">
                             <div class="row no-gutters">
                               <div class="col-md-4 d-flex align-items-center">
-                                <img src="images/mouse-item.jpg" class=" product-img" alt="...">
+                                <img src="data:image/<%=product.img.contentType%>;base64, 
+                                <%=product.img.data.toString('base64')%>" class=" product-img" alt="...">
                               </div>
                               <div class="col-md-4">
                                 <div class="card-body product-details">
-                                  <h5 class="card-title product-title">Logitech G102</h5>
-                                  <div class="card-text product-price">250.000</div>
-                                  <div class="text-muted">Qty :<span class="qty-item">1</span></div>
+                                  <h5 class="card-title product-title"><%= product.nama %></h5>
+                                  <div class="card-text product-price"><%= product.price %></div>
+                                  <div class="text-muted">Qty :<span class="qty-item"><%= product.qty %></span></div>
                                 </div>
                               </div>
                               <div class="col-md-2 d-flex align-items-center ml-n4">
@@ -46,173 +50,12 @@
                               </div>
                             </div>
                           </div>
-        
-                          <div class="card mb-3 product" style="max-width: 600px;">
-                            <div class="row no-gutters">
-                              <div class="col-md-4 d-flex align-items-center">
-                                <img src="images/misc-item2.jpg" class=" product-img" alt="...">
-                              </div>
-                              <div class="col-md-4">
-                                <div class="card-body product-details">
-                                  <h5 class="card-title product-title">SteelSeries QCK</h5>
-                                  <div class="card-text product-price">200.000</div>
-                                  <div class="text-muted">Qty :<span class="qty-item">1</span></div>
-                                </div>
-                              </div>
-                              <div class="col-md-2 d-flex align-items-center ml-n4">
-        
-                              </div>
-                              <div class="col-md-2 d-flex align-items-center ml-4">
-                              </div>
-                            </div>
-                          </div>
+                          <% }) %>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="card mt-3 card-transaction-history">
-                    <div class="card-header ">Minggu, 18 Oktober 2020 23:48:17
-                    </div>
-                    <div class="card w-100">
-                      <div class="card-body">
-                        <h5 class="card-title">Id Order :<span class="id-Order" style="color: brown;">AGS-23412345</span>
-                          <div>Status Transaksi : <span class="transaction-status">Pending</span>
-                          <div class="button-confirmation"></div>Total :
-                            <span class="history-total">459000</span> (Include Shipping)</div>
-                        </h5>
-                        <div class="shopping-cart">
-                          <div class="card mb-3 product" style="max-width: 600px;">
-                            <div class="row no-gutters">
-                              <div class="col-md-4 d-flex align-items-center">
-                                <img src="images/mouse-item.jpg" class=" product-img" alt="...">
-                              </div>
-                              <div class="col-md-4">
-                                <div class="card-body product-details">
-                                  <h5 class="card-title product-title">Logitech G102</h5>
-                                  <div class="card-text product-price">250.000</div>
-                                  <div class="text-muted">Qty :<span class="qty-item">1</span></div>
-                                </div>
-                              </div>
-                              <div class="col-md-2 d-flex align-items-center ml-n4">
-        
-                              </div>
-                              <div class="col-md-2 d-flex align-items-center ml-4">
-                              </div>
-                            </div>
-                          </div>
-        
-                          <div class="card mb-3 product" style="max-width: 600px;">
-                            <div class="row no-gutters">
-                              <div class="col-md-4 d-flex align-items-center">
-                                <img src="images/misc-item2.jpg" class=" product-img" alt="...">
-                              </div>
-                              <div class="col-md-4">
-                                <div class="card-body product-details">
-                                  <h5 class="card-title product-title">SteelSeries QCK</h5>
-                                  <div class="card-text product-price">200.000</div>
-                                  <div class="text-muted">Qty :<span class="qty-item">1</span></div>
-                                </div>
-                              </div>
-                              <div class="col-md-2 d-flex align-items-center ml-n4">
-        
-                              </div>
-                              <div class="col-md-2 d-flex align-items-center ml-4">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card mt-3 card-transaction-history">
-                    <div class="card-header ">Minggu, 18 Oktober 2020 23:48:17
-                    </div>
-                    <div class="card w-100">
-                      <div class="card-body">
-                        <h5 class="card-title">Id Order :<span class="id-Order" style="color: brown;">AGS-23412345</span>
-                          <div>Status Transaksi : <span class="transaction-status">Failed</span>
-                          <div class="button-confirmation"></div>Total :
-                            <span class="history-total">459000</span> (Include Shipping)</div>
-                        </h5>
-                        <div class="shopping-cart">
-                          <div class="card mb-3 product" style="max-width: 600px;">
-                            <div class="row no-gutters">
-                              <div class="col-md-4 d-flex align-items-center">
-                                <img src="images/mouse-item.jpg" class=" product-img" alt="...">
-                              </div>
-                              <div class="col-md-4">
-                                <div class="card-body product-details">
-                                  <h5 class="card-title product-title">Logitech G102</h5>
-                                  <div class="card-text product-price">250.000</div>
-                                  <div class="text-muted">Qty :<span class="qty-item">1</span></div>
-                                </div>
-                              </div>
-                              <div class="col-md-2 d-flex align-items-center ml-n4">
-        
-                              </div>
-                              <div class="col-md-2 d-flex align-items-center ml-4">
-                              </div>
-                            </div>
-                          </div>
-        
-                          <div class="card mb-3 product" style="max-width: 600px;">
-                            <div class="row no-gutters">
-                              <div class="col-md-4 d-flex align-items-center">
-                                <img src="images/misc-item2.jpg" class=" product-img" alt="...">
-                              </div>
-                              <div class="col-md-4">
-                                <div class="card-body product-details">
-                                  <h5 class="card-title product-title">SteelSeries QCK</h5>
-                                  <div class="card-text product-price">200.000</div>
-                                  <div class="text-muted">Qty :<span class="qty-item">1</span></div>
-                                </div>
-                              </div>
-                              <div class="col-md-2 d-flex align-items-center ml-n4">
-        
-                              </div>
-                              <div class="col-md-2 d-flex align-items-center ml-4">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card mt-3 card-transaction-history">
-                    <div class="card-header ">Minggu, 20 Oktober 2020 24:45:12
-                    </div>
-                    <div class="card w-100">
-                      <div class="card-body">
-                        <h5 class="card-title">Id Order :<span class="id-Order" style="color: brown;">AGS-12345678</span>
-                          <div>Status Transaksi : <span class="transaction-status">Pending</span>
-                          <div class="button-confirmation"></div>Total :
-                            <span class="history-total">259000</span> (Include Shipping)</div>
-                        </h5>
-                        <div class="shopping-cart">
-                          <div class="card mb-3 product" style="max-width: 600px;">
-                            <div class="row no-gutters">
-                              <div class="col-md-4 d-flex align-items-center">
-                                <img src="images/mouse-item.jpg" class=" product-img" alt="...">
-                              </div>
-                              <div class="col-md-4">
-                                <div class="card-body product-details">
-                                  <h5 class="card-title product-title">Logitech G102</h5>
-                                  <div class="card-text product-price">250.000</div>
-                                  <div class="text-muted">Qty :<span class="qty-item">1</span></div>
-                                </div>
-                              </div>
-                              <div class="col-md-2 d-flex align-items-center ml-n4">
-        
-                              </div>
-                              <div class="col-md-2 d-flex align-items-center ml-4">
-                              </div>
-                            </div>
-                          </div>
-        
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <% }) %>
                   
                   </div>
                 </div>

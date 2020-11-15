@@ -164,7 +164,7 @@
             <div class="col-10">
               <div class="row">
                 <div><span id="userName" style="font-family: montserrat; font-weight: 600;"><%= comment.customerName %></span></div>
-                &nbsp;&nbsp;<span class="text-muted" id="date"><%= comment.createdAt %></span>
+                &nbsp;&nbsp;<span class="text-muted" id="date"><%= comment.createdAt.toLocaleString() %></span>
               </div>
               <div class="row">
                 <%= comment.textComment %>
@@ -182,7 +182,7 @@
             <div class="col-10">
               <div class="row">
                 <div>&nbsp;&nbsp;<span id="userName" style="font-family: montserrat; font-weight: 600;"><%= subcomment.customerName %></span></div>
-                &nbsp;&nbsp;<span class="text-muted" id="date"><%= subcomment.createdAt %></span>
+                &nbsp;&nbsp;<span class="text-muted" id="date"><%= subcomment.createdAt.toLocaleString() %></span>
               </div>
               <div class="row">
                &nbsp; <%= subcomment.textComment %>

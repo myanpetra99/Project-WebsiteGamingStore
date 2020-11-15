@@ -127,10 +127,14 @@
                 <hr>
               </div>
 
-              <button class="form-control btn-beli btn-confirm-bayar" id="btnConfirm"
-                onclick="showTransfer(), recalculateCart(), submitCart(), showToast(), clearCart(), hideShipping()">
+            <form action="/cart/checkout" method="POST">
+              <input type="hidden" name="totalOrder" id="totalOrder" value="">
+              <input type="hidden" name="randOrderId" id="randOrderId" value="">
+              <button class="form-control btn-beli "type="submit">
+                <!-- onclick="showTransfer(), recalculateCart(), submitCart(), showToast(), clearCart()"-->
                 Lanjutkan Pembayaran
               </button>
+            </form>
 
 
 

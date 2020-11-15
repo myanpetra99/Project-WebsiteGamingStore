@@ -38,6 +38,7 @@ const Cart = require('./models/cart');
 const user = require('./models/user');
 const Comment = require('./models/comment')
 const Subcomment = require('./models/subcomment')
+const Order = require('./models/order')
 app.use(dashboardRouter)
 
 
@@ -329,6 +330,7 @@ app.get('/user',auth.ensureAuthenticate, async function(req, res) {
 
 //route history
 app.get('/history',auth.ensureAuthenticate, async function(req, res) {
+    
     var badgeCart
     const userid = req.user.id
     await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
@@ -339,8 +341,31 @@ app.get('/history',auth.ensureAuthenticate, async function(req, res) {
          console.log(e)
         }
     })
-    res.render('pages/history', {name: req.user.name,
-        isLoggedIn: true, badgecart:badgeCart});
+    var displayHistory = []
+    db.collection('orders').aggregate([
+        { "$match" : { "customerID" : userid } },
+        { "$addFields": { "prodID": { "$toObjectId": "$productID" }}},
+        { "$lookup": {
+          "from": "products",
+          "localField": "prodID",
+          "foreignField": "_id",
+          "as": "fromCart"
+        }},
+        {
+            "$replaceRoot": { "newRoot": { "$mergeObjects": [ { "$arrayElemAt": [ "$fromCart", 0 ] }, "$$ROOT" ] } }
+         },
+         { "$project": { "fromCart": 0 } },{ "$group": { "_id": "$orderID",
+         
+         "total": { "$first": '$total' }, "status": { "$first": '$Status' },"createdAt": { "$first": '$createdAt' },
+         "fromCart": { "$addToSet": "$$ROOT" }}}
+      ]).toArray(function(err, result) {
+        if (err) throw err;
+    
+        displayHistory = result
+    console.log(displayHistory)
+        res.render('pages/history', {name: req.user.name,
+            isLoggedIn: true, badgecart:badgeCart, transactions:displayHistory});
+        })
 });
 
 //POST delete Login (logout)
@@ -459,8 +484,26 @@ app.get('/buy-now/:slug', async (req,res)=>{
 
 
 
-app.post('/cart/:id/checkout', async (req,res,next)=>{
-    
+app.post('/cart/checkout', async (req,res,next)=>{
+    (await Cart.find({customerID: req.user.id})).forEach((doc)=>{
+        let newOrder = new Order({
+            customerID: req.user.id,
+            orderID: req.body.randOrderId,
+            productID: doc.productID , 
+            qty: doc.qty,
+            total:req.body.totalOrder
+        })
+        try{
+            newOrder.save()
+      }catch (e){
+          console.log('Error getting History Order!')
+          console.log(e)
+          res.redirect(`/`)
+      }
+    })
+    console.log('new Order saved!')
+    res.redirect(`/history`)
+   
 })
 
 //Localhost and port
