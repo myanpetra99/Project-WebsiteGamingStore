@@ -5,12 +5,7 @@ html {
 
 @font-face {
   font-family: 'Zealot';
-  src: url("../styles/fonts/ZealotCollegeItalic-Y24O.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: 'Zealot-black';
-  src: url("../styles/fonts/ZealotOutlineItalic-MDKJ.ttf") format("truetype");
+  src: url("./fonts/ZealotCollegeItalic-Y24O.ttf") format("truetype");
 }
 
 .container-navbar {

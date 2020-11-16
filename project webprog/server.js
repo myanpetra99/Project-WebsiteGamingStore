@@ -79,9 +79,12 @@ app.get('/', async function(req, res) {
 
 //route product
 app.get('/product', async function(req, res) {
-    var badgeCart
-    const userid = req.user.id
-    await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+    
+    const products = await Products.find()
+    if(req.isAuthenticated()){
+        var badgeCart
+        const userid = req.user.id
+        await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
         try{
             badgeCart = docs
         }
@@ -89,8 +92,6 @@ app.get('/product', async function(req, res) {
          console.log(e)
         }
     })
-    const products = await Products.find()
-    if(req.isAuthenticated()){
         res.render('pages/product',
     {name: req.user.name,
         isLoggedIn: true, products:products, badgecart:badgeCart});
