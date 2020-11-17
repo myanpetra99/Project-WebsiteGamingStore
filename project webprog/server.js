@@ -79,26 +79,7 @@ app.get('/', async function(req, res) {
     }
     
 });
-app.use( async function(req, res, next) {
-    if(req.isAuthenticated()){
-        var badgeCart
-        const userid = req.user.id
-        await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
-            try{
-                badgeCart = docs
-            }
-            catch (e){
-             console.log(e)
-            }
-        })
-        res.render('pages/404page',
-    {name: req.user.name,
-        isLoggedIn: true, badgecart:badgeCart});
-    }else{
-        res.render('pages/404page',
-    {isLoggedIn: false});
-    }
-});
+
 
 //route product
 app.get('/product', async function(req, res) {
@@ -549,6 +530,27 @@ app.post('/cart/checkout', async (req,res,next)=>{
    
 })
 
+
+app.use( async function(req, res, next) {
+    if(req.isAuthenticated()){
+        var badgeCart
+        const userid = req.user.id
+        await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+            try{
+                badgeCart = docs
+            }
+            catch (e){
+             console.log(e)
+            }
+        })
+        res.render('pages/404page',
+    {name: req.user.name,
+        isLoggedIn: true, badgecart:badgeCart});
+    }else{
+        res.render('pages/404page',
+    {isLoggedIn: false});
+    }
+});
 //Localhost and port
 const hostname = '127.0.0.1';
 const port = 8080;
