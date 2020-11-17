@@ -239,19 +239,19 @@ router.delete('/dashboard/gallery/photo/:id/delete', async (req, res)=>{
 
 //TRANSACTION Read and Update
 //read list transaction
-router.get('/dashboard/transaction', async (req,res)=>{
+router.get('/dashboard/transaction',auth.ensureAuthenticate, authAdmin.isAdmin('ADMIN'), async (req,res)=>{
     var displayOrders = []
     db.collection('orders').aggregate([
         { "$group": { "_id": "$orderID",
          
          "total": { "$first": '$total' }, "status": { "$first": '$Status' },"createdAt": { "$first": '$createdAt' },
-        }}
+        }}, { "$sort": { "createdAt": -1}}
       ]).toArray(function(err, result) {
         if (err) throw err;
     
         displayOrders = result
     res.render('pages/admin/transaction/index', {name: req.user.name,
-        isLoggedIn: true , orders:displayOrders});;
+        isLoggedIn: true , orders:displayOrders});
         })
 
    

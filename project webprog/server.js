@@ -358,7 +358,8 @@ app.get('/history',auth.ensureAuthenticate, async function(req, res) {
          { "$project": { "fromCart": 0 } },{ "$group": { "_id": "$orderID",
          
          "total": { "$first": '$total' }, "status": { "$first": '$Status' },"createdAt": { "$first": '$createdAt' },
-         "fromCart": { "$addToSet": "$$ROOT" }}}
+         "fromCart": { "$addToSet": "$$ROOT" }}},
+         { "$sort": { "createdAt": -1}}
       ]).toArray(function(err, result) {
         if (err) throw err;
     
