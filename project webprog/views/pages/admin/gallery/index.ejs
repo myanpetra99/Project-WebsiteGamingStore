@@ -23,7 +23,6 @@
                 <th scope="col" class="table-header text-center">Gambar Produk</th>
                 <th scope="col" class="table-header text-center">Tanggal Input</th>
                 <th scope="col" class="table-header text-center"></th>
-                <th scope="col" class="table-header text-center"></th>
               </tr>
             </thead>
             <tbody>
@@ -33,7 +32,6 @@
                   <td class="table-data text-center"> <img src="data:image/<%=gallery.img.contentType%>;base64, 
                     <%=gallery.img.data.toString('base64')%>" style="max-width: 100px;"> </td>
                   <td class="table-data text-center"><%= gallery.createdAt.toLocaleDateString() %></td>
-                  <td class="table-data text-center" colspan="2"><a href="/dashboard/gallery/photo/<%= gallery.slug %>" class="btn btn-info">Detail</a></td>
                   <td class="table-data text-center""><form action="/dashboard/gallery/photo/<%= gallery.id %>/delete?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger">Hapus</button></form></td>
                 </tr>
                 <% }) %>

@@ -14,7 +14,7 @@
       <div class="container">
     
 
-        <form action="/dashboard/gallery/add" method="POST" enctype="multipart/form-data" class="dropzone">
+        <form action="/dashboard/gallery/add" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="title">Pilih Produk : </label>
             <select name="title" id="title">
@@ -22,7 +22,8 @@
         <option value="<%= product.nama %>"><%= product.nama %></option>
               <% }) %>
             </select>
-            <a href="/dashboard/product/create">Tidak menemukan produk? Tambah produk+</a>
+            <br>
+            <a href="/dashboard/product/create" class="text-muted">Tidak menemukan produk? Tambah produk+</a>
           </div>
           <div class="form-group ">
             <label for="img">Upload Image</label> 

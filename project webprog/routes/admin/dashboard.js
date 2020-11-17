@@ -219,17 +219,6 @@ router.post('/dashboard/gallery/add',upload.single('image'), async (req,res,next
     req.gallery = new Galleries()
     next()
    },saveGalleryAndRedirect('add'))
-   
-router.put('/dashboard/gallery/photo/:id/edit',upload.single('image'), async (req,res,next)=>{
-    req.gallery = await Galleries.findById(req.params.id)
-    next()
-    }, saveGalleryAndRedirect('edit'))
-
-router.get('/dashboard/gallery/photo/:id/edit',auth.ensureAuthenticate, authAdmin.isAdmin('ADMIN'), async function(req, res) {
-    const gallery = await Galleries.findById(req.params.id)
-    res.render('pages/admin/gallery/edit',{name: req.user.name,
-    isLoggedIn: true ,gallery:gallery})
-});
 
 router.delete('/dashboard/gallery/photo/:id/delete', async (req, res)=>{
     await Galleries.findByIdAndDelete(req.params.id)
