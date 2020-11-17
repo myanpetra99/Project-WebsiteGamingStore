@@ -231,6 +231,7 @@ router.delete('/dashboard/gallery/photo/:id/delete', async (req, res)=>{
 router.get('/dashboard/transaction',auth.ensureAuthenticate, authAdmin.isAdmin('ADMIN'), async (req,res)=>{
     var displayOrders = []
     db.collection('orders').aggregate([
+        { "$match" : { "Status" : "Pending" } },
         { "$group": { "_id": "$orderID",
          
          "total": { "$first": '$total' }, "status": { "$first": '$Status' },"createdAt": { "$first": '$createdAt' },
@@ -240,6 +241,44 @@ router.get('/dashboard/transaction',auth.ensureAuthenticate, authAdmin.isAdmin('
     
         displayOrders = result
     res.render('pages/admin/transaction/index', {name: req.user.name,
+        isLoggedIn: true , orders:displayOrders});
+        })
+
+   
+})
+
+router.get('/dashboard/transaction/success',auth.ensureAuthenticate, authAdmin.isAdmin('ADMIN'), async (req,res)=>{
+    var displayOrders = []
+    db.collection('orders').aggregate([
+        { "$match" : { "Status" : "Success" } },
+        { "$group": { "_id": "$orderID",
+         
+         "total": { "$first": '$total' }, "status": { "$first": '$Status' },"createdAt": { "$first": '$createdAt' },
+        }}, { "$sort": { "createdAt": -1}}
+      ]).toArray(function(err, result) {
+        if (err) throw err;
+    
+        displayOrders = result
+    res.render('pages/admin/transaction/index-success', {name: req.user.name,
+        isLoggedIn: true , orders:displayOrders});
+        })
+
+   
+})
+
+router.get('/dashboard/transaction/failed',auth.ensureAuthenticate, authAdmin.isAdmin('ADMIN'), async (req,res)=>{
+    var displayOrders = []
+    db.collection('orders').aggregate([
+        { "$match" : { "Status" : "Failed" } },
+        { "$group": { "_id": "$orderID",
+         
+         "total": { "$first": '$total' }, "status": { "$first": '$Status' },"createdAt": { "$first": '$createdAt' },
+        }}, { "$sort": { "createdAt": -1}}
+      ]).toArray(function(err, result) {
+        if (err) throw err;
+    
+        displayOrders = result
+    res.render('pages/admin/transaction/index-failed', {name: req.user.name,
         isLoggedIn: true , orders:displayOrders});
         })
 

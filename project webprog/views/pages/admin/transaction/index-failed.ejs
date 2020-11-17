@@ -11,11 +11,10 @@
     <%- include('../../../partials/admin/header',{name:name}); %>
   
     <div class="content">
-      <h1 style="font-family: 'Poppins';" class="text-center">Transaksi</h1> <h5 style="font-family: 'Poppins';" class="text-center text-muted">Menampilkan transaksi yang Pending (menunggu Konfirmasi Pembayaran)</h5>
+      <h1 style="font-family: 'Poppins';" class="text-center">Transaksi</h1>    <h5 style="font-family: 'Poppins';" class="text-center text-muted">Menampilkan transaksi yang Failed (Konfirmasi Pembayaran Tidak Berhasil)</h5>
       <div class="container">
-  
+    
         <div class="row">
-         
           <table class="table table-hover">
             <thead>
               <tr>
@@ -34,9 +33,8 @@
                   <th scope="row" class="text-center"><%= order._id %></th>
                   <td class="table-data text-center">Rp.<%= order.total %></td>
                   <td class="text-center"><%=  order.createdAt.toLocaleString("id-ID", options) %>, Pukul <%=  order.createdAt.toLocaleTimeString("id-ID")%></td>
-                  <td class="table-data  text-center text-warning font-weight-bold"><%=  order.status %></td>
+                  <td class="table-data  text-center text-danger font-weight-bold"><%=  order.status %></td>
                   <td class="table-data text-center"><form action="/dashboard/transaction/<%= order._id %>/update-success?_method=PUT" method="POST"><button type="submit" class="btn btn-success">Success</button></form></td>
-                  <td class="table-data text-center"><form action="/dashboard/transaction/<%= order._id %>/update-failed?_method=PUT" method="POST"><button type="submit" class="btn btn-danger">Failed</button></form></td>
                 </tr>
                 <% }) %>
              
