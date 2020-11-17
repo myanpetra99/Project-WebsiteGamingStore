@@ -1,7 +1,9 @@
-<<<<<<< HEAD
-<center><a href="https://ibb.co/MG7L5sC"><img src="https://i.ibb.co/ww41rRz/AGS.png" alt="AGS" border="0"></a></center>
-<center><b>Gaming Gear E-commerce coming to town</center>
+<img src="https://i.ibb.co/ww41rRz/AGS.png" alt="AGS" border="0">
+
+<b>Gaming Gear E-commerce coming to town
+	
 ## Installation
+
 `npm install` installs dependencies listed in package.json
 ##  Development 
 Please run `npm run devStart` (nodemon)
@@ -19,4 +21,3 @@ mongoDB server name : <b>Agstore</b>
 | 535180125 | Evander Christian Dumalang      |  
 | 535180126 | Lubby Gennady      | 
 | 535180142 |Ghatra Vaganzha Rihi Pake |
-
