@@ -49,6 +49,8 @@ else{
     $('#cart-subtotal').html(subtotal)
     $('#cart-shipping').html(shipping)
     $('#cart-total').html(total)
+    $('#totalOrder').val(total)
+    $('#qtyOrder').val($('.product-quantity').val())
     if (total == 0) {
       $('.checkout').fadeOut(fadeTime)
     } else {
@@ -291,22 +293,22 @@ function addCartToTransaction (namaBarang, hargaBarang, qtyBarang) {
 
   document.addEventListener('DOMContentLoaded', function () {
     var btn = document.querySelector('.btn-confirm-bayar'),
-      output = document.querySelector('#output')
+      output = document.querySelector('#output'),
+      randIdOrder = document.querySelector('#randOrderId')
     var idOrder = ''
-    btn.addEventListener(
-      'click',
-      function () {
+    
         var generator = new IDGenerator()
         output.innerHTML = generator.generate()
         idOrder = output.innerHTML
+        $('#randOrderId').val('AGS-'+idOrder)
         generateWa(idOrder)
-      },
-      false
-    )
+
   })
 })()
-var nama = 'Michael Yan'
-var alamat = 'Jl Grogol raya no 2'
+var nama = $('#nama').text()
+var alamat = $('#alamat').text()
+var telepon = $('#telepon').text()
+var kodepos = $('#kodepos').text()
 
 function generateWa (idOrder) {
   var total = $('#cart-total').text()

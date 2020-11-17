@@ -17,10 +17,10 @@
     <div class="container">
       <h2>Beli Sekarang </h2>
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="shopping-cart">
 
-            <div class="card mb-3 product" style="max-width: 600px;">
+            <div class="card mb-3 product" style="width: 100%;">
               <div class="row no-gutters">
                 <div class="col-md-4 d-flex align-items-center">
                   <img src="data:image/<%=product.img.contentType%>;base64, 
@@ -60,7 +60,9 @@
 
           </div>
         </div>
-        <div class="col-md-4">
+      </div>
+      <div class="row">
+        <div class="col-md-12">
           <div class="card ringkasan-belanja" style="width: 100%;">
             <div class="card-body">
               <div class="grid">
@@ -117,10 +119,15 @@
                 <hr>
               </div>
 
-              <button class="form-control btn-beli btn-confirm-bayar" id="btnConfirm"
-                onclick="showTransfer(), recalculateCart(), submitCart(), showToast(), clearCart(), hideShipping()">
-                Lanjutkan Pembayaran
-              </button>
+              <form action="/buy-now/<%= product.slug %>/checkout" method="POST">
+                <input type="hidden" name="qtyOrder" id="qtyOrder" value="">
+                <input type="hidden" name="totalOrder" id="totalOrder" value="">
+                <input type="hidden" name="randOrderId" id="randOrderId" value="">
+                <button class="form-control btn-beli "type="submit">
+                  <!-- onclick="showTransfer(), recalculateCart(), submitCart(), showToast(), clearCart()"-->
+                  Lanjutkan Pembayaran
+                </button>
+              </form>
 
 
 

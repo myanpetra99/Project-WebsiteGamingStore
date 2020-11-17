@@ -54,6 +54,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 app.get('/', async function(req, res) {
+
     if(req.isAuthenticated()){
         var badgeCart
         const userid = req.user.id
@@ -78,7 +79,26 @@ app.get('/', async function(req, res) {
     }
     
 });
-
+app.use( async function(req, res, next) {
+    if(req.isAuthenticated()){
+        var badgeCart
+        const userid = req.user.id
+        await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+            try{
+                badgeCart = docs
+            }
+            catch (e){
+             console.log(e)
+            }
+        })
+        res.render('pages/404page',
+    {name: req.user.name,
+        isLoggedIn: true, badgecart:badgeCart});
+    }else{
+        res.render('pages/404page',
+    {isLoggedIn: false});
+    }
+});
 
 //route product
 app.get('/product', async function(req, res) {
@@ -114,7 +134,7 @@ app.get('/product/item/:slug', async (req,res)=>{
     const product = await Products.findOne({ slug: req.params.slug})
     const comment = await Comment.find({productSlug: req.params.slug})
     const subcomment = await Subcomment.find({productSlug: req.params.slug})
-    if(product == null) res.redirect('/product')
+    if(product == null) {res.redirect('/product')}
     
     if(req.isAuthenticated()){
         var badgeCart
@@ -362,9 +382,8 @@ app.get('/history',auth.ensureAuthenticate, async function(req, res) {
         if (err) throw err;
     
         displayHistory = result
-    console.log(displayHistory)
         res.render('pages/history', {name: req.user.name,
-            isLoggedIn: true, badgecart:badgeCart, transactions:displayHistory});
+            isLoggedIn: true, badgecart:badgeCart, transactions:displayHistory,phone:req.user.phone, address:req.user.address, zip:req.user.zip});
         })
 });
 
@@ -470,17 +489,39 @@ app.get('/buy-now/:slug', async (req,res)=>{
         }
     })
     
-    if(product == null) res.redirect('/product')
+    if(product == null){ res.redirect('/product')}
     
     if(req.isAuthenticated()){
         res.render('pages/buy-now', {name: req.user.name,
-            isLoggedIn: true, product:product,badgecart:badgeCart});
+            isLoggedIn: true, product:product,badgecart:badgeCart,phone:req.user.phone, address:req.user.address, zip:req.user.zip});
     }   
     else{
         res.redirect('/login')
     }
 })
- 
+
+
+app.post('/buy-now/:slug/checkout', async (req,res,next)=>{
+const product = await Products.findOne({slug:req.params.slug})
+
+    let newOrder = new Order({
+        customerID: req.user.id,
+        orderID: req.body.randOrderId,
+        productID: product._id,
+        qty: req.body.qtyOrder,
+        total:req.body.totalOrder
+    })
+    try{
+        newOrder.save()
+        console.log('Buy now saved!')
+        res.redirect(`/history`)
+}catch (e){
+    console.log('Error instant Checkout!')
+    console.log(e)
+    res.redirect(`/product`)
+}
+   
+})
 
 
 
@@ -495,6 +536,8 @@ app.post('/cart/checkout', async (req,res,next)=>{
         })
         try{
             newOrder.save()
+            db.collection('carts').deleteMany({customerID: req.user.id})
+            res.redirect(`/history`)
       }catch (e){
           console.log('Error getting History Order!')
           console.log(e)
@@ -502,7 +545,7 @@ app.post('/cart/checkout', async (req,res,next)=>{
       }
     })
     console.log('new Order saved!')
-    res.redirect(`/history`)
+   
    
 })
 

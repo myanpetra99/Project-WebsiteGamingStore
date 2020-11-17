@@ -64,12 +64,19 @@
             </div>
         
           </section>
+
+        <div name="nama" id="nama" style="visibility: hidden;"><%= name %></div>
+        <div name="alamat" id="alamat" style="visibility: hidden;"><%= address %></div>
+        <div name="telepon" id="telepon" style="visibility: hidden;"><%= phone %></div>
+        <div name="kodepos" id="kodepos" style="visibility: hidden;"><%= zip %></div>
       </body>
       <script>
         $(document).ready(function () {
           $('.card-transaction-history').each(function () {
-            var nama = 'Michael Yan'
-            var alamat = 'Jl Grogol raya no 2'
+            var nama = $('#nama').text()
+var alamat = $('#alamat').text()
+var telepon = $('#telepon').text()
+var kodepos = $('#kodepos').text()
             var tanggalOrder = $(this).children('.card-header').text()
             var idOrder = $(this).children().children().children().children('.id-Order').text()
             var total = $(this).children().children().children().children().children('.history-total').text()
@@ -110,7 +117,7 @@
          var x = element.children().children().children().children().children().children().children().children('.link-wa-confirm')
     
           var linkWa =
-            'https://api.whatsapp.com/send?phone=6281936516716&text=Saya%20Telah%20Melakukan%20Pembayaran%20Di%20website%20AGStore%20Dengan%20Bukti%20Sebagai%20Berikut%20:%0ANama:%20+' +
+            'https://api.whatsapp.com/send?phone=6281936516716&text=Saya%20Telah%20Melakukan%20Pembayaran%20Di%20website%20AGStore%20Dengan%20Data%20Sebagai%20Berikut%20:%0ANama:%20+' +
             nama +
             '%0AAlamat%20:%20' +
             alamat +
@@ -119,7 +126,8 @@
             '%0AID%20Order%20:%20' +
             idOrder +
             '%0ATotal%20Harga%20:%20Rp.' +
-            total
+            total+
+            '%0ADengan%20Bukti%20Pembayaran%20Berikut%20:%20'
           x.attr('href', linkWa)
     
       

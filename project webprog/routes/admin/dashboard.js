@@ -14,7 +14,7 @@ var asyncc = require('async')
 const user = require('../../models/user')
 const Categories = require('../../models/category')
 const Galleries = require('../../models/gallery')
-
+const Orders = require('../../models/order')
 var storage = multer.diskStorage({ 
     destination: (req, file, cb) => { 
         cb(null, 'uploads') 
@@ -235,6 +235,63 @@ router.delete('/dashboard/gallery/photo/:id/delete', async (req, res)=>{
     await Galleries.findByIdAndDelete(req.params.id)
     res.redirect('/dashboard/gallery')
 })
+
+
+//TRANSACTION Read and Update
+//read list transaction
+router.get('/dashboard/transaction', async (req,res)=>{
+    var displayOrders = []
+    db.collection('orders').aggregate([
+        { "$group": { "_id": "$orderID",
+         
+         "total": { "$first": '$total' }, "status": { "$first": '$Status' },"createdAt": { "$first": '$createdAt' },
+        }}
+      ]).toArray(function(err, result) {
+        if (err) throw err;
+    
+        displayOrders = result
+    res.render('pages/admin/transaction/index', {name: req.user.name,
+        isLoggedIn: true , orders:displayOrders});;
+        })
+
+   
+})
+
+//update success
+router.put('/dashboard/transaction/:id/update-success', async (req,res)=>{
+    const orderCollection = db.collection("orders");
+    const update = { $set: { "Status": "Success"} };
+    const options = { "upsert": true };
+    const query = { "orderID": req.params.id};
+
+    try {
+       await orderCollection.updateMany(query,update,options)
+       res.redirect(`/dashboard/transaction`)
+    } catch (error) {
+        console.log('Cart Updated to Success')
+        console.log(error)
+        res.redirect(`/dashboard/transaction`)
+    }
+    })
+
+//update failed
+router.put('/dashboard/transaction/:id/update-failed', async (req,res)=>{
+    const orderCollection = db.collection("orders");
+    const update = { $set: {Status: "Failed"} };
+    const options = { "upsert": true };
+    const query = { "orderID": req.params.id};
+
+    try {
+       await orderCollection.updateMany(query,update,options)
+       res.redirect(`/dashboard/transaction`)
+    } catch (error) {
+        console.log('Cart Updated to Failed!')
+        console.log(error)
+        res.redirect(`/dashboard/transaction`)
+    }
+    })
+
+
 
 
 function saveProductAndRedirect(pathx){

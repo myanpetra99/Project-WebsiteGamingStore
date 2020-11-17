@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<%- include('../partials/head', {title : 'Error 404'}); %>
+<% if (isLoggedIn) { %>
+    <%- include('../partials/header', {isLoggedIn : isLoggedIn,
+        name: name}); %>
+    <% } else { %>
+        <%- include('../partials/header', {isLoggedIn : isLoggedIn}); %>
+    <% } %>
+
+    <body>
+        <section class="content" >
+        
+            <body style="background-image: url(images/404-bg.png); background-position: center; background-size: cover; background-repeat: no-repeat;">
+            <div class="container-fluid" style="height: 100vh; padding-top: 30vh;">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="text-center text-white" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">404!</h1>
+                        <h2 class="text-center text-white">Halo Gamers!
+                            <br> Halaman yang kamu cari tidak ada nih. Maaf ya
+                            <br>
+                           Salam <span><p style="font-family: 'zealot'; font-size:25px" class="d-inline">AGStore</p></span>
+                           <br>
+                           <a class="btn btn-utama align-self-center" href="/">Kembali</a><br>
+                           <a href="#" id="showvideo">Show Video</a>
+                        <div id="test"></div>
+                        </h2>
+                        
+                    </div>
+                </div>
+
+            </div>
+            
+            
+                <script src="vendor/jquery/jquery-3.4.1.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+                </script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+                    integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
+                </script>
+            
+                <script src="js/main.js"></script>
+            <script>$('a#showvideo').click(function(e) {    
+                e.preventDefault();        
+                $('div#test').html('<iframe id="video" width="420" height="315" src="//www.youtube.com/embed/aS3DPglji0o?rel=0" frameborder="0" allowfullscreen></iframe>');
+            });</script>
+                
+            </body>
+
+        </section>
+      </body>
+
+</html>
