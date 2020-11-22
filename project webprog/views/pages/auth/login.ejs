@@ -63,6 +63,14 @@
                                                 %>
                                                 <%= messages.error %> 
                                                 <% } %> 
+                                                <% if (messages.info){
+                                                    %>
+                                                    <%= messages.info %> 
+                                                    <% } %> 
+                                                <% if (messages.success){
+                                                    %>
+                                                    <%= messages.success %> 
+                                                    <% } %> 
                                             <form action="/login" method="POST">
                                                 <input class="input-login mb-4" type="text" required name="email" id="email"
                                                     placeholder="Email">
@@ -100,15 +108,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="">
-                            <p>
-                                <div class="text-muted">Password akan dikirimkan ke Email Tertuju (Jika terdaftar)</div>
-                            </p>
-                            <input class="input-login mb-4 input-forgot" type="email" required name="" id=""
+                        <p>
+                            <div class="text-muted">Password akan dikirimkan ke Email Tertuju (Jika terdaftar)</div>
+                        </p>
+                        <form action="/forgot" method="POST">
+                            <input class="input-login mb-4 input-forgot" type="email" required name="forgotemail" id="forgotemail"
                                 placeholder="Masukkan email" title="Email harus valid">
-                            <input type="text" hidden value="saya lupa password saya dengan Email tertera">
-                            <button type="submit" class="btn btn-utama form-control btn-forgot"
-                                onclick="showMessage()">Submit</button>
+                            <button type="submit" class="btn btn-utama form-control btn-forgot">Submit</button>
                         </form>
 
                         <p class="text-danger message-forgot" style="display: none;">Silahkan cek email anda dalam

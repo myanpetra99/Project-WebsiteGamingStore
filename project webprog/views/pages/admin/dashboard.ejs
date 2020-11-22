@@ -39,7 +39,9 @@
               </div>
               <div class="card-body row text-center">
                 <div class="col">
-                  <div class="text-value-xl"><%= transactions %></div>
+                  <div class="text-value-xl"><% if(transactions) {%>
+                    <%= transactions %>
+                    <% } %></div>
                   <div class="text-uppercase text-muted small">Transaction Made</div>
                 </div>
                 <div class="container-fluid">

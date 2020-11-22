@@ -32,6 +32,7 @@ app.use(express.json())
 const Users = require('./models/user')
 var auth = require('./middleware/Auth')
 var dashboardRouter = require('./routes/admin/dashboard')
+var forgotRouter = require('./routes/forgot')
 const Products = require('./models/product')
 const Galleries = require('./models/gallery')
 const Cart = require('./models/cart');
@@ -39,6 +40,8 @@ const user = require('./models/user');
 const Comment = require('./models/comment')
 const Subcomment = require('./models/subcomment')
 const Order = require('./models/order')
+const Carousels = require('./models/carousel')
+app.use(forgotRouter)
 app.use(dashboardRouter)
 
 
@@ -54,7 +57,12 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 app.get('/', async function(req, res) {
-
+    const productsMouse = await Products.find({category: 'Mouse'}).sort({_id:-1}).limit(10)
+    const productsKeyboard = await Products.find({category: 'Keyboard'}).sort({_id:-1}).limit(10)
+    const productsHeadset = await Products.find({$or: [ { category: 'Headset' }, { category: 'Earphone' } ]}).sort({_id:-1}).limit(10)
+    const productsChair = await Products.find({$or: [ { category: 'Gaming Chair' }, { category: 'Kursi Gaming' } ]}).sort({_id:-1}).limit(10)
+    const productsOther = await Products.find({category: { $nin: [ 'Mouse', 'Keyboard', 'Headset','Earphone', 'Gaming Chair', 'Kursi Gaming' ] }}).sort({_id:-1}).limit(10)
+    const carousels = await Carousels.find()
     if(req.isAuthenticated()){
         var badgeCart
         const userid = req.user.id
@@ -71,11 +79,11 @@ app.get('/', async function(req, res) {
         console.log(badgeCart)
         res.render('pages/index',
         {name: req.user.name,
-            isLoggedIn: true, badgecart: badgeCart});
+            isLoggedIn: true, badgecart: badgeCart, productsMouse: productsMouse, productsKeyboard:productsKeyboard, productsHeadset:productsHeadset, productsChair:productsChair, productsOther:productsOther, carousels:carousels});
     }
     else{
         res.render('pages/index',
-    {isLoggedIn: false});
+    {isLoggedIn: false, productsMouse: productsMouse, productsKeyboard:productsKeyboard, productsHeadset:productsHeadset, productsChair:productsChair, productsOther:productsOther, carousels:carousels});
     }
     
 });

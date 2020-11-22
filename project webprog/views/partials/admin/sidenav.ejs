@@ -28,18 +28,26 @@
       <a href="/dashboard/transaction/failed">List Transaksi (Gagal)</a>
 
     </div>
+  
     <a href="/dashboard/confirmation-payment" class="text-center">Confirmation List</a>
-    <a href="/dashboard/website-misc" class="text-center">Website Misc</a>
+    <a href="#" class="text-center dropdown-btn dropdown-toggle" id="dropB4"  type="button" id="dropdownMenu4" data-toggle="dropdown4" aria-haspopup="true" aria-expanded="false">Web Misc.</a>
+    <div class="dropdown-container" id="dropF">
+      <a href="/dashboard/web/carousel">Carousel</a>
+      <a href="#">Promo Produk</a>
+      <a href="#">Banner Login</a>
+      </div>
   </div>
 
   <script>
     var dropBtn = document.getElementById("dropB1");
     var dropBtn2 = document.getElementById("dropB2");
     var dropBtn3 = document.getElementById("dropB3");
+    var dropBtn4 = document.getElementById("dropB4");
     var dropdown = document.getElementsByClassName("dropdown-btn");
     var dropContainer = document.getElementById('dropC')
     var dropContainer2 = document.getElementById('dropD')
     var dropContainer3 = document.getElementById('dropE')
+    var dropContainer4 = document.getElementById('dropF')
 var i;
 
 for (i = 0; i < dropdown.length; i++) {
@@ -63,6 +71,8 @@ var sidenav = document.getElementById('mySidenav')
     dropBtn2.classList.remove("activeNav");
     dropContainer3.style.display = "none"
     dropBtn3.classList.remove("activeNav");
+    dropContainer4.style.display = "none"
+    dropBtn4.classList.remove("activeNav");
   });
 
   </script>

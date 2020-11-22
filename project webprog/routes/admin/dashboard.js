@@ -15,6 +15,7 @@ const user = require('../../models/user')
 const Categories = require('../../models/category')
 const Galleries = require('../../models/gallery')
 const Orders = require('../../models/order')
+const Carousels = require('../../models/carousel')
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads')
@@ -553,6 +554,80 @@ router.put('/dashboard/transaction/:id/update-failed', async (req, res) => {
   }
 })
 
+
+
+//Web
+//carousel read
+router.get(
+  '/dashboard/web/carousel',
+  auth.ensureAuthenticate,
+  authAdmin.isAdmin('ADMIN'),
+  async function (req, res) {
+    const carousels = await Carousels.find()
+
+    res.render('pages/admin/web/carousel/index', {
+      name: req.user.name,
+      isLoggedIn: true,
+      carousels: carousels
+    })
+  }
+)
+
+//create
+router.get(
+  '/dashboard/web/carousel/create',
+  auth.ensureAuthenticate,
+  authAdmin.isAdmin('ADMIN'), async function (req, res) {
+    const products = await Products.find()
+    res.render('pages/admin/web/carousel/create', {
+      name: req.user.name,
+      isLoggedIn: true,
+      carousel: new Carousels(),
+      products: products
+    })
+  }
+)
+
+router.post(
+  '/dashboard/web/carousel/create',upload.single('image'),
+  async (req, res, next) => {
+    req.carousel = new Carousels()
+    next()
+  },
+  saveCarouselAndRedirect('create')
+)
+
+//edit
+router.get(
+  '/dashboard/web/carousel/:id/edit',
+  auth.ensureAuthenticate,
+  authAdmin.isAdmin('ADMIN'), async function (req, res) {
+    const carousel = await Carousels.findById(req.params.id)
+    const products = await Products.find()
+    res.render('pages/admin/web/carousel/edit', {
+      name: req.user.name,
+      isLoggedIn: true,
+      carousel: carousel,
+      products: products
+    })
+  }
+)
+
+router.put(
+  '/dashboard/web/carousel/:id/edit',upload.single('image'),
+  async (req, res, next) => {
+    req.carousel = await Carousels.findById(req.params.id)
+    next()
+  },
+  saveCarouselAndRedirect('edit')
+)
+
+router.delete('/dashboard/web/carousel/:id/delete', async (req, res) => {
+  await Carousels.findByIdAndDelete(req.params.id)
+  res.redirect('/dashboard/web/carousel')
+})
+
+
 function saveProductAndRedirect (pathx) {
   return async (req, res) => {
     let product = req.product
@@ -597,6 +672,29 @@ function saveBrandAndRedirect (pathy) {
         name: req.user.name,
         isLoggedIn: true,
         brand: brand
+      })
+      console.log(e)
+    }
+  }
+}
+
+function saveCarouselAndRedirect (patha) {
+  return async (req, res) => {
+    let carousel = req.carousel
+    carousel.title = req.body.title
+    carousel.img.data = fs.readFileSync(
+      path.join(__dirname + '/../../uploads/' + req.file.filename)
+    )
+    carousel.img.contentType = 'image/png'
+    carousel.text = req.body.text
+    try {
+      carousel = await carousel.save()
+      res.redirect(`/dashboard/web/carousel`)
+    } catch (e) {
+      res.render(`pages/admin/web/carousel/${patha}`, {
+        name: req.user.name,
+        isLoggedIn: true,
+        carousel: carousel
       })
       console.log(e)
     }

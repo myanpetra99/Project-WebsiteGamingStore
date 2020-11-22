@@ -22,13 +22,7 @@ else{
     .children('.product-quantity')
     .val()
 
-    if(qty==1){
-      $(this).children().children().children('#formDecrease').css('display', 'none')
-    }
-    if(qty<1){
-      $(this).children().children().children('#formDecrease').css('display', 'block')
-    }
-
+    
    var price = parseFloat(
       $(this)
         .children()
@@ -79,6 +73,14 @@ function checkCart () {
 }
 
 function updateQuantity (quantityInput) {
+
+  if($(".product-quantity").val()==1){
+    $('#formDecrease').css('visibility', 'hidden')
+  }
+  if($(".product-quantity").val()>1){
+    $('#formDecrease').css('visibility', 'visible')
+  }
+
     var productRow = $(quantityInput)
       .parent()
       .parent()
@@ -389,7 +391,7 @@ $(".btn-inc").on("click", function() {
     
       var newVal = parseFloat(oldValue) + 1;
     
-      $(".product-quantity").val(newVal)
+     $(".product-quantity").val(newVal); 
       $(".product-quantity").trigger("change");
     });
     
@@ -398,7 +400,14 @@ $(".btn-inc").on("click", function() {
     var oldValue = $(".product-quantity").val()
     
       var newVal = parseFloat(oldValue) - 1;
-    
-      $(".product-quantity").val(newVal)
+  
+    if(oldValue>1){
+      $(".product-quantity").val(newVal);
       $(".product-quantity").trigger("change");
+    }
+ 
+   
+   
+
+      
     });
