@@ -46,7 +46,8 @@
                     </div>
                     <select class="custom-select" id="categorySort" aria-placeholder="choose.." form="formSearch" name="category">
                       <% if(reqcategory) {%>
-                        <option value="<%= reqcategory %>" ><%= reqcategory %></option>
+                        <option value="<%= reqcategory %>" selected><%= reqcategory %></option>
+                        <option value="">All Category</option>
                         <% } else {%>
                           <option value="" disabled selected>Select your option</option>
                      <% }%>
@@ -62,6 +63,7 @@
                     <select class="custom-select" id="brandSort" form="formSearch" name="brand">
                       <% if(reqbrand) {%>
                         <option value="<%= reqbrand %>" ><%=reqbrand %></option>
+                        <option value="">All Brand</option>
                         <% } else {%>
                           <option value="" disabled selected>Select your option</option>
                      <% }%>
