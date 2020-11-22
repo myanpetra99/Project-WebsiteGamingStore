@@ -18,7 +18,7 @@
                   <div class="col mb-4 col-breadcrumb">
                     <nav aria-label="breadcrumb">
                       <ol class="breadcrumb bg-transparent">
-                        <li class="breadcrumb-item"><a href="landing.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Product</li>
                       </ol>
                     </nav>
@@ -31,38 +31,46 @@
             <div class="row">
               <div class="col">
                 <div class="sortBy">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <button class="btn btn-utama" type="button" id="btnTest">Search</button>
-                    </div>
-                    <input type="text" id="search" class="form-control" placeholder="" aria-label=""
-                      aria-describedby="basic-addon1">
-                  </div>
-      
+                  <form action="/product/" id="formSearch">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-utama" type="submit" id="btnTest">Search</button>
+                      </div>
+                      <input type="text" id="search" class="form-control" placeholder="" aria-label=""  name="q"
+                        aria-describedby="basic-addon1">
+                    </div>        
+                  </form>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <label class="input-group-text" for="categorySort">Categories</label>
                     </div>
-                    <select class="custom-select" id="categorySort" aria-placeholder="choose..">
-                      <option value="" disabled selected>Select your option</option>
-                      <option value="Mouse">Mouse</option>
-                      <option value="Headset">Headset</option>
-                      <option value="Keyboard">Keyboard</option>
-                      <option value="misc">Miscellaneous</option>
+                    <select class="custom-select" id="categorySort" aria-placeholder="choose.." form="formSearch" name="category">
+                      <% if(reqcategory) {%>
+                        <option value="<%= reqcategory %>" ><%= reqcategory %></option>
+                        <% } else {%>
+                          <option value="" disabled selected>Select your option</option>
+                     <% }%>
+                      <% categories.forEach(category =>{ %>
+                        <option value="<%= category.title %>" ><%= category.title %></option>
+                        <% }) %>
                     </select>
                   </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <label class="input-group-text" for="brandSort">Brand</label>
                     </div>
-                    <select class="custom-select" id="brandSort">
-                      <option value="" disabled selected>Select your option</option>
-                      <option value="Logitech">Logitech</option>
-                      <option value="SteelSeries">SteelSeries</option>
-                      <option value="Razer">Razer</option>
-                      <option value="HyperX">HyperX</option>
+                    <select class="custom-select" id="brandSort" form="formSearch" name="brand">
+                      <% if(reqbrand) {%>
+                        <option value="<%= reqbrand %>" ><%=reqbrand %></option>
+                        <% } else {%>
+                          <option value="" disabled selected>Select your option</option>
+                     <% }%>
+                      <% brands.forEach(brand =>{ %>
+                        <option value="<%= brand.title %>" ><%= brand.title %></option>
+                        <% }) %>
                     </select>
                   </div>
+               
                   <div class="dropdown">
       
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -111,18 +119,21 @@
               <div class="col justify-content-center">
                 <div class="d-flex justify-content-center">
                   <nav aria-label="...">
-                    <ul class="pagination">
+                    <ul class="pagination pagination-lg">
+                      
+                     <% if(pagination.previous) {%>
+                      <li class="page-item"><a class="page-link" href="/product/?page=<%= pagination.previous.page %>">Back</a></li>
+                    <%} else {%>
+                      <li class="page-item disabled"><a class="page-link">Back</a></li>
+                      <% } %>
                       <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        <a class="page-link" href="#" tabindex="-1">Page <%= currentpage %></a>
                       </li>
-                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item " aria-current="page">
-                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                      </li>
+                      <% if(pagination.next) {%>
+                        <li class="page-item"><a class="page-link" href="/product/?page=<%= pagination.next.page %>">Next</a></li>
+                      <%} else {%>
+                        <li class="page-item disabled"><a class="page-link">Next</a></li>
+                        <% } %>
                     </ul>
                   </nav>
                 </div>
@@ -134,83 +145,9 @@
       
     
       
-        <script>
-          $('#search').keyup(function () {
-            var searchField = $('#search').val();
-            var myExp = new RegExp(searchField, "i");
-      
-      
-            $.getJSON('data.json', function (data) {
-              var output = '<div class="row mt-2">';
-      
-              $.each(data, function (key, val) {
-                if ((val.nama.search(myExp) != -1)) {
-                  output += '<div class="col-md-3-sm-6 ml-3 mt-3">';
-                  output += '<div class="card card-item" style="width: 14rem;">'
-                  output += '<img class="card-img-top card-img" src="images/' + val.imgname +
-                    '.jpg" alt="' + val.imgname +
-                    '"" />';
-                  output += '<div class="card-body">'
-                  output += '<h5 class="card-title text-center">' + val.nama + '</h5>';
-                  output += '<p class="card-text text-center"><b>Rp' + val.harga.toLocaleString() + '</b></p>';
-                  output += '</div>'
-                  output += '<div class="card-footer">'
-                  output += '<a href="' + val.url +
-                    '" class="btn btn-primary d-flex justify-content-center mt-3">Beli Sekarang</a>'
-                  output += ' </div>'
-                  output += ' </div>'
-                  output += ' </div>'
-                }
-              });
-      
-              output += '</div>';
-              $('#update').html(output);
-            });
-      
-          });
-        </script>
-      
+  
+  
 
-      <script>
-      
-      </script>
-
-        <script>
-          $("#categorySort").change(function () {
-      
-           var cat = $(this).val();
-      
-            var myExp = new RegExp(cat, "i");
-      
-            $.getJSON('data.json', function (data) {
-              var output = '<div class="row mt-2">';
-      
-              $.each(data, function (key, val) {
-                if ((val.category.search(myExp) != -1)) {
-                  output += '<div class="col-md-3-sm-6 ml-3 mt-3">';
-                  output += '<div class="card card-item" style="width: 14rem;">'
-                  output += '<img class="card-img-top card-img" src="images/' + val.imgname +
-                    '.jpg" alt="' + val.imgname +
-                    '"" />';
-                  output += '<div class="card-body">'
-                  output += '<h5 class="card-title text-center">' + val.nama + '</h5>';
-                  output += '<p class="card-text text-center"><b>Rp' + val.harga.toLocaleString() + '</b></p>';
-                  output += '</div>'
-                  output += '<div class="card-footer">'
-                  output += '<a href="' + val.url +
-                    '" class="btn btn-primary d-flex justify-content-center mt-3">Beli Sekarang</a>'
-                  output += ' </div>'
-                  output += ' </div>'
-                  output += ' </div>'
-                }
-              });
-      
-              output += '</div>';
-              $('#update').html(output);
-            });
-      
-          });
-        </script>
       </body>
 
   <%- include('../partials/footer',{isLoggedIn : isLoggedIn}); %>
