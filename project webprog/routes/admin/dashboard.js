@@ -262,8 +262,17 @@ router.get(
 )
 
 router.delete('/dashboard/product/:id/delete', async (req, res) => {
+  try {
+    const product = await Products.findById(req.params.id)
+  await Galleries.deleteMany({slug:product.slug})
+  await Carousels.findOneAndDelete({slug:product.slug})
+  } catch (error) {
+    console.log(error)
+  }
+
   await Products.findByIdAndDelete(req.params.id)
-  res.redirect('/dashboard/product')
+
+  res.redirect('/dashboard/product')  
 })
 
 //BRAND CRUD
@@ -646,6 +655,7 @@ function saveProductAndRedirect (pathx) {
       product = await product.save()
       res.redirect(`/dashboard/product/${product.slug}`)
     } catch (e) {
+      req.flash('error','terdeteksi duplikasi pada SKU, (SKU harus unik!)');
       res.render(`pages/admin/products/${pathx}`, {
         name: req.user.name,
         isLoggedIn: true,

@@ -1,3 +1,23 @@
+window.onpageshow = function (event) {
+  if (event.persisted) {
+    window.location.reload(); //reload page if it has been loaded from cache
+  }
+};
+
+
+document.onreadystatechange = function () {
+  var state = document.readyState
+  if (state == 'interactive') {
+       document.getElementsByTagName('body').style.opacity="0";;
+      alert(state)
+  } else if (state == 'complete') {
+         document.getElementById('interactive');
+         document.getElementById('load').style.opacity="0";
+         document.getElementById('load').style.visibility="hidden";
+         document.getElementsByTagName('body').style.opacity="100";
+  }
+}
+
 window.onscroll = function () {
   scrollFunction()
 }
@@ -54,13 +74,8 @@ function decrement (obj) {
   }
 }
 
-function showToast () {
-  $('.toast').toast('show')
-}
 
-$('#btnConfirm').one('click', function () {
-  $(this).attr('disabled', 'disabled')
-})
+
 
 
 
@@ -89,3 +104,7 @@ $('#btnConfirm').one('click', function () {
           }
         })
       });
+
+
+    
+

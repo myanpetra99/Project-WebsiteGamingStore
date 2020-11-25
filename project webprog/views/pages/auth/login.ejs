@@ -59,17 +59,23 @@
                                             <div class="display-4 text-center mb-4" style="font-size: 40px;">
                                                 Sign In
                                             </div>
-                                            <% if (messages.error){
-                                                %>
-                                                <%= messages.error %> 
+                                            <% if (messages.error){ %>
+                                                <div class="alert alert-danger" role="alert">
+                                                    <%= messages.error %> 
+                                                  </div>
+                                                
                                                 <% } %> 
-                                                <% if (messages.info){
-                                                    %>
-                                                    <%= messages.info %> 
+                                                <% if (messages.info){ %>
+                                                    <div class="alert alert-info" role="alert">
+                                                          <%= messages.info %> 
+                                                      </div>
+                                                  
                                                     <% } %> 
-                                                <% if (messages.success){
-                                                    %>
-                                                    <%= messages.success %> 
+                                                <% if (messages.success){ %>
+                                                    <div class="alert alert-success" role="alert">
+                                                 <%= messages.success %> 
+                                                      </div>
+                                                   
                                                     <% } %> 
                                             <form action="/login" method="POST">
                                                 <input class="input-login mb-4" type="text" required name="email" id="email"

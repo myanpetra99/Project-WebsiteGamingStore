@@ -914,4 +914,14 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+#load {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 9999;
+  background: url("https://s8.gifyu.com/images/ezgif-1-763ccae64384.gif") no-repeat center center white;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+}
 /*# sourceMappingURL=main.css.map */

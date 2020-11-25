@@ -13,8 +13,19 @@
       <h1 style="font-family: 'Poppins';" class="text-center">Tambah Produk</h1>
       <div class="container">
     
-
-        <form action="/dashboard/product/create" method="POST" enctype="multipart/form-data">
+        <% if (messages.error){
+          %>
+          <%= messages.error %> 
+          <% } %> 
+          <% if (messages.info){
+              %>
+              <%= messages.info %> 
+              <% } %> 
+          <% if (messages.success){
+              %>
+              <%= messages.success %> 
+              <% } %> 
+        <form action="/dashboard/product/create" method="POST" enctype="multipart/form-data" id="formCreateProduct">
           <div class="form-group">
             <label for="nama">Nama Produk : </label>
             <input type="text" class="form-control" id="nama" name="nama" placeholder="" value="<%= product.nama %>">
@@ -61,15 +72,41 @@
           </div>
         
           <div class="form-group">
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="button"  data-toggle="modal" data-target="#exampleModalCenter">Submit</button>
         <a href="/dashboard/product" class="btn btn-secondary">Cancel</a>
           </div>
       
         </form>
   
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Konfirmasi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-danger">pastikan Nama Produk Sudah benar! , Nama produk tidak dapat di Edit kecuali di buat kembali! </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+        <button type="button" class="btn btn-primary" onclick="formCreateProduct.submit()">Konfirmasi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
       </div>
       </div>  
  
+
 
       <%- include('../../../partials/admin/footer'); %>
   </body>

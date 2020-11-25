@@ -413,6 +413,53 @@ app.get('/user',auth.ensureAuthenticate, async function(req, res) {
         isLoggedIn: true, badgecart:badgeCart});
 });
 
+app.put('/user/update/password',  async function(req, res) {
+
+    const userid = req.user.id
+    const currentpassword = req.body.currentPassword
+    const newpassword = await  bcrypt.hash(req.body.password, 10)
+    Users.findOne({_id: userid}).then(user =>{
+        bcrypt.compare(currentpassword, user.password, (err, isMatch, done) => {
+            if (err) throw err;
+            if (isMatch) {
+               try {
+                user.password = newpassword
+                user.save()
+                req.flash('success','new password has been updated!');
+                res.redirect('/user')  
+               } catch (error) {
+                   console.log(error)
+                   res.redirect('/')
+               }
+            } else {
+                req.flash('error','wrong password!');
+                res.redirect('/user')  
+            }
+          });
+    })
+});
+
+app.put('/user/update',  async function(req, res) {
+
+    const userid = req.user.id
+    Users.findOne({_id: userid}).then(user =>{
+      
+               try {
+                user.address = req.body.address,
+                user.zip = req.body.zip,
+                user.phone =req.body.telephone,
+                user.save()
+                req.flash('success','profile has been updated!');
+                res.redirect('/user')  
+               } catch (error) {
+                   console.log(error)
+                   res.redirect('/')
+               }
+           
+          
+    })
+});
+
 //route history
 app.get('/history',auth.ensureAuthenticate, async function(req, res) {
     

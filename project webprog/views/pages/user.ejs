@@ -18,11 +18,32 @@
         <div class="container mt-5" >
             <div class="row" >
                 <div class="col">
-                    <h2 class=" mt-5">My Profile</h2>
+                    <h5 class=" mt-5">MY ACCOUNT</h5>
                     <div class="card">
                         
+                        <% if (messages.error){
+                            %>
+                            <div class="alert alert-danger" role="alert">
+                                <%= messages.error %> 
+                              </div>
+                            
+                            <% } %> 
+                            <% if (messages.info){
+                                %>
+                                <div class="alert alert-info" role="alert">
+                                      <%= messages.info %> 
+                                  </div>
+                              
+                                <% } %> 
+                            <% if (messages.success){
+                                %>
+                                <div class="alert alert-success" role="alert">
+                             <%= messages.success %> 
+                                  </div>
+                               
+                                <% } %> 
                         <div class="col">
-                            <form action="">
+                            <form action="/user/update?_method=PUT" method="POST">
                                 <div class="form-group row">
                                     <label for="example-text-input" class="col-2 col-form-label">Nama</label>
                                     <div class="col-10">
@@ -36,59 +57,23 @@
                                     <div class="col-10">
                                         <input class="input-login form-control email" type="email" value="<%= email %>"
                                             id="emailInput" readonly>
+                                            
                                     </div>
+            
                                 </div>
                                 <div class="form-group row">
                                     <label for="example-tel-input" class="col-2 col-form-label">Nomor Telepon</label>
                                     <div class="col-10">
                                         <input class=" input-login form-control" type="tel" value="<%= phone %>"
-                                            id="telInput">
+                                            id="telInput"  oninput="updatePhone()" >
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="example-password-input" class="col-2 col-form-label">Old
-                                        Password</label>
-                                    <div class="col-10">
-                                        <input class=" input-login form-control" type="password" value=""
-                                            id="oldPasswordInput">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="example-password-input" class="col-2 col-form-label">New
-                                        Password</label>
-                                    <div class="col-10">
-                                        <input class=" input-login form-control" type="password" value=""
-                                            id="newPasswordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                                            required>
-                                        <div id="messageUser">
-                                            <h5>Password harus mengandung setidaknya:</h5>
-                                            <p id="letter" class="invalid">Sebuah <b>huruf kecil</b></p>
-                                            <p id="capital" class="invalid">Sebuah <b>huruf Kapital</b> </p>
-                                            <p id="number" class="invalid">Sebuah <b>angka</b></p>
-                                            <p id="length" class="invalid">minimal <b>8 karakter</b></p>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="form-group row">
-                                    <label for="example-password-input" class="col-2 col-form-label">Re-type new
-                                        Password</label>
-                                    <div class="col-10">
-                                        <input class=" input-login form-control" type="password" value=""
-                                            id="reNewPasswordInput">
-                                        <div id="messageUser2">
-                                            <p id="reValidate" class="invalid">Password tidak sama</p>
-                                        </div>
-                                    </div>
-
+                                    <input type="hidden" name="telephone" id="newTel">
                                 </div>
                                 <div class="form-group row">
                                     <label for="example-number-input" class="col-2 col-form-label">Alamat</label>
                                     <div class="col-10">
                                         <input class="input-login form-control" type="text" value="<%= address %>"
-                                            id="addressInput">
+                                            id="addressInput" name="address">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -96,18 +81,107 @@
                                         Pos</label>
                                     <div class="col-10">
                                         <input class="input-login form-control" maxlength="5" required type="tel"
-                                            value="<%= zip %>" placeholder="Kode Pos" id="zipInput">
+                                            value="<%= zip %>" placeholder="Kode Pos" id="zipInput" name="zip">
                                     </div>
                                 </div>
-                                <button class="btn btn-primary form-control mb-5" type="submit">Update</button>
+                                <button class="btn btn-primary form-control mb-5" type="submit" id="btnFormDetailUpdate" onclick="">Update</button>
                             </form>
                         </div>
+            
                     </div>
+                    <hr>
+                    <h5>PASSWORD AND AUTHENTICATION</h5>
+            
+                     
+                        <div class="col">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                Change Password
+                              </button>
+                        </div>
+           
                 </div>
+               <br>
             </div>
+            
         </div>
     </section>
 
+    <!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+            <form action="/user/update/password?_method=PUT" method="POST" id="formPasswordUser">
+         <div class="row"> <label for="example-password-input" class="col-12 col-form-label">Old
+            Password</label></div>
+                   <div class="row">  <div class="col-12">
+                    <input class=" input-login form-control" type="password" value=""
+                        id="oldPasswordInput" name="currentPassword" name>
+                </div></div>
+                  
+       
+            <div class="row">
+                <label for="example-password-input" class="col-12 col-form-label">New
+                    Password</label>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <input class=" input-login form-control" type="password" value=""
+                        id="newPasswordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                        >
+                    <div id="messageUser">
+                        <h5>Password harus mengandung setidaknya:</h5>
+                        <p id="letter" class="invalid">Sebuah <b>huruf kecil</b></p>
+                        <p id="capital" class="invalid">Sebuah <b>huruf Kapital</b> </p>
+                        <p id="number" class="invalid">Sebuah <b>angka</b></p>
+                        <p id="length" class="invalid">minimal <b>8 karakter</b></p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="example-password-input" class="col-12 col-form-label">Re-type new
+                    Password</label>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <input class=" input-login form-control" type="password" value=""
+                        id="reNewPasswordInput" name="password">
+                    <div id="messageUser2">
+                        <p id="reValidate" class="invalid">Password tidak sama</p>
+                    </div>
+                </div>
+            </div>
+                   
+                  
+    
+          
+              
+                  
+                  
+    
+          
+            </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="formPasswordUser.submit()">Update Password</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <%- include('../partials/footer',{isLoggedIn : isLoggedIn}); %>
 
@@ -211,7 +285,7 @@
             var email = $('#emailInput').val();
             var hiddenEmail = "";
             for (i = 0; i < email.length; i++) {
-                if (i > 2 && i < email.indexOf("@")) {
+                if (i > 0 && i < email.indexOf("@")) {
                     hiddenEmail += "*";
                 } else {
                     hiddenEmail += email[i];
@@ -221,9 +295,11 @@
             $('#emailInput').attr("value", hiddenEmail).placeholder()
         })
 
+    
 
+        var phone = $('#telInput').val();
         $(document).ready(function () {
-            var phone = $('#telInput').val();
+           
             var hiddenPhone = "";
             for (i = 0; i < phone.length; i++) {
                 if (i < phone.length - 3) {
@@ -234,6 +310,11 @@
             }
             $('#telInput').attr("value", hiddenPhone).placeholder()
         })
+
+        function updatePhone(){
+            var x = document.getElementById("telInput").value;
+            $('#newTel').val(x)  
+        }
     </script>
 </body>
 
