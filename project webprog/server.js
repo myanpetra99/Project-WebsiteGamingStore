@@ -43,6 +43,11 @@ const Comment = require('./models/comment')
 const Subcomment = require('./models/subcomment')
 const Order = require('./models/order')
 const Carousels = require('./models/carousel')
+const Confirmations = require('./models/confirmation')
+var fs = require('fs')
+var multer = require('multer')
+
+
 app.use(forgotRouter)
 app.use(dashboardRouter)
 
@@ -56,7 +61,16 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //PUBLIC SECTION
 //route index
 
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  })
 
+  var upload = multer({ storage: storage })
 
 app.get('/', async function(req, res) {
     const productsMouse = await Products.find({category: 'Mouse'}).sort({_id:-1}).limit(10)
@@ -326,7 +340,7 @@ app.get('/confirmation', async function(req, res) {
    if(req.isAuthenticated()){
     var badgeCart
     const userid = req.user.id
-    await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 100 }).then((docs) =>{
+    await db.collection('carts').countDocuments({customerID:userid.toString()},{ limit: 999 }).then((docs) =>{
         try{
             badgeCart = docs
         }
@@ -341,6 +355,35 @@ app.get('/confirmation', async function(req, res) {
     res.render('pages/confirmation', {isLoggedIn: false});
    }
 });
+
+app.post('/confirmation/submit',upload.single('image'), async function(req, res){
+
+   const order = await Order.findOne({orderID:req.body.nomororder})
+
+    if(!order){
+        console.log('id order tidak valid')
+        req.flash('error','Id order tidak valid')
+        return res.redirect('back');
+    }
+
+
+    req.confirmation = new Confirmations()
+    let confirmation = req.confirmation
+    confirmation.orderID = req.body.nomororder
+    confirmation.userID = req.user.id.toString()
+    confirmation.invoice.data = fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename))
+    confirmation.invoice.contentType = 'image/png'
+
+    try {
+        confirmation.save()
+        req.flash('success','Pembayaran telah kami terima, mohon di tunggu Konfirmasi')
+        res.redirect('/confirmation')
+    } catch (error) {
+        console.log(error)
+        res.redirect('/confirmation')
+    }
+
+})
 
 //route cart
 app.get('/cart',auth.ensureAuthenticate, async function(req, res) {
@@ -493,8 +536,11 @@ app.get('/history',auth.ensureAuthenticate, async function(req, res) {
          { "$sort": { "createdAt": -1}}
       ]).toArray(function(err, result) {
         if (err) throw err;
+
+      
     
         displayHistory = result
+        console.log(displayHistory)
         res.render('pages/history', {name: req.user.name,
             isLoggedIn: true, badgecart:badgeCart, transactions:displayHistory,phone:req.user.phone, address:req.user.address, zip:req.user.zip});
         })

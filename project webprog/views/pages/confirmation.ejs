@@ -13,13 +13,40 @@
             <%- include('../partials/header', {isLoggedIn : isLoggedIn}); %>
         <% } %>
 
+
+      
+  <% if(isLoggedIn) {%>
+              
     <section class="content" style="margin-top: 75px;">
         <div class="container">
+           
+
+            <% if (messages.error){
+                %>
+                <div class="alert alert-danger" role="alert">
+                    <%= messages.error %> 
+                  </div>
+                
+                <% } %> 
+                <% if (messages.info){
+                    %>
+                    <div class="alert alert-info" role="alert">
+                          <%= messages.info %> 
+                      </div>
+                  
+                    <% } %> 
+                <% if (messages.success){
+                    %>
+                    <div class="alert alert-success" role="alert">
+                 <%= messages.success %> 
+                      </div>
+                   
+                    <% } %> 
             <div class="row mt-5" style="height: max-content;">
-                <div class="col">
+                <div class="col"> 
                     <div class="display-2 text-center  mb-5">Konfirmasi Pembayaran</div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-8">
     
     
                             <h6 class="text-muted">
@@ -48,33 +75,83 @@
                             </h6>
     
                         </div>
-                    </div>
-                    <div class="row" style="border: 1px solid black; padding: 2rem;">
-                        <div class="col-12">
-                            <form action="">
-                                <div class="d-flex justify-content-center">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h5 for="inputId" class="text-center ">Masukan Email &nbsp;<span><input
-                                                        name="inputId" type="email" class="input-login"
-                                                        placeholder="">
-                                        </span></h5>
+                        <div class="col-4">
+                            <div class="transfer-information" id="transferInfo">
+        
+                                <div id="accordion">
+                                  <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                          aria-expanded="true" aria-controls="collapseOne">
+                                          <img src="images/logo-bca.png" style="height: 40px;">
+                                        </button>
+                                      </h5>
                                     </div>
+                
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                      <div class="card-body">
+                                        <b>XXXXXXXXX A/N Michael Yan Petra</b>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                          aria-expanded="false" aria-controls="collapseTwo">
+                                          <img src="images/Logo-mandiri.png" style="height: 50px;" alt="">
+                                        </button>
+                                      </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                      <div class="card-body">
+                                        <b>XXXXXXXXX A/N Mas Lubby</b>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                          aria-expanded="false" aria-controls="collapseThree">
+                                          <img src="images/logo-gopay.png" alt="" style="height: 50px;">
+                                        </button>
+                                      </h5>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                      <div class="card-body">
+                                        <b> No : +62XXXXXXX A/N Kang Evan</b>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
+                                
+                
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5" style="border: 1px solid black; padding: 2rem;">
+                        <div class="row">
+                           
+                        </div>
+                        <div class="col">
+                            <form action="/confirmation/submit" method="POST" enctype="multipart/form-data">
+                                <div class="d-flex justify-content-center">
+                
     
                                 <div class="row">
                                     <div class="col">
-                                        <h5 for="inputId" class="text-center ">Masukkan ID Order &nbsp;<span><input
-                                                    name="inputId" type="text" class="input-login"
-                                                    placeholder="Contoh : AGS-123XXXX">
+                                        <h5 for="inputId" class="text-center ">Masukkan ID Order &nbsp;<span>
+                                            <input type="text" class="input-login" placeholder="Contoh : AGS-123XXXX" name="nomororder">
                                     </div></span></h5>
                                 </div>
                         </div>
     
                         <div class="row">
                             <div class="col">
-                                <h5 for="inputFoto" class=" text-center ">Bukti Pembayaran &nbsp;<span><input id="inputFoto"
-                                            type="file" name="" id=""></span></h5>
+                                <h5 for="inputFoto" class=" text-center ">Bukti Pembayaran &nbsp;<span>
+                                    <input id="inputFoto" type="file" name="image" id="image"></span></h5>
     
                             </div>
                         </div>
@@ -84,7 +161,7 @@
                             </div>
                         </div>
                         </form>
-    
+                     
                     </div>
                 </div>
     
@@ -94,6 +171,109 @@
         </div>
     </section>
 
+    <%} else {%>
+        <section class="content" style="margin-top: 75px ;height: 50vh;">
+            <div class="container">
+                <div class="row mt-5" style="height: max-content;">
+                    <div class="col">
+                        <div class="display-2 text-center  mb-5">Konfirmasi Pembayaran</div>
+                        <div class="row justify-content-center">
+                            <div class="col-8">
+    
+    
+                                <h6 class="text-muted">
+                                    Setelah Anda sukses checkout dan telah melakukan pembayaran melalui account Bank kami
+                                </h6>
+                                <h6 class="text-muted">
+                                    Pastikan Order ID yang diinput sama dengan Bukti Pembayaran
+                                </h6>
+                                <h6 class="text-muted">
+                                    Kami akan segera proses order setelah kami menerima Bukti pembayaran.
+                                </h6>
+        
+                                <h6 class="text-muted">
+        
+                                    Jika ada hal yang ingin ditanyakan terkait order Anda harap hubungi :
+                                </h6>
+                                <h6>
+                                    <ul style="list-style-type: none;">
+                                        <li>
+                                            Instagram : @AGStoXXX</li>
+                                        <li>Whatapps : 08XXXXXXXXX <a class="link-wa-confirm"
+                                                href="https://api.whatsapp.com/send?phone=6281936516716&text=Saya%20Telah%20Melakukan%20Pembayaran%20Di%20website%20AGStore%20Dengan%20Bukti%20Sebagai%20Berikut%20:%0ANama%20:%0AAlamat:%0AID%20Order%20:%0A"><button
+                                                    type="button" class="btn btn-success">Whatsapp Web</button></a></li>
+        
+                                    </ul>
+                                </h6>
+                                <a href="/login" class="btn btn-info mt-5">Login Untuk Konfirmasi Pembayaran Via Website</a>
+        
+                            </div>
+                            <div class="col-4">
+                                <div class="transfer-information" id="transferInfo">
+            
+                                    <div id="accordion">
+                                      <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                          <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                              aria-expanded="true" aria-controls="collapseOne">
+                                              <img src="images/logo-bca.png" style="height: 40px;">
+                                            </button>
+                                          </h5>
+                                        </div>
+                    
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                          <div class="card-body">
+                                            <b>XXXXXXXXX A/N Michael Yan Petra</b>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card">
+                                        <div class="card-header" id="headingTwo">
+                                          <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                              aria-expanded="false" aria-controls="collapseTwo">
+                                              <img src="images/Logo-mandiri.png" style="height: 50px;" alt="">
+                                            </button>
+                                          </h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                          <div class="card-body">
+                                            <b>XXXXXXXXX A/N Mas Lubby</b>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card">
+                                        <div class="card-header" id="headingThree">
+                                          <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                              aria-expanded="false" aria-controls="collapseThree">
+                                              <img src="images/logo-gopay.png" alt="" style="height: 50px;">
+                                            </button>
+                                          </h5>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                          <div class="card-body">
+                                            <b> No : +62XXXXXXX A/N Kang Evan</b>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                    
+                                  </div>
+                            </div>
+                        </div>
+                       
+                </div>
+
+                
+            </div>
+        
+            </div>
+        </section>
+        
+<% } %>
 
   <%- include('../partials/footer',{isLoggedIn : isLoggedIn}); %>
 

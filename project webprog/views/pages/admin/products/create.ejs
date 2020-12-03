@@ -32,8 +32,10 @@
           </div>
           <div class="form-group">
             <label for="img">Upload Image</label> 
+            <img id="blah" src="" alt="" style="max-width: 100px;"/>
             <input type="file" id="image" 
                    name="image" value="" required> 
+                  
           </div>
           <div class="form-group">
             <label for="sku">SKU Produk : </label>
@@ -49,7 +51,16 @@
           </div>
           <div class="form-group">
             <label for="desc">Deskripsi Produk : </label>
-            <textarea class="form-control" value="" id="desc" name="desc" rows="3"><%= product.desc %></textarea>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div id="div_editor1">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <textarea hidden class="form-control" value="" id="desc" name="desc" rows="3"><%= product.desc %></textarea>
           </div>
           <div class="form-group">
             <label for="brand">Pilih Brand : </label>
@@ -106,7 +117,32 @@
       </div>
       </div>  
  
+<script>
+    var editor1 = new RichTextEditor("#div_editor1");    
 
+
+editor1.attachEvent("change", function () {      
+  var content = editor1.getHTMLCode()
+    document.getElementById('desc').innerHTML = content   
+});   
+
+
+function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#image").change(function(){
+        readURL(this);
+    });
+</script>
 
       <%- include('../../../partials/admin/footer'); %>
   </body>

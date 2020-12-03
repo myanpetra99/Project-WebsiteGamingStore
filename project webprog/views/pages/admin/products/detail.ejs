@@ -18,7 +18,7 @@
       <h2 class="text-muted">Produk SKU : <%= product.sku %></h2>
       <h2 class="text-muted">Harga Produk : <%= product.price %></h2>
       <h2 class="text-muted">Berat Produk : <%= product.weight %> (gram)</h2>
-      <h2 class="text-muted">Deskripsi Produk : <%= product.desc %></h2>
+      <h2 class="text-muted">Deskripsi Produk : <%- product.desc %></h2>
       <h2 class="text-muted">Merk : <%= product.brand %></h2>
       <h2 class="text-muted">Kateogeri Produk : <%= product.category %></h2>
       <h2 class="text-muted">Tanggal Input Produk : <%= product.createdAt.toLocaleDateString() %></h2>
