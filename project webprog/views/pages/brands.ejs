@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <%- include('../partials/head', {title : 'Brand'}); %>
+<% if (isLoggedIn) { %>
+  <%- include('../partials/header', {isLoggedIn : isLoggedIn,
+      name: name}); %>
+  <% } else { %>
+      <%- include('../partials/header', {isLoggedIn : isLoggedIn}); %>
+  <% } %>
+
+    <body>
+        <section>
+            <div class="container">
+              <div class="row ">
+                <div class="col mb-4 col-breadcrumb">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent">
+                      <li class="breadcrumb-item"><a href="/">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Brand</li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </section>
+        
+          <section class="content">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-1">
+        
+                </div>
+                <div class="col-md-10">
+          
+                   
+                        <% for(var i = 0; i < brands.length; i++) { %>
+                   
+                            <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item"> 
+                                    <img class="brand-logo" src="data:image/<%=brands[i].img.contentType%>;base64, 
+                                    <%=brands[i].img.data.toString('base64')%>" >
+                                </li>
+                                <% i = i+1 %>
+                                <li class="list-group-item"> 
+                                    <img class="brand-logo" src="data:image/<%=brands[i].img.contentType%>;base64, 
+                                    <%=brands[i].img.data.toString('base64')%>" >
+                                </li>
+                                <% i = i+1 %>
+                                <% if(i < brands.length){ %>
+                                 <li class="list-group-item"> 
+                                    <img class="brand-logo" src="data:image/<%=brands[i].img.contentType%>;base64, 
+                                    <%=brands[i].img.data.toString('base64')%>" >
+                                </li>
+                              </ul>
+                        <% } %>
+                          <% } %>
+         
+                 
+                </div>
+
+                <div class="col-md-1">
+        
+                </div>
+        
+        
+        
+              </div>
+            </div>
+          </section>
+      </body>
+   
+    
+  <%- include('../partials/footer',{isLoggedIn : isLoggedIn}); %>
+
+
+</html>

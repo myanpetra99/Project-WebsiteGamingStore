@@ -1,20 +1,16 @@
 const express = require('express')
 const router = express.Router()
 var auth = require('../../middleware/Auth')
-var bodyParser = require('body-parser')
 var fs = require('fs')
 var path = require('path')
 var authAdmin = require('../../middleware/isAdmin')
 const Products = require('../../models/product')
 const Brands = require('../../models/brand')
-const crypto = require('crypto')
 var multer = require('multer')
 const mongoose = require('mongoose')
 var asyncc = require('async')
-const user = require('../../models/user')
 const Categories = require('../../models/category')
 const Galleries = require('../../models/gallery')
-const Orders = require('../../models/order')
 const Carousels = require('../../models/carousel')
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -38,10 +34,10 @@ router.get(
     var u
     var ua
     var cat
-    var tp
-    var ts
-    var tf
-    var transactions
+    var tp = []
+    var ts = []
+    var tf = []
+    var transactions = []
     var tasks = [
         function (callback) {
             db.collection('orders').aggregate([
