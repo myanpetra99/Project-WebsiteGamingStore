@@ -34,6 +34,7 @@
                   <td class="table-data text-center">Rp.<%= order.total %></td>
                   <td class="text-center"><%=  order.createdAt.toLocaleString("id-ID", options) %>, Pukul <%=  order.createdAt.toLocaleTimeString("id-ID")%></td>
                   <td class="table-data  text-center text-danger font-weight-bold"><%=  order.status %></td>
+                  <td class="table-data text-center"><a href="/dashboard/transaction/<%= order._id %>/detail" class="btn btn-info">Detail</a></td>
                   <td class="table-data text-center"><form action="/dashboard/transaction/<%= order._id %>/update-success?_method=PUT" method="POST"><button type="submit" class="btn btn-success">Success</button></form></td>
                 </tr>
                 <% }) %>

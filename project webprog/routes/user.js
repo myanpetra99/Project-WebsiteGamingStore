@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 var db = mongoose.connection;
 var auth = require('../middleware/Auth')
 const Users = require('../models/user')
+const bcrypt = require('bcrypt');
 
 
 

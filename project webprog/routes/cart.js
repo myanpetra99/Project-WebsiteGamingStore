@@ -110,14 +110,14 @@ router.post('/cart/checkout', async (req,res,next)=>{
         })
         try{
             newOrder.save()
-            db.collection('carts').deleteMany({customerID: req.user.id})
-            res.redirect(`/history`)
       }catch (e){
           console.log('Error getting History Order!')
           console.log(e)
           res.redirect(`/`)
       }
     })
+    db.collection('carts').deleteMany({customerID: req.user.id})
+    res.redirect(`/history`)
     console.log('new Order saved!')
    
    

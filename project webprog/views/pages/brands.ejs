@@ -39,19 +39,25 @@
                    
                             <ul class="list-group list-group-horizontal">
                                 <li class="list-group-item"> 
+                                 <a href="/product/?q=&brand=<%- brands[i].title %>">
                                     <img class="brand-logo" src="data:image/<%=brands[i].img.contentType%>;base64, 
                                     <%=brands[i].img.data.toString('base64')%>" >
+                                  </a>
                                 </li>
                                 <% i = i+1 %>
                                 <li class="list-group-item"> 
+                                  <a href="/product/?q=&brand=<%- brands[i].title %>">
                                     <img class="brand-logo" src="data:image/<%=brands[i].img.contentType%>;base64, 
                                     <%=brands[i].img.data.toString('base64')%>" >
+                                  </a>
                                 </li>
                                 <% i = i+1 %>
                                 <% if(i < brands.length){ %>
                                  <li class="list-group-item"> 
+                                  <a href="/product/?q=&brand=<%- brands[i].title %>">
                                     <img class="brand-logo" src="data:image/<%=brands[i].img.contentType%>;base64, 
                                     <%=brands[i].img.data.toString('base64')%>" >
+                                  </a>
                                 </li>
                               </ul>
                         <% } %>
