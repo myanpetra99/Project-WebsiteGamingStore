@@ -90,7 +90,7 @@ var kodepos = $('#kodepos').text()
             var p = $(
               '<p class="text-muted" style="font-size:13px">Jika telah melakukan Konfirmasi Pembayaran, Mohon menunggu paling lama 1x24 Jam.</p>' +
               '<p class="text-muted" style="font-size:13px;margin-top: -10px" >jika belum, dapat mengkonfirmasi pembayaran Dibawah ini (Whatsapp /Fast Response)</p>'+
-              '<div class="row"><div class="col"><a class="link-wa-confirm" href="https://"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#confirmModal">Whatsapp Web</button></a><p class="text-muted" style="font-size:14px">atau <a href="confirmation.html">Klik disini</a></p></div></div>'
+              '<div class="row"><div class="col"><a class="link-wa-confirm" href="https://"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#confirmModal">Whatsapp Web</button></a><p class="text-muted" style="font-size:14px">atau <a href="/confirmation">Klik disini</a></p></div></div>'
             );
             if ($(this).children().children().children().children().children('.transaction-status').text() ==
               'Pending') {

@@ -4,6 +4,9 @@ const Order = require('../models/order')
 const mongoose = require('mongoose')
 var db = mongoose.connection;
 var multer = require('multer')
+const Confirmations = require('../models/confirmation')
+var fs = require('fs')
+var path = require('path')
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, 'uploads')
@@ -51,7 +54,7 @@ router.post('/confirmation/submit',upload.single('image'), async function(req, r
      let confirmation = req.confirmation
      confirmation.orderID = req.body.nomororder
      confirmation.userID = req.user.id.toString()
-     confirmation.invoice.data = fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename))
+     confirmation.invoice.data = fs.readFileSync(path.join(__dirname + '/../uploads/' + req.file.filename))
      confirmation.invoice.contentType = 'image/png'
  
      try {

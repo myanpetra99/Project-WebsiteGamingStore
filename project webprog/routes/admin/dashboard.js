@@ -669,22 +669,44 @@ router.delete('/dashboard/web/carousel/:id/delete', async (req, res) => {
 })
 
 router.get(
-  '/dashboard/confirmation',
+  '/dashboard/confirmation-payment',
   auth.ensureAuthenticate,
   authAdmin.isAdmin('ADMIN'), async function (req, res) {
-    const confirmations = await Confirmations.find()
-    const products = await Products.find()
-    res.render('pages/admin/web/carousel/edit', {
-      name: req.user.name,
-      isLoggedIn: true,
-      carousel: carousel,
-      products: products
-    })
+    var displayHistory = []
+    db.collection('confirmations').aggregate([
+      { "$addFields": { "orderID": "$orderID" }},
+      { "$lookup": {
+        "from": "orders",
+        "localField": "orderID",
+        "foreignField": "orderID",
+        "as": "fromCart"
+      }},
+        {
+          "$replaceRoot": { "newRoot": { "$mergeObjects": [ { "$arrayElemAt": [ "$fromCart", 0 ] }, "$$ROOT" ] } }
+       },
+         { "$project": { "fromCart": 0 } },{ "$group": { "_id": "$orderID",
+         
+         "orderID": { "$first": '$orderID' }, "invoice": { "$first": '$invoice' },
+         "fromCart": { "$addToSet": "$$ROOT" }}},
+         
+         { "$sort": { "createdAt": -1}},
+      ]).toArray(function(err, result) {
+        if (err) throw err;
+
+      
+    
+        displayHistory = result
+
+        console.log(displayHistory[0].fromCart)
+
+        res.render('pages/admin/confirmation/index', {name: req.user.name,
+            isLoggedIn: true, confirmations:displayHistory,});
+        })
   }
 )
 
 router.put(
-  '/dashboard/confirmation/:id',
+  '/dashboard/confirmation-payment/:id',
   async (req, res) => {
     req.carousel = await Carousels.findById(req.params.id)
     next()
