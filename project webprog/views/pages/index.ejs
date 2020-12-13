@@ -32,7 +32,7 @@
           <% } %>">
           <a href="/product/item/<%=carousel.slug%>">
           <img src="data:image/<%=carousel.img.contentType%>;base64, 
-          <%= carousel.img.data.toString('base64') %>" class="d-block w-100 carousel-banner" alt="...">
+          <%= carousel.img.data.toString('base64') %>" class="d-block w-100 carousel-banner" alt="..." style="min-height: 300px; max-height: 300px;">
           <div class="carousel-caption d-none d-md-block">
             <h2><%= carousel.text %></h2>
           </div>

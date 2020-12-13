@@ -9,6 +9,7 @@ const Products = require('../models/product')
 const Galleries = require('../models/gallery')
 const Comment = require('../models/comment')
 const Subcomment = require('../models/subcomment')
+
 router.get('/product', async function(req, res) {
     const categories = await Categories.find()
     const brands = await Brands.find()
@@ -19,9 +20,21 @@ router.get('/product', async function(req, res) {
     const endIndex = page* limit
     let products
     let query = {}
+    let sorts = {}
     let reqbrand
     let reqcategory
+    let reqprice
+    let reqdate
     let jumlah =  await Products.countDocuments().exec()
+    if (req.query.price){
+        sorts.price =  req.query.price 
+        reqprice = req.query.price}
+
+    if(req.query.date){
+        sorts.createdAt = req.query.date 
+        reqdate = req.query.date
+    }
+
     if (req.query.q){
 query.nama = {'$regex' : req.query.q, '$options' : 'i'}
     }
@@ -34,8 +47,8 @@ query.nama = {'$regex' : req.query.q, '$options' : 'i'}
         query.brand = {'$regex' : req.query.brand, '$options' : 'i'}
        reqbrand = req.query.brand
     }
-    if ( (JSON.stringify(query) === '{}') == false){
-       await Products.find(query).limit(limit)
+    if ( (JSON.stringify(query) === '{}') == false ||  (JSON.stringify(sorts) === '{}') == false){
+       await Products.find(query).limit(limit).sort(sorts)
         .skip(startIndex)
         .then((results) => {
            products = results
@@ -62,7 +75,7 @@ query.nama = {'$regex' : req.query.q, '$options' : 'i'}
         })
     }else{
         await Products.find().limit(limit)
-         .skip(startIndex)
+         .skip(startIndex).sort({ "createdAt": -1})
          .then((results) => {
             products = results
            if (endIndex < jumlah)
@@ -98,10 +111,10 @@ query.nama = {'$regex' : req.query.q, '$options' : 'i'}
         })
         res.render('pages/product',
     {name: req.user.name,
-        isLoggedIn: true, products:products, badgecart:badgeCart, pagination:pagination, currentpage:page, categories:categories, brands:brands, reqbrand:reqbrand, reqcategory:reqcategory});
+        isLoggedIn: true, products:products, badgecart:badgeCart, pagination:pagination, currentpage:page, categories:categories, brands:brands, reqbrand:reqbrand, reqcategory:reqcategory, reqdate:reqdate, reqprice:reqprice});
     }else{
         res.render('pages/product',
-    {isLoggedIn: false, products:products, pagination:pagination, currentpage:page, categories:categories, brands:brands , reqbrand:reqbrand, reqcategory:reqcategory});
+    {isLoggedIn: false, products:products, pagination:pagination, currentpage:page, categories:categories, brands:brands , reqbrand:reqbrand, reqcategory:reqcategory, reqdate:reqdate, reqprice:reqprice});
     }
 
 

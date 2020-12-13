@@ -2,7 +2,7 @@
   "name": "node-ejs",
   "main": "server.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "async": "^3.2.0",
@@ -31,5 +31,8 @@
   "devDependencies": {
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.6"
+  },
+  "engines": {
+    "node": "14.15.0"
   }
 }

@@ -1,8 +1,4 @@
 // load the things we need
-if (process.env.NODE_ENV !== 'production'){
-    require('dotenv').config()
-}
-
 var express = require('express');
 var app = express();
 var passport = require('passport')
@@ -14,7 +10,7 @@ app.use(express.static("public"));
 require('./passport-config')(passport);
 app.use(flash())
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: 'Secret',
     resave: false,
     saveUninitialized: false
 }))
@@ -84,8 +80,6 @@ app.use( async function(req, res, next) {
 });
 
 //Localhost and port
-const hostname = '127.0.0.1';
-const port = 8080;
+const port = process.env.PORT || 8080;
 
-app.listen(8080);
-console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(port);

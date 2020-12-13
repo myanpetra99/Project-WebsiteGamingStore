@@ -73,17 +73,52 @@
                     </select>
                   </div>
                
-                  <div class="dropdown">
-      
-                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
-                      Filter
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Harga Tertinggi</a>
-                      <a class="dropdown-item" href="#">Harga Terendah</a>
-                      <a class="dropdown-item" href="#">Terbaru</a>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="sortPrice">Price</label>
                     </div>
+                    <select class="custom-select" id="sortPrice" form="formSearch" name="price">
+                      <% if(reqprice) {%>
+                        <% if(reqprice == -1) {%>
+                          <option value="<%= reqprice %>" >Harga tertinggi</option>
+                          <option value="">All Price</option>
+                          <option value="1" >Harga terendah</option>
+                          <% } else {%> 
+                            <option value="<%= reqprice %>" >Harga terendah</option>
+                            <option value="">All Price</option>
+                            <option value="-1" >Harga tertinggi</option>
+                          <%} %>
+                      
+                        <% } else {%>
+                          <option value="" disabled selected>Select your option</option>
+                          <option value="-1" >Harga tertinggi</option>
+                          <option value="1" >Harga terendah</option>
+                     <% }%>
+                       
+                    </select>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="sortDate">Date</label>
+                    </div>
+                    <select class="custom-select" id="sortDate" form="formSearch" name="date">
+                      <% if(reqdate) {%>
+                        <% if(reqdate == -1) {%>
+                          <option value="<%= reqdate %>" >Paling baru</option>
+                          <option value="">All Date</option>
+                          <option value="1" >Paling lawas</option>
+                          <% } else {%> 
+                            <option value="<%= reqdate %>" >Paling lawas</option>
+                            <option value="">All Date</option>
+                            <option value="-1" >Paling baru</option>
+                          <%} %>
+              
+                        <% } else {%>
+                          <option value="" disabled selected>Select your option</option>
+                          <option value="-1" >Paling baru</option>
+                          <option value="1" >Paling Lama</option>
+                     <% }%>
+                    </select>
                   </div>
                 </div>
       
@@ -91,7 +126,7 @@
               </div>
             </div>
             <div id="update">
-             <div class="row mt-2">
+             <div class="row mt-2 justify-content-md-center">
               <% products.forEach(product =>{ %>
                 <div class="col-md-3-sm-6 ml-3 mt-3">
                 <div class="card card-item" style="width: 14rem;">
@@ -148,7 +183,15 @@
     
       
   
-  
+  <script>
+    $(document).ready(function(){
+        $('.sortPrice').each(function(){ 
+            var oldUrl = '&price=' +$(this).attr("href"); // Get current url
+            var newUrl = window.location.href + oldUrl
+            $(this).attr("href", newUrl); // Set herf value
+        });
+    });
+  </script>
 
       </body>
 

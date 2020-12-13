@@ -692,11 +692,7 @@ router.get(
          { "$sort": { "createdAt": -1}},
       ]).toArray(function(err, result) {
         if (err) throw err;
-
-      
-    
         displayHistory = result
-
         console.log(displayHistory[0].fromCart)
 
         res.render('pages/admin/confirmation/index', {name: req.user.name,

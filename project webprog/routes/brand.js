@@ -17,6 +17,7 @@ router.get('/brand', async function(req, res) {
           }
       })
       
+      console.log(brand)
       res.render('pages/brands', {name: req.user.name,
           isLoggedIn: true, badgecart:badgeCart, brands: brand});
           console.log(brand)
