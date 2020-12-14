@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<%- include('../../../partials/admin/head'); %>
+
+
+  <body onload="startTime()">
+
+    <%- include('../../../partials/admin/sidenav'); %>
+    <%- include('../../../partials/admin/header',{name:name}); %>
+  
+    <div class="content">
+      <h1 style="font-family: 'Poppins';" class="text-center">Confirmation List</h1>
+      <div class="container">
+  
+        <div class="row ml-n5">
+        
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col" class="table-header text-center">ID order</th>
+                <th scope="col" class="table-header text-center">Bukti Order</th>
+                <th scope="col" class="table-header text-center">Status Order</th>
+                <th scope="col" class="table-header text-center">total</th>
+                <th colspan="3" class="table-header text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% confirmations.forEach(confirmation =>{ %>
+                <tr class="table-row">
+                  <th scope="row" class="text-center"><%= confirmation.orderID %></th>
+                 
+                  <td class="table-data text-center"> 
+                    <img id="myImg"  src="data:image/<%=confirmation.invoice.contentType%>;base64,<%=confirmation.invoice.data.toString('base64')%>" style="max-width: 100px;">
+                    <div id="myModal" class="modal">
+                       <img class="modal-content" id="img01">
+                    <div id="caption"></div>
+                    </div>
+               </td>
+                <td class="table-data text-center transaction.status"><%= confirmation.fromCart[0].Status %></td>
+                <td class="table-data text-center transaction.status">Rp.<%= confirmation.fromCart[0].total %></td>
+                  <td class="table-data text-center"><a href="/dashboard/transaction/<%= confirmation._id %>/detail" class="btn btn-info">Detail</a></td>
+                  <td class="table-data text-center"><form action="/dashboard/transaction/<%= confirmation._id %>/update-success?_method=PUT" method="POST"><button type="submit" class="btn btn-success">Success</button></form></td>
+                  <td class="table-data text-center"><form action="/dashboard/transaction/<%= confirmation._id %>/update-failed?_method=PUT" method="POST"><button type="submit" class="btn btn-danger">Failed</button></form></td>
+                </tr>
+                <% }) %>
+             
+            </tbody>
+          </table>
+      
+          </div>
+  
+        </div>
+  
+      </div>
+      </div>  
+
+      <script>
+        $(document).ready(function () {
+          $('.table-row').each(function () {
+          
+            if ($(this).children('.transaction-status').text() ==
+              'Pending') {
+                $(this).children('.transaction-status').addClass( "text-warning")
+            }
+            if($(this).children('.transaction-status').text() ==
+              'Failed'){
+                $(this).children('.transaction-status').addClass( "text-danger")
+            }else{
+              $(this).children('.transaction-status').addClass( "text-success")
+            }
+           
+            
+          })
+        })
+      </script>
+      <style>
+        #myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+#myImg:hover {opacity: 0.7;}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 99; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 500px; /* Full width */
+    height: 500px; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(1)}
+    to {-webkit-transform:scale(2)}
+}
+ 
+@keyframes zoom {
+    from {transform:scale(0.4)}
+    to {transform:scale(1)}
+}
+
+@-webkit-keyframes zoom-out {
+    from {transform:scale(1)}
+    to {transform:scale(0)}
+}
+@keyframes zoom-out {
+    from {transform:scale(1)}
+    to {transform:scale(0)}
+}
+
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+.out {
+  animation-name: zoom-out;
+  animation-duration: 0.6s;
+}
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+      </style>
+<script>
+  // Get the modal
+  var modal = document.getElementById('myModal');
+   
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById('myImg');
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
+  img.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      modalImg.alt = this.alt;
+      captionText.innerHTML = this.alt;
+  }
+   
+   
+  // When the user clicks on <span> (x), close the modal
+  modal.onclick = function() {
+      img01.className += " out";
+      setTimeout(function() {
+         modal.style.display = "none";
+         img01.className = "modal-content";
+       }, 400);
+      
+   }    
+      
+  </script>
+      <%- include('../../../partials/admin/footer'); %>
+  
+  </body>
+
+       
+</html>

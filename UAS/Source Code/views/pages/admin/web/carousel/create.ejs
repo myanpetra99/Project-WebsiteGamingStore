@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../../partials/admin/head'); %>
+
+
+  <body onload="startTime()">
+
+    <%- include('../../../../partials/admin/sidenav'); %>
+    <%- include('../../../../partials/admin/header',{name:name}); %>
+  
+    <div class="content">
+      <h1 style="font-family: 'Poppins';" class="text-center">Tambah Produk</h1>
+      <div class="container">
+    
+
+        <form action="/dashboard/web/carousel/create" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="title">Pilih Product  :</label>
+            <select name="title" id="title">
+            <% products.forEach(product =>{ %>
+        <option value="<%= product.nama %>"><%= product.nama %></option>
+              <% }) %>
+            </select>
+            <a href="/dashboard/product/create">Tambah Product Baru +</a>
+          </div>
+
+          <div class="form-group">
+            <label for="img">Upload Image (Recommend 1200 x 768)</label> 
+            <input type="file" id="image" 
+                   name="image" value="" required> 
+          </div>
+          <div class="form-group">
+            <label for="text">Text Pada Carousel : </label>
+            <textarea class="form-control" name="text" id="text" rows="2" placeholder="Contoh : Keychrone K2, Best Keyboard Zaman Now..."></textarea>
+          </div>
+        
+          <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <a href="/dashboard/web/carousel" class="btn btn-secondary">Cancel</a>
+          </div>
+      
+        </form>
+  
+      </div>
+      </div>  
+ 
+
+      <%- include('../../../../partials/admin/footer'); %>
+  </body>
+
+  <script>
+
+var _URL = window.URL || window.webkitURL;
+
+$("#image").change(function(e) {
+    var file, img;
+
+
+    if ((file = this.files[0])) {
+        img = new Image();
+        img.onload = function() {
+            alert('Ukuran yang ingin di input : '+this.width + " X " + this.height+ '\n'+'Ukuran rekomendasi : 1200 x 768 ');
+        };
+        img.onerror = function() {
+            alert( "not a valid file: " + file.type);
+        };
+        img.src = _URL.createObjectURL(file);
+
+
+    }
+
+});
+  </script>
+
+</html>

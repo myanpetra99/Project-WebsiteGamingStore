@@ -1,0 +1,76 @@
+<div id="mySidenav" class="sidenav">
+     
+    <p style="font-family: 'zealot'; font-size:25px" class="active text-center">Admin</p>
+    <a href="/dashboard" class="active text-center">Dashboard</a>
+    <a href="#" class="text-center dropdown-btn dropdown-toggle" id="dropB1"  type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+    <div class="dropdown-container" id="dropC">
+      <a href="/dashboard/product">List Product</a>
+      <a href="/dashboard/product/brand/show">List Brand</a>
+
+      <a href="/dashboard/product/create">Tambah Produk</a>
+      <a href="/dashboard/product/brand/create">Tambah Brand</a>
+      <a href="/dashboard/product/category/create">Tambah Kategori</a>
+  
+
+    </div>
+    <a href="#" class="text-center dropdown-btn dropdown-toggle" id="dropB2"  type="button" id="dropdownMenu2" data-toggle="dropdown2" aria-haspopup="true" aria-expanded="false">Gallery</a>
+    <div class="dropdown-container" id="dropD">
+      <a href="/dashboard/gallery">List Photo</a>
+      <a href="/dashboard/gallery/add">Tambah Photo/Gallery</a>
+  
+
+    </div>
+
+    <a href="#" class="text-center dropdown-btn dropdown-toggle" id="dropB3"  type="button" id="dropdownMenu3" data-toggle="dropdown3" aria-haspopup="true" aria-expanded="false">Transaction</a>
+    <div class="dropdown-container" id="dropE">
+      <a href="/dashboard/transaction">List Transaksi (Pending)</a>
+      <a href="/dashboard/transaction/success">List Transaksi (Sukses)</a>
+      <a href="/dashboard/transaction/failed">List Transaksi (Gagal)</a>
+
+    </div>
+  
+    <a href="/dashboard/confirmation-payment" class="text-center">Confirmation List</a>
+    <a href="#" class="text-center dropdown-btn dropdown-toggle" id="dropB4"  type="button" id="dropdownMenu4" data-toggle="dropdown4" aria-haspopup="true" aria-expanded="false">Web Misc.</a>
+    <div class="dropdown-container" id="dropF">
+      <a href="/dashboard/web/carousel">Carousel</a>
+      </div>
+  </div>
+
+  <script>
+    var dropBtn = document.getElementById("dropB1");
+    var dropBtn2 = document.getElementById("dropB2");
+    var dropBtn3 = document.getElementById("dropB3");
+    var dropBtn4 = document.getElementById("dropB4");
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var dropContainer = document.getElementById('dropC')
+    var dropContainer2 = document.getElementById('dropD')
+    var dropContainer3 = document.getElementById('dropE')
+    var dropContainer4 = document.getElementById('dropF')
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("activeNav");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+
+
+var sidenav = document.getElementById('mySidenav')
+  sidenav.addEventListener("mouseleave", function() {
+    dropContainer.style.display = "none"
+    dropBtn.classList.remove("activeNav");
+    dropContainer2.style.display = "none"
+    dropBtn2.classList.remove("activeNav");
+    dropContainer3.style.display = "none"
+    dropBtn3.classList.remove("activeNav");
+    dropContainer4.style.display = "none"
+    dropBtn4.classList.remove("activeNav");
+  });
+
+  </script>

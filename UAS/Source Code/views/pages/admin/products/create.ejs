@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../partials/admin/head'); %>
+
+
+  <body onload="startTime()">
+
+    <%- include('../../../partials/admin/sidenav'); %>
+    <%- include('../../../partials/admin/header',{name:name}); %>
+  
+    <div class="content">
+      <h1 style="font-family: 'Poppins';" class="text-center">Tambah Produk</h1>
+      <div class="container">
+    
+        <% if (messages.error){
+          %>
+          <%= messages.error %> 
+          <% } %> 
+          <% if (messages.info){
+              %>
+              <%= messages.info %> 
+              <% } %> 
+          <% if (messages.success){
+              %>
+              <%= messages.success %> 
+              <% } %> 
+        <form action="/dashboard/product/create" method="POST" enctype="multipart/form-data" id="formCreateProduct">
+          <div class="form-group">
+            <label for="nama">Nama Produk : </label>
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="" value="<%= product.nama %>">
+          </div>
+          <div class="form-group">
+            <label for="img">Upload Image</label> 
+            <img id="blah" src="" alt="" style="max-width: 100px;"/>
+            <input type="file" id="image" 
+                   name="image" value="" required> 
+                  
+          </div>
+          <div class="form-group">
+            <label for="sku">SKU Produk : </label>
+            <input type="text" value="<%= product.sku %>" class="form-control" id="sku" name="sku" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="price">Harga produk (Rp) : </label>
+            <input type="number" value="<%= product.price %>" class="form-control" id="price" name="price" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="weight">Berat produk (Gram): </label>
+            <input type="number" value="<%= product.weight %>" class="form-control" id="weight" name="weight" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="desc">Deskripsi Produk : </label>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div id="div_editor1">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <textarea hidden class="form-control" value="" id="desc" name="desc" rows="3"><%= product.desc %></textarea>
+          </div>
+          <div class="form-group">
+            <label for="brand">Pilih Brand : </label>
+            <select name="brand" id="brand">
+            <% brands.forEach(brand =>{ %>
+        <option value="<%= brand.title %>"><%= brand.title %></option>
+              <% }) %>
+            </select>
+            <a href="/dashboard/product/brand/create">Tambah Brand Baru +</a>
+          </div>
+         
+          <div class="form-group">
+            <label for="category">Pilih Kategori  :</label>
+            <select name="category" id="category">
+            <% categories.forEach(category =>{ %>
+        <option value="<%= category.title %>"><%= category.title %></option>
+              <% }) %>
+            </select>
+            <a href="/dashboard/product/category/create">Tambah Kategori Baru +</a>
+          </div>
+        
+          <div class="form-group">
+        <button class="btn btn-primary" type="button"  data-toggle="modal" data-target="#exampleModalCenter">Submit</button>
+        <a href="/dashboard/product" class="btn btn-secondary">Cancel</a>
+          </div>
+      
+        </form>
+  
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Konfirmasi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-danger">pastikan Nama Produk Sudah benar! , Nama produk tidak dapat di Edit kecuali di buat kembali! </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+        <button type="button" class="btn btn-primary" onclick="formCreateProduct.submit()">Konfirmasi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      </div>
+      </div>  
+ 
+<script>
+    var editor1 = new RichTextEditor("#div_editor1");    
+
+
+editor1.attachEvent("change", function () {      
+  var content = editor1.getHTMLCode()
+    document.getElementById('desc').innerHTML = content   
+});   
+
+
+function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#image").change(function(){
+        readURL(this);
+    });
+</script>
+
+      <%- include('../../../partials/admin/footer'); %>
+  </body>
+
+
+</html>

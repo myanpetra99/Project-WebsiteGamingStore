@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <%- include('../partials/head', {title : ''}); %>
+  <% if (isLoggedIn) { %>
+      <%- include('../partials/header', {isLoggedIn : isLoggedIn,
+          name: name}); %>
+      <% } else { %>
+          <%- include('../partials/header', {isLoggedIn : isLoggedIn}); %>
+      <% } %>
+
+    <body>
+        <section class="content" style="margin-top: 75px;">
+        
+      <!--Pop Up Navbar on scroll!-->
+
+      <% if (isLoggedIn) { %>
+  <nav class="navbar fixed-bottom  navbar-bottom" id="navbarBot">
+    <p class="item-title nama-barang"><%= product.nama %> <span class="item-price border-left">Rp<%= product.price %></span></p>
+   <span>
+    <a href="/buy-now/<%= product.slug %>"> <button class="btn-keranjang-navbar" style="font-size: 20px;" type="submit">Beli Sekarang</button></a>
+
+    <form action="/add-to-cart/<%= product.id %>" method="POST">
+      <button class="btn-utama ml-2" style="font-size: 20px;" type="submit">Masukin Keranjang</button></span>
+    </form>
+    </nav>
+    <% } else { %>
+
+      <nav class="navbar fixed-bottom  navbar-bottom" id="navbarBot">
+        <p class="item-title nama-barang"><%= product.nama %> <span class="item-price border-left">Rp<%= product.price %></span></p>
+       <span>
+        <a href="/login"> <button class="btn-keranjang-navbar" style="font-size: 20px;" >Beli Sekarang</button></a>
+         <a href="/login"> <button class="btn-utama ml-2" style="font-size: 20px;">Masukin Keranjang</button></span></a>
+
+        </nav>
+
+    <% } %>
+    <div class="container">
+      <div class="row ">
+        <div class="col mb-4 col-breadcrumb">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/product">Product</a></li>
+              <li class="breadcrumb-item active" aria-current="page"><%= product.nama %></li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content">
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="xzoom-container">
+            <img src="data:image/<%=product.img.contentType%>;base64, 
+        <%=product.img.data.toString('base64')%> " class="xzoom" xoriginal="data:image/<%=product.img.contentType%>;base64, 
+        <%=product.img.data.toString('base64')%> " style="height: 600px; width: 600px; object-fit: contain;">
+
+
+            <div class="xzoom-thumbs">
+              <a style="height: 600px; width: 600px; object-fit: contain;" href="data:image/<%=product.img.contentType%>;base64, 
+                <%=product.img.data.toString('base64')%>">
+                <img class="xzoom-gallery" style="object-fit: contain;" width="128" height="128"
+                  src="data:image/<%=product.img.contentType%>;base64, 
+                  <%=product.img.data.toString('base64')%>" xpreview="data:image/<%=product.img.contentType%>;base64, 
+                  <%=product.img.data.toString('base64')%>" /></a>
+                  <% galleries.forEach(gallery =>{ %>
+                    <a style="height: 600px; width: 600px; object-fit: contain;" href="data:image/<%=gallery.img.contentType%>;base64, 
+                      <%=gallery.img.data.toString('base64')%>"><img class="xzoom-gallery" width="128" height="128" style="object-fit: contain;"
+                      src="data:image/<%=gallery.img.contentType%>;base64, 
+                      <%=gallery.img.data.toString('base64')%>" xpreview="data:image/<%=gallery.img.contentType%>;base64, 
+                      <%=gallery.img.data.toString('base64')%>" /></a>
+                    <% }) %>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div>
+            <br>
+            <br>
+            <h1 class="item-title "><%= product.nama %></h1>
+            <h2 class="item-price"> <span class="props-item"><sup>HARGA</sup></span> Rp<%= product.price %> </h2>
+            <% if (isLoggedIn) { %>
+              <a href="/buy-now/<%= product.slug %>"> <button class="btn-beli mt-3">Beli Sekarang</button></a>
+              <br>
+              <form action="/add-to-cart/<%= product.id %>" method="POST">
+             <button class="btn-utama mt-3" style="background-color: none !important;" type="submit">Masukin keranjang</button>
+              </form>
+              <% } else { %>
+                <a href="/login"> <button class="btn-beli mt-3">Beli Sekarang</button></a>
+                <br>
+                <a href="/login"><button class="btn-utama mt-3" style="background-color: none !important;">Masukin keranjang</button>
+                </a>
+            
+                <% } %>
+           
+            
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="container ">
+      <hr>
+      <div class="row">
+
+        <div style="margin-top: -10px;">
+          <div class="col"> <a href="#Desc" class="mini-menus-item">Deskripsi</a> &nbsp;&nbsp; &nbsp; &nbsp; <a href="#Ask"
+              class="mini-menus-item">Diskusi</a> </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+    <div class="container item-description" id="Desc">
+
+      <div class="row">
+        <div class="col">
+          <div class="text-muted">Deskripsi Produk : </div>
+          <%- product.desc %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="text-muted">Berat Barang : </div> <%= product.weight %> (Gram)
+        </div>
+      </div>
+      <hr>
+    </div>
+
+
+    <div class="container item-ask mt-5" id="Ask">
+
+      <div class="row">
+        <div class="col align-self-start">
+          <span class="mini-menus-title">
+            Diskusi (<span class="manycomment"></span>) 
+            <br>
+            <span class="mini-menus-sub-title"><%= product.nama %></span>
+          </span>
+        </div>
+      </div>
+
+      <div class="row row-ask">
+        <div class="container mt-1"
+          style="background-color: #FFFFFF; border: 1px solid rgb(202, 202, 202); padding: 1rem;">
+          <hr>
+          <% comments.forEach(comment =>{ %>
+          <div class="row user-comment">
+            <div class="col-2 user-pic">
+              <div id="profileImage"></div>
+            </div>
+            <div class="col-10">
+              <div class="row">
+                <div><span id="userName" style="font-family: montserrat; font-weight: 600;"><%= comment.customerName %></span></div>
+                &nbsp;&nbsp;<span class="text-muted" id="date"><%= comment.createdAt.toLocaleString() %></span>
+              </div>
+              <div class="row">
+                <%= comment.textComment %>
+              </div>
+            </div>
+          </div>
+          <% subcomments.forEach(subcomment =>{ %>
+            
+            <% if (subcomment.parentComment == comment.id.toString()){ %>
+              <div class="container-fluid" style="background-color: rgb(247, 247, 247);">
+          <div class=" ml-5 row user-comment mt-3">
+            <div class="col-2 user-pic">
+              <div id="profileImage"></div>
+            </div>
+            <div class="col-10">
+              <div class="row">
+                <div>&nbsp;&nbsp;<span id="userName" style="font-family: montserrat; font-weight: 600;"><%= subcomment.customerName %></span></div>
+                &nbsp;&nbsp;<span class="text-muted" id="date"><%= subcomment.createdAt.toLocaleString() %></span>
+              </div>
+              <div class="row">
+               &nbsp; <%= subcomment.textComment %>
+              </div>
+            </div>
+          </div>
+          </div>
+          <% } %>
+          <% }) %>
+          <% if (isLoggedIn) { %>
+            <div class="col">
+      <form action="/product/item/<%= product.slug %>/<%= comment.id %>/subcomment" style="border: 0px solid rgb(233, 233, 233); padding: 1rem;" method="POST">
+        <textarea class="form-control" name="textComment" id="textComment" rows="2" placeholder="isi komentar disini"></textarea>
+        <button type="submit" class="btn btn-info form-control mt-3">Balas Komentar</button>
+      </form>
+    </div>
+        
+<% } %>
+          <hr>
+          <% }) %>
+
+          <div class="row mt-5">
+           <% if (isLoggedIn) { %>
+                <div class="col">
+          <form action="/product/item/<%= product.slug %>/comment" style="border: 1px solid rgb(233, 233, 233); padding: 1rem;" method="POST">
+            <textarea class="form-control" name="textComment" id="textComment" rows="3" placeholder="Ada yang ingin ditanyakan?"></textarea>
+            <button type="submit" class="btn btn-info form-control mt-3">Tanya</button>
+          </form>
+        </div>
+             <% } else { %>
+              <div class="col">
+            <a href="/login" class="btn btn-info form-control mt-3">Login untuk diskusi</a>
+        </div>
+    <% } %>
+     
+      </div>
+        </div>
+        
+      </div>
+      <hr>
+
+      
+  
+    </div>
+
+    </div>
+    
+
+  </section>
+
+
+<script>
+$(document).ready(function(){
+  var counter = 0
+
+  $('.user-comment').each(function () {
+    counter += 1
+  })
+$('.manycomment').html(counter)
+
+})
+</script>
+  <script>
+    $(document).ready(function () {
+      var titlex = document.getElementById("titleDoc");
+      titlex.textContent += $('.nama-barang').text()+' - AGstore';
+    })
+  </script>
+
+
+  <script>
+    $(document).ready(function () {
+      $('.xzoom, .xzoom-gallery').xzoom({
+        zoomWidth: 300,
+        title: false,
+        position: 'inside'
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+
+      $('.user-comment').each(function () {
+        const fullName =
+          $(this)
+          .children()
+          .children()
+          .children()
+          .children('#userName')
+          .text()
+
+        const intials = fullName
+        .split(' ')
+        .map(name => name[0])
+        .join('')
+        .toUpperCase()
+
+        $(this).children().children('#profileImage').html(intials)
+
+      })
+
+    })
+  </script>
+
+
+      </body>
+
+  <%- include('../partials/footer',{isLoggedIn : isLoggedIn}); %>
+
+
+</html>

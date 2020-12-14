@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<%- include('../../../../partials/admin/head'); %>
+
+
+  <body onload="startTime()">
+
+    <%- include('../../../../partials/admin/sidenav'); %>
+    <%- include('../../../../partials/admin/header',{name:name}); %>
+  
+    <div class="content">
+      <h1 style="font-family: 'Poppins';" class="text-center">Carousels</h1>
+      <div class="container">
+  
+        <div class="row">
+          <a href="/dashboard/web/carousel/create" class="btn btn-primary mb-2">+ Tambah carousel</a>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col" class="table-header text-center">Untuk Produk</th>
+                <th scope="col" class="table-header text-center">Carousel Produk</th>
+                <th scope="col" class="table-header text-center">Text Carousel</th>
+                <th scope="col" class="table-header text-center">Tanggal Input</th>
+                <th scope="col" class="table-header text-center"></th>
+                <th scope="col" class="table-header text-center"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% carousels.forEach(carousel =>{ %>
+                <tr>
+                  <th scope="row" class="text-center"><%= carousel.title %></th>
+                  <td class="table-data text-center"> <img src="data:image/<%=carousel.img.contentType%>;base64, 
+                    <%=carousel.img.data.toString('base64')%>" style="max-width: 100px;"> </td>
+                  <td class="table-data text-center"><%= carousel.text %></td>
+                  <td class="table-data text-center"><%= carousel.createdAt.toLocaleDateString() %></td>
+                  <td class="table-data text-center"><a href="/dashboard/web/carousel/<%= carousel.id %>/edit" class="btn btn-primary">Edit</a></td>
+                  <td class="table-data text-center""><form action="/dashboard/web/carousel/<%= carousel.id %>/delete?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger">Hapus</button></form></td>
+                </tr>
+                <% }) %>
+             
+            </tbody>
+          </table>
+      
+          </div>
+  
+        </div>
+  
+      </div>
+      </div>  
+
+      <%- include('../../../../partials/admin/footer'); %>
+  </body>
+
+       
+</html>

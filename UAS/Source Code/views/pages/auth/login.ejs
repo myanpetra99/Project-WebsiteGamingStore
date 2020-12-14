@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('../../partials/head',{title : 'Login - AGStore'}); %>
+
+<body onload="setRandomColor(); showImage(); ">
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <a href="/">
+                        <h1 id="logoLogin" style="font-family: Zealot; margin: 10px;" class="text-center">AGStore</h1>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <!--banner Left-->
+                <div class="col-md-6">
+                    <div class="d-none d-md-block banner-login">
+                        <div class=""> <img id="bannerLogin" style="width: 100%; object-fit: contain; height: 90vh;">
+                        </div>
+
+                    </div>
+                </div>
+                 <!--login/Register-->
+                <div class="col-md-6">
+                    <div class="card" style="margin-top: 10%;">
+                        <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                            <li class=" nav-item nav-login w-50">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#login" role="tab"
+                                    aria-controls="home" aria-selected="true">
+                                    <div class="display-4 text-center mb-4" style="font-size: 20px;">
+                                        <b>Sign In</b>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item nav-login w-50">
+                                <a class="nav-link" id="profile-tab" href="register"  aria-selected="false">
+                                    <div class="display-4 text-center mb-4" style="font-size: 20px;">
+                                        <b>Register</b>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                       
+                        <div class="tab-content" id="myTabContent">
+                             <!--login-->
+                            <div class="tab-pane fade show active" id="login" role="tabpanel"
+                                aria-labelledby="home-tab">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="display-4 text-center mb-4" style="font-size: 40px;">
+                                                Sign In
+                                            </div>
+                                            <% if (messages.error){ %>
+                                                <div class="alert alert-danger" role="alert">
+                                                    <%= messages.error %> 
+                                                  </div>
+                                                
+                                                <% } %> 
+                                                <% if (messages.info){ %>
+                                                    <div class="alert alert-info" role="alert">
+                                                          <%= messages.info %> 
+                                                      </div>
+                                                  
+                                                    <% } %> 
+                                                <% if (messages.success){ %>
+                                                    <div class="alert alert-success" role="alert">
+                                                 <%= messages.success %> 
+                                                      </div>
+                                                   
+                                                    <% } %> 
+                                            <form action="/login" method="POST">
+                                                <input class="input-login mb-4" type="text" required name="email" id="email"
+                                                    placeholder="Email">
+                                                <input class="input-login mb-4" type="password" required name="password" id="password"
+                                                    placeholder="Password">
+                                                <button type="submit" class="btn btn-utama mb-5"
+                                                    style="width: 100%; border-radius: 10px;">Login</button>
+                                            </form>
+
+                                            <p><a href="#" class="text-primary" data-toggle="modal"
+                                                    data-target="#forgotModal">Lupa Password? Klik disini</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Modal  forgotPassword-->
+        <div class="modal fade" id="forgotModal" tabindex="-1" role="dialog" aria-labelledby="forgotModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Lupa Password</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            <div class="text-muted">Password akan dikirimkan ke Email Tertuju (Jika terdaftar)</div>
+                        </p>
+                        <form action="/forgot" method="POST">
+                            <input class="input-login mb-4 input-forgot" type="email" required name="forgotemail" id="forgotemail"
+                                placeholder="Masukkan email" title="Email harus valid">
+                            <button type="submit" class="btn btn-utama form-control btn-forgot">Submit</button>
+                        </form>
+
+                        <p class="text-danger message-forgot" style="display: none;">Silahkan cek email anda dalam
+                            beberapa menit</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!--Generate random banner-->
+    <script>
+        var theImages = new Array()
+
+
+        theImages[0] = 'images/Banner-login2.jpg'
+        theImages[1] = 'images/Banner-login.jpg'
+        theImages[2] = 'images/Banner-login3.jpg'
+        theImages[3] = 'images/Banner-login4.png'
+
+
+        var j = 0
+        var p = theImages.length;
+        var preBuffer = new Array()
+        for (i = 0; i < p; i++) {
+            preBuffer[i] = new Image()
+            preBuffer[i].src = theImages[i]
+        }
+        var whichImage = Math.round(Math.random() * (p - 1));
+
+
+        function showImage() {
+            document.getElementById('bannerLogin').src = theImages[whichImage]
+        }
+    </script>
+
+   <!--Generate random header color-->
+    <script>
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+
+   <!--set random header color-->
+    <script>
+        function setRandomColor() {
+            $("#logoLogin").css("color", getRandomColor());
+        }
+    </script>
+
+ <!--Validate Input email-->
+    <script>
+        function validateEmail(email) {
+            const re =
+                /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+        function showMessage() {
+            if (validateEmail($('.input-forgot').val())) {
+
+                setTimeout(function () {
+                    $(".btn-forgot").parent().remove()
+                    $(".message-forgot").css("display", "block");
+                }, 1000);
+            } else {
+                $('.input-forgot').attr('title').show()
+            }
+
+        }
+    </script>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../partials/admin/head'); %>
+
+
+  <body onload="startTime()">
+
+    <%- include('../../../partials/admin/sidenav'); %>
+    <%- include('../../../partials/admin/header',{name:name}); %>
+  
+    <div class="content">
+      <h1 style="font-family: 'Poppins';" class="text-center">Edit Merk/Brand</h1>
+      <div class="container">
+
+        <form action="/dashboard/product/brand/<%= brand.id %>/edit?_method=PUT" method="POST"  enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="nama">Nama Brand : </label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="" value="<%= brand.title %>">
+          </div>
+          <div class="form-group">
+            <label for="img">Upload Image</label> 
+            <input type="file" id="image" 
+                   name="image" value="<%= brand.img %>" required> 
+          </div>
+          <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <a href="/dashboard/product/brand/show" class="btn btn-secondary">Cancel</a>
+          </div>
+         
+        </form>
+  
+      </div>
+      </div>  
+
+      <%- include('../../../partials/admin/footer'); %>
+  </body>
+
+
+</html>

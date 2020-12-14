@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <%- include('../partials/head', {title : 'Beli sekarang'}); %>
+
+<% if (isLoggedIn) { %>
+  <%- include('../partials/header', {isLoggedIn : isLoggedIn,
+      name: name}); %>
+  <% } else { %>
+      <%- include('../partials/header', {isLoggedIn : isLoggedIn}); %>
+  <% } %>
+
+<body onload="recalculateCart()">
+  <section class="content" style="margin-top: 75px;" >
+
+    <div class="container">
+      <h2>Beli Sekarang </h2>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="shopping-cart">
+
+            <div class="card mb-3 product" style="width: 100%;">
+              <div class="row no-gutters">
+                <div class="col-md-4 d-flex align-items-center">
+                  <img src="data:image/<%=product.img.contentType%>;base64, 
+                  <%=product.img.data.toString('base64')%>" class=" product-img" alt="...">
+                </div>
+                <div class="col-md-4">
+                  <div class="card-body product-details">
+                    <h5 class="card-title product-title"><%= product.nama %></h5>
+                    <div class="card-text product-price"><%= product.price %></div>
+                  </div>
+                </div>
+                <div class="col-md-2 d-flex align-items-center ml-n4">
+                  <input style="width: 5rem;" class="product-quantity" type="number" min="1" value="1">
+                </div>
+                <div class="col-md-2 d-flex align-items-center ml-4">
+                 <div class="btn btn-dec"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
+                  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                </svg></div>
+                  <div class="btn btn-inc">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                  </div>
+                  <div class="product-line-price" style="visibility: hidden;">
+                    <%= product.price %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="empty-cart" style="display: block;">
+            <a href="/product">
+              <img src="images/cart-empty.png" alt="">
+            </a>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card ringkasan-belanja" style="width: 100%;">
+            <div class="card-body">
+              <div class="grid">
+                <b id="rukan" class="card-title">Detail Penerima</b>&nbsp;
+                  <span class="border" style="background-color: rgb(39, 28, 133); color:white;font-weight: bold;">Tertuju</span>
+              </div>
+              <h9 class="card-subtitle mb-2 text-muted">Nama  :</h9>
+                <div id="nama">  <%=  name %></div>
+                <h9 class="card-subtitle mb-2 text-muted">No.Telp  :</h9>
+                <div id="telepon">  <%=   phone %></div>
+                <h9 class="card-subtitle mb-2 text-muted">Alamat  :</h9>
+                <div id="alamat" style="font-weight:200;">  <%=  address %></div>
+                <h9 class="card-subtitle mb-2 text-muted">Kode Pos   :</h9>
+                <div id="kodepos" style="font-weight:200;">  <%=  zip %></div>
+                <hr>
+              <h5 class="card-title">Ringkasan Belanja</h5>
+              <div class="totals">
+                <div class="totals-item mt-3">
+                  <h6 class="card-subtitle mb-2 text-muted">Sub-Total (<span class="keranjangku"></span> Produk)</h6>
+                  <div class="totals-value mt-n2" id="cart-subtotal"></div>
+                </div>
+                <div class="totals-item mt-3">
+                  <h6 class="card-subtitle mb-2 text-muted">Pilih Pengiriman :</h6>
+                  <div class="radios">
+                    <input class="radio1" type="radio" name="radios" onchange="update()" checked> City To City (Kota Jakarta)<br>
+                    <input class="radio2" type="radio" name="radios" onchange="update()"> Pulau Jawa (Luar Jakarta)<br>
+                    <input class="radio3" type="radio" name="radios" onchange="update()"> Luar Pulau Jawa
+
+                  </div>
+                </div>
+               
+               
+                  <div class="totals-item mt-3">
+                  <h6 class="card-subtitle mb-2 text-muted">Biaya Pengiriman :</h6>
+                  <div class="totals-value mt-n2" id="cart-shipping"></div>
+                  <div class="totals-item mt-3">
+                    <h6 class="card-subtitle mb-2 text-muted">Kode UNIK:</h6>
+                    <div class="mt-n2" id="unique-code" style="color: rgb(0, 119, 255); font-weight: bold;"></div>
+                  </div>
+                </div>
+                <div class="totals-item totals-item-total mt-3">
+                  <h6 class="card-subtitle mb-2 text-muted">Total Belanja :</h6>
+                  <div class="totals-value total-belanja mt-n2" id="cart-total"></div>
+                </div>
+              </div>
+              <br>
+
+              <div class="print-element" id="Invoice">
+                <p style="font-family: 'zealot'; font-size:40px; text-align: center;">AGStore</p>
+                <div class="date-invoice text-muted" style="font-size: 30px;"></div>
+                <hr>
+
+                <h4>Kode Transaksi : </h4>
+                <p style="color: purple;">AGS-<code id="output"></code></p>
+                <div class="data-penerima">
+
+                </div>
+                <hr>
+              </div>
+
+              <form action="/buy-now/<%= product.slug %>/checkout" method="POST">
+                <input type="hidden" name="qtyOrder" id="qtyOrder" value="">
+                <input type="hidden" name="totalOrder" id="totalOrder" value="">
+                <input type="hidden" name="randOrderId" id="randOrderId" value="">
+                <button class="form-control btn-beli "type="submit">
+                  <!-- onclick="showTransfer(), recalculateCart(), submitCart(), showToast(), clearCart()"-->
+                  Lanjutkan Pembayaran
+                </button>
+              </form>
+
+
+
+
+              <div class="transfer-information" id="transferInfo">
+
+                <div id="accordion">
+                  <div class="card">
+                    <div class="card-header" id="headingOne">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                          aria-expanded="true" aria-controls="collapseOne">
+                          <img src="images/logo-bca.png" style="height: 40px;">
+                        </button>
+                      </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="card-body">
+                        <b>XXXXXXXXX A/N Michael Yan Petra</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" id="headingTwo">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                          aria-expanded="false" aria-controls="collapseTwo">
+                          <img src="images/Logo-mandiri.png" style="height: 50px;" alt="">
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                      <div class="card-body">
+                        <b>XXXXXXXXX A/N Mas Lubby</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" id="headingThree">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                          aria-expanded="false" aria-controls="collapseThree">
+                          <img src="images/logo-gopay.png" alt="" style="height: 50px;">
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                      <div class="card-body">
+                        <b> No : +62XXXXXXX A/N Kang Evan</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card card-whatsapp" style="width: 100%">
+                  <div class="card-body">
+                    <h5 class="card-title">Konfirmasi Pembayaran</h5>
+                    <h6 class="card-subtitle mb-2">Whatsapp</h6>
+
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-3"><img src="images/whatsapp-logo.png" width="60px" alt="">
+
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text" class="text-muted">
+                            Johan Hartanto -
+                            081XXXXXXXX</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button class="form-control btn btn-primary mt-2" data-toggle="modal" data-target="#confirmModal">
+                      Konfirmasi Sekarang</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+
+  <div class="modal fade " id="confirmModal" tabindex="-1" aria-labelledby="econfirmModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel"> Silahkan Pilih Metode Konfirmasi Di Bawah Ini</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex justify-content-center">
+            <div class="text-muted">Scan Qr Dibawah Ini (Android/iOS)</div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <img id="qrious">
+          </div>
+          <div class="separator">Atau</div>
+          <div class="d-flex justify-content-center">
+            <div class="text-muted">Menuju Whatsapp Web</div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <a class="link-wa-confirm"
+              href="https://api.whatsapp.com/send?phone=6281936516716&text=Saya%20Telah%20Melakukan%20Pembayaran%20Di%20website%20Anjay%20Gaming%20Store%20Dengan%20Bukti%20Sebagai%20Berikut%20:%0ANama%20:%0AAlamat:%0AID%20Order%20:%0A"><button
+                type="button" class="btn btn-info">Whatsapp Web</button></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div style="position: absolute; top: 3rem; right: 0;">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+      <div class="toast-header">
+        <strong class="mr-auto">Message</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        <p class="text-dark"> Your Invoice Has Been Created</p> <button onclick="window.print()">Click Here</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <script src="/vendor/qrious/qrious.js"></script>
+
+
+  <script>
+    feather.replace()
+  </script>
+  <script src="/js/main.js"></script>
+  <script src="/js/instantCart.js"></script>
+
+<script>
+
+</script>
+</body>
+
+  <%- include('../partials/footer',{isLoggedIn : isLoggedIn}); %>
+
+
+</html>

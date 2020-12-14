@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<%- include('../../../partials/admin/head'); %>
+
+
+  <body onload="startTime()">
+
+    <%- include('../../../partials/admin/sidenav'); %>
+    <%- include('../../../partials/admin/header',{name:name}); %>
+  
+    <div class="content">
+      <h1 style="font-family: 'Poppins';" class="text-center">Gallery Produk</h1>
+      <div class="container">
+  
+        <div class="row">
+          <a href="/dashboard/gallery/add" class="btn btn-primary mb-2">+ Tambah Foto</a>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col" class="table-header text-center">Gambar pada Produk :</th>
+                <th scope="col" class="table-header text-center">Gambar Produk</th>
+                <th scope="col" class="table-header text-center">Tanggal Input</th>
+                <th scope="col" class="table-header text-center"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% galleries.forEach(gallery =>{ %>
+                <tr>
+                  <th scope="row" class="text-center"><%= gallery.title %></th>
+                  <td class="table-data text-center"> <img src="data:image/<%=gallery.img.contentType%>;base64, 
+                    <%=gallery.img.data.toString('base64')%>" style="max-width: 100px;"> </td>
+                  <td class="table-data text-center"><%= gallery.createdAt.toLocaleDateString() %></td>
+                  <td class="table-data text-center""><form action="/dashboard/gallery/photo/<%= gallery.id %>/delete?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger">Hapus</button></form></td>
+                </tr>
+                <% }) %>
+             
+            </tbody>
+          </table>
+      
+          </div>
+  
+        </div>
+  
+      </div>
+      </div>  
+
+      <%- include('../../../partials/admin/footer'); %>
+  </body>
+
+       
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('../../partials/head',{title : 'Register - AGStore'}); %>
+
+<body onload="setRandomColor(); showImage(); ">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a href="/">
+                    <h1 id="logoLogin" style="font-family: Zealot; margin: 10px;" class="text-center">AGStore</h1>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <!--banner Left-->
+            <!--login/Register-->
+            <div class="col-md-12">
+                <% if (messages.error){
+                    %>
+                    <%= messages.error %> 
+                    <% } %> 
+                    <% if (messages.info){
+                        %>
+                        <%= messages.info %> 
+                        <% } %> 
+                    <% if (messages.success){
+                        %>
+                        <%= messages.success %> 
+                        <% } %> 
+                                        <form action="/reset/<%= token %>" method="POST">
+                                            <input class="input-login mb-4" type="password" id="newPassword"
+                                                name="newPassword" placeholder="Password"
+                                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                                required>
+                                                
+                                            <div id="message">
+                                                <h5 class="text-muted">Password harus mengandung setidaknya:</h5>
+                                                <p id="letter" class="invalid">Sebuah <b>huruf kecil</b></p>
+                                                <p id="capital" class="invalid">Sebuah <b>huruf Kapital</b> </p>
+                                                <p id="number" class="invalid">Sebuah <b>angka</b></p>
+                                                <p id="length" class="invalid">minimal <b>8 karakter</b></p>
+
+                                            </div>
+
+                                            <input class="input-login mb-4" type="password" required name="password"
+                                                id="password" placeholder="Re-Type Password">
+                                            <div id="message2">
+                                                <p id="reValidate" class="invalid">Password tidak sama</p>
+                                            </div>
+                                            <button type="submit" class="btn btn-utama mb-5" id="btnReg"
+                                                style="width: 100%; border-radius: 10px;"
+                                                onclick="validate()">Update Password</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!--Generate random banner-->
+
+
+    <!--Generate random header color-->
+    <script>
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+
+    <!--set random header color-->
+    <script>
+        function setRandomColor() {
+            $("#logoLogin").css("color", getRandomColor());
+        }
+    </script>
+
+    <!--Validate password-->
+    <script>
+        var myInput = document.getElementById("newPassword");
+        var myInput2 = document.getElementById("password");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+        var reValidate = document.getElementById("reValidate");
+
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function () {
+            document.getElementById("message").style.display = "block";
+        }
+
+        myInput2.onfocus = function () {
+            document.getElementById("message2").style.display = "block";
+            if (myInput2.value == myInput.value && myInput2.value != '') {
+                reValidate.classList.remove("invalid");
+                reValidate.classList.add("valid");
+                reValidate.innerText = "password sama";
+            } else {
+                reValidate.classList.remove("valid");
+                reValidate.classList.add("invalid")
+                reValidate.innerText = "password tidak sama";
+            }
+        }
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function () {
+            document.getElementById("message").style.display = "none";
+        }
+
+        myInput2.onblur = function () {
+            document.getElementById("message2").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function () {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+        }
+
+
+        myInput2.onkeyup = function () {
+            // Validate lowercase letters
+            if (myInput2.value == myInput.value) {
+                reValidate.classList.remove("invalid");
+                reValidate.classList.add("valid");
+                reValidate.innerText = "password sama";
+            } else {
+                reValidate.classList.remove("valid");
+                reValidate.classList.add("invalid")
+                reValidate.innerText = "password tidak sama";
+            }
+
+            // Validate capital letters
+        }
+    </script>
+    <!--Validate Input email-->
+    <script>
+        function validateEmail(email) {
+            const re =
+                /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+        function showMessage() {
+            if (validateEmail($('.input-forgot').val())) {
+
+                setTimeout(function () {
+                    $(".btn-forgot").parent().remove()
+                    $(".message-forgot").css("display", "block");
+                }, 1000);
+            } else {
+                $('.input-forgot').attr('title').show()
+            }
+
+        }
+    </script>
+
+</body>
+
+
+
+</html>

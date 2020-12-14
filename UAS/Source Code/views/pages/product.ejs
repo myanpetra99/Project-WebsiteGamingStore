@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <%- include('../partials/head', {title : 'Produk AGStore'}); %>
+  <% if (isLoggedIn) { %>
+      <%- include('../partials/header', {isLoggedIn : isLoggedIn,
+          name: name}); %>
+      <% } else { %>
+          <%- include('../partials/header', {isLoggedIn : isLoggedIn}); %>
+      <% } %>
+
+    <body>
+        <section class="content" style="margin-top: 75px;">
+        
+            <div class="container">
+                <div class="row ">
+                  <div class="col mb-4 col-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb bg-transparent">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Product</li>
+                      </ol>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            
+          <div class="container">
+         
+            <div class="row">
+              <div class="col">
+                <div class="sortBy">
+                  <form action="/product/" id="formSearch">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-utama" type="submit" id="btnTest">Search</button>
+                      </div>
+                      <input type="text" id="search" class="form-control" placeholder="" aria-label=""  name="q"
+                        aria-describedby="basic-addon1">
+                    </div>        
+                  </form>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="categorySort">Categories</label>
+                    </div>
+                    <select class="custom-select" id="categorySort" aria-placeholder="choose.." form="formSearch" name="category">
+                      <% if(reqcategory) {%>
+                        <option value="<%= reqcategory %>" selected><%= reqcategory %></option>
+                        <option value="">All Category</option>
+                        <% } else {%>
+                          <option value="" disabled selected>Select your option</option>
+                     <% }%>
+                      <% categories.forEach(category =>{ %>
+                        <option value="<%= category.title %>" ><%= category.title %></option>
+                        <% }) %>
+                    </select>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="brandSort">Brand</label>
+                    </div>
+                    <select class="custom-select" id="brandSort" form="formSearch" name="brand">
+                      <% if(reqbrand) {%>
+                        <option value="<%= reqbrand %>" ><%=reqbrand %></option>
+                        <option value="">All Brand</option>
+                        <% } else {%>
+                          <option value="" disabled selected>Select your option</option>
+                     <% }%>
+                      <% brands.forEach(brand =>{ %>
+                        <option value="<%= brand.title %>" ><%= brand.title %></option>
+                        <% }) %>
+                    </select>
+                  </div>
+               
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="sortPrice">Price</label>
+                    </div>
+                    <select class="custom-select" id="sortPrice" form="formSearch" name="price">
+                      <% if(reqprice) {%>
+                        <% if(reqprice == -1) {%>
+                          <option value="<%= reqprice %>" >Harga tertinggi</option>
+                          <option value="">All Price</option>
+                          <option value="1" >Harga terendah</option>
+                          <% } else {%> 
+                            <option value="<%= reqprice %>" >Harga terendah</option>
+                            <option value="">All Price</option>
+                            <option value="-1" >Harga tertinggi</option>
+                          <%} %>
+                      
+                        <% } else {%>
+                          <option value="" disabled selected>Select your option</option>
+                          <option value="-1" >Harga tertinggi</option>
+                          <option value="1" >Harga terendah</option>
+                     <% }%>
+                       
+                    </select>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="sortDate">Date</label>
+                    </div>
+                    <select class="custom-select" id="sortDate" form="formSearch" name="date">
+                      <% if(reqdate) {%>
+                        <% if(reqdate == -1) {%>
+                          <option value="<%= reqdate %>" >Paling baru</option>
+                          <option value="">All Date</option>
+                          <option value="1" >Paling lawas</option>
+                          <% } else {%> 
+                            <option value="<%= reqdate %>" >Paling lawas</option>
+                            <option value="">All Date</option>
+                            <option value="-1" >Paling baru</option>
+                          <%} %>
+              
+                        <% } else {%>
+                          <option value="" disabled selected>Select your option</option>
+                          <option value="-1" >Paling baru</option>
+                          <option value="1" >Paling Lama</option>
+                     <% }%>
+                    </select>
+                  </div>
+                </div>
+      
+      
+              </div>
+            </div>
+            <div id="update">
+             <div class="row mt-2 justify-content-md-center">
+              <% products.forEach(product =>{ %>
+                <div class="col-md-3-sm-6 ml-3 mt-3">
+                <div class="card card-item" style="width: 14rem;">
+                  <img class="card-img-top card-img" src="data:image/<%=product.img.contentType%>;base64, 
+                  <%= product.img.data.toString('base64') %>">
+                <div class="card-body">
+                <h5 class="card-title text-center"><%= product.nama %></h5>
+                <p class="card-text text-center"><b>Rp <%= product.price %></b></p>
+                </div>
+                <div class="card-footer">
+                <a href="/product/item/<%= product.slug %>" class="btn btn-primary d-flex justify-content-center mt-3">Beli Sekarang</a>
+                </div>
+                </div>
+                </div>
+                   <% }) %>
+                </div>
+                 
+               
+                
+            </div>
+      
+      
+      
+      
+      
+            <div class="container mt-5" <div class="row ">
+              <div class="col justify-content-center">
+                <div class="d-flex justify-content-center">
+                  <nav aria-label="...">
+                    <ul class="pagination pagination-lg">
+                      
+                     <% if(pagination.previous) {%>
+                      <li class="page-item"><a class="page-link" href="/product/?page=<%= pagination.previous.page %>">Back</a></li>
+                    <%} else {%>
+                      <li class="page-item disabled"><a class="page-link">Back</a></li>
+                      <% } %>
+                      <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Page <%= currentpage %></a>
+                      </li>
+                      <% if(pagination.next) {%>
+                        <li class="page-item"><a class="page-link" href="/product/?page=<%= pagination.next.page %>">Next</a></li>
+                      <%} else {%>
+                        <li class="page-item disabled"><a class="page-link">Next</a></li>
+                        <% } %>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </section>
+      
+    
+      
+  
+  <script>
+    $(document).ready(function(){
+        $('.sortPrice').each(function(){ 
+            var oldUrl = '&price=' +$(this).attr("href"); // Get current url
+            var newUrl = window.location.href + oldUrl
+            $(this).attr("href", newUrl); // Set herf value
+        });
+    });
+  </script>
+
+      </body>
+
+  <%- include('../partials/footer',{isLoggedIn : isLoggedIn}); %>
+
+
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <%- include('../partials/head', {title : 'Welcome to AGStore'}); %>
+
+<body>
+
+  <% if (isLoggedIn) { %>
+    <%- include('../partials/header', {isLoggedIn : isLoggedIn,
+        name: name, badgecart: badgecart}); %>
+    <% } else { %>
+        <%- include('../partials/header', {isLoggedIn : isLoggedIn}); %>
+    <% } %>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+
+        <% for (var i =0; i < carousels.length;  i++ ) { %>
+   
+          <li data-target="#carouselExampleControls" data-slide-to="<% i %>" class=<% if (i == 0) {%>
+            <%= "active" %>
+            <% } %>></li>
+
+          <% } %>
+    </ol>
+    <div class="carousel-inner">
+
+        <% carousels.forEach(function (carousel, index){ %>
+      
+        <div class="carousel-item <% if (index === 0) {%>
+          <%= 'active' %>
+          <% } %>">
+          <a href="/product/item/<%=carousel.slug%>">
+          <img src="data:image/<%=carousel.img.contentType%>;base64, 
+          <%= carousel.img.data.toString('base64') %>" class="d-block w-100 carousel-banner" alt="..." style="min-height: 300px; max-height: 300px;">
+          <div class="carousel-caption d-none d-md-block">
+            <h2><%= carousel.text %></h2>
+          </div>
+        </a>
+        </div>
+
+        <% }) %>
+
+  </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+
+  </div>
+
+    <section class="content">
+
+
+      <div class="container mt-3">
+
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <a href="/product/?category=Mouse">
+              <div class="card-homepage mt-2 text-center ">
+                <img src="images/mouse-card-bg.jpg" class="card-homepage-bg" width="100%" height="100px" alt="">
+                <div class="card-homepage-title long"> <span class="underline--magical">Mouse</span></div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <a href="/product/?category=Headset">
+              <div class="card-homepage mt-2 text-center ">
+                <img src="images/headset-card-bg.jpg" class="card-homepage-bg" width="100%" height="100px" alt="">
+                <div class="card-homepage-title long"> <span class="underline--magical">Headset </span></div>
+              </div>
+            </a>
+          </div>
+
+         
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <a href="/product/?category=Gaming-chair">
+              <div class="card-homepage mt-2 text-center ">
+                <img src="images/chair-card-bg.jpg" class="card-homepage-bg" width="100%" height="100px" alt="">
+                <div class="card-homepage-title long"> <span class="underline--magical">Gaming Chair</span></div>
+              </div>
+            </a>
+          </div>  
+           <div class="col-md-6 col-sm-12">
+            <a href="/product/?category=Keyboard">
+              <div class="card-homepage mt-2 text-center ">
+                <img src="images/keyboard-card-bg.jpg" class="card-homepage-bg" width="100%" height="100px" alt="">
+                <div class="card-homepage-title"> <span class="underline--magical">Keyboard </span></div>
+              </div>
+            </a>
+          </div>  
+        </div>
+      </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col col-sm-12">
+            <a href="/brand">
+              <div class="card-homepage mt-2 text-center ">
+                <img src="images/brand-card-bg.jpg" class="card-homepage-bg" width="100%" height="100px" alt="">
+                <div class="card-homepage-title"> <span class="underline--magical">Brand</span></div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+    <hr>
+    <div class="section">
+      <div class=" container">
+        <div class="newest-update-title">
+          <h1 class="display-4 text-center" style="color: #07689f ;">Latest Updates</h1>
+          <p class="lead text-center" style="color: #07689f;">Cek dulu gan! Baru keluar nih!</p>
+        </div>
+        <hr>
+        <div class="text-muted">Mouse</div>
+        <div class="owl-carousel owl-theme pt-2 mt-3"
+          style="background: rgb(255,255,255);
+          background: linear-gradient(180deg, rgba(255,255,255,0) 49%, rgba(233,69,96,1) 50%);">
+
+<% productsMouse.forEach(product =>{ %>
+          <div class="card card-item mb-2" style="width: 14rem;">
+            <img src="data:image/<%=product.img.contentType%>;base64, 
+            <%= product.img.data.toString('base64') %>" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center"><%= product.nama %></h5>
+              <p class="card-text text-center">Rp.<%= product.price %></p>
+            </div>
+            <div class="card-footer">
+              <a href="/product/item/<%= product.slug %>" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+        <hr>
+        <div class="text-muted">Keyboard</div>
+        <div class="owl-carousel owl-theme pt-2 mt-3"
+          style="background: rgb(255,255,255);
+          background: linear-gradient(180deg, rgba(255,255,255,0) 49%, rgba(233,69,96,1) 50%);">
+
+
+<% productsKeyboard.forEach(product =>{ %>
+  
+  <div class="card card-item mb-2" style="width: 14rem;">
+    <img src="data:image/<%=product.img.contentType%>;base64, 
+    <%= product.img.data.toString('base64') %>" class="card-img-top card-img" alt="...">
+    <div class="card-body">
+      <h5 class="card-title text-center"><%= product.nama %></h5>
+      <p class="card-text text-center">Rp.<%= product.price %></p>
+    </div>
+    <div class="card-footer">
+      <a href="/product/item/<%= product.slug %>" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+    </div>
+  </div>
+  <% }) %>
+        </div>
+        <hr>
+        <div class="text-muted">Headset</div>
+        <div class="owl-carousel owl-theme pt-2 mt-3" style="background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,0) 49%, rgba(233,69,96,1) 50%);">
+
+
+<% productsHeadset.forEach(product =>{ %>
+  <div class="card card-item mb-2" style="width: 14rem;">
+    <img src="data:image/<%=product.img.contentType%>;base64, 
+    <%= product.img.data.toString('base64') %>" class="card-img-top card-img" alt="...">
+    <div class="card-body">
+      <h5 class="card-title text-center"><%= product.nama %></h5>
+      <p class="card-text text-center">Rp.<%= product.price %></p>
+    </div>
+    <div class="card-footer">
+      <a href="/product/item/<%= product.slug %>" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+    </div>
+  </div>
+  <% }) %>
+        </div>
+        <hr>
+        <div class="text-muted">Gaming Chair</div>
+        <div class="owl-carousel owl-theme pt-2  mt-3" style="background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,0) 49%, rgba(233,69,96,1) 50%);">
+
+<% productsChair.forEach(product =>{ %>
+  <div class="card card-item mb-2" style="width: 14rem;">
+    <img src="data:image/<%=product.img.contentType%>;base64, 
+    <%= product.img.data.toString('base64') %>" class="card-img-top card-img" alt="...">
+    <div class="card-body">
+      <h5 class="card-title text-center"><%= product.nama %></h5>
+      <p class="card-text text-center">Rp.<%= product.price %></p>
+    </div>
+    <div class="card-footer">
+      <a href="/product/item/<%= product.slug %>" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+    </div>
+  </div>
+  <% }) %>
+        </div>
+        <hr>
+        <div class="text-muted">Other</div>
+        <div class="owl-carousel owl-theme pt-2 mt-3" style="background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,0) 49%, rgba(233,69,96,1) 50%);">
+
+
+<% productsOther.forEach(product =>{ %>
+  <div class="card card-item mb-2" style="width: 14rem;">
+    <img src="data:image/<%=product.img.contentType%>;base64, 
+    <%= product.img.data.toString('base64') %>" class="card-img-top card-img" alt="...">
+    <div class="card-body">
+      <h5 class="card-title text-center"><%= product.nama %></h5>
+      <p class="card-text text-center">Rp.<%= product.price %></p>
+    </div>
+    <div class="card-footer">
+      <a href="/product/item/<%= product.slug %>" class="btn btn-primary d-flex justify-content-center">Beli Sekarang</a>
+    </div>
+  </div>
+  <% }) %>
+        </div>
+
+      </div>
+    </div>
+
+  <%- include('../partials/footer',{isLoggedIn : isLoggedIn}); %>
+
+
+  <script>
+    $(document).ready(function () {
+      $('.owl-carousel').owlCarousel({
+        center: true,
+        loop: true,
+        margin: 10,
+        responsiveClass: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        responsive: {
+          0: {
+            items: 2,
+            nav: true
+          },
+          600: {
+            items: 3,
+            nav: true
+          },
+          1000: {
+            items: 4,
+            nav: false,
+          }
+        }
+      })
+    });
+  </script>
+</body>
+
+</html>

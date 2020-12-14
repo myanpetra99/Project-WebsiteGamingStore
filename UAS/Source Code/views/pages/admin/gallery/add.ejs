@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../partials/admin/head'); %>
+
+
+  <body onload="startTime()">
+
+    <%- include('../../../partials/admin/sidenav'); %>
+    <%- include('../../../partials/admin/header',{name:name}); %>
+  
+    <div class="content">
+      <h1 style="font-family: 'Poppins';" class="text-center">Tambah Gallery/Foto</h1>
+      <div class="container">
+    
+
+        <form action="/dashboard/gallery/add" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="title">Pilih Produk : </label>
+            <select name="title" id="title">
+            <% products.forEach(product =>{ %>
+        <option value="<%= product.nama %>"><%= product.nama %></option>
+              <% }) %>
+            </select>
+            <br>
+            <a href="/dashboard/product/create" class="text-muted">Tidak menemukan produk? Tambah produk+</a>
+          </div>
+          <div class="form-group ">
+            <label for="img">Upload Image</label> 
+            <input type="file" id="image" 
+                   name="image" value="" required> 
+          </div>
+        
+          <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <a href="/dashboard/gallery" class="btn btn-secondary">Cancel</a>
+          </div>
+      
+        </form>
+  
+      </div>
+      </div>  
+ 
+
+      <%- include('../../../partials/admin/footer'); %>
+  </body>
+
+
+</html>
