@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 var db = mongoose.connection;
 const Brands = require('../models/brand')
 router.get('/brand', async function(req, res) {
-    const brand = await Brands.find()
+    const brands = await Brands.find()
     if(req.isAuthenticated()){
       var badgeCart
       const userid = req.user.id
@@ -17,14 +17,14 @@ router.get('/brand', async function(req, res) {
           }
       })
       
-      console.log(brand)
+      console.log(brands)
       res.render('pages/brands', {name: req.user.name,
-          isLoggedIn: true, badgecart:badgeCart, brands: brand});
-          console.log(brand)
+          isLoggedIn: true, badgecart:badgeCart, brands: brands});
+          console.log(brands)
     }
     else{
-      res.render('pages/brands', {isLoggedIn: false, brands: brand});
-      console.log(brand)
+      res.render('pages/brands', {isLoggedIn: false, brands: brands});
+      console.log(brands)
     }
   });
   

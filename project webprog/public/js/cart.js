@@ -39,7 +39,12 @@ function recalculateCart () {
   })
 
   var shipping = subtotal > 0 ? biayaKirim : 0
+  var random = '0.'+Math.floor(Math.random() * 90 + 10)
+  $('#unique-code').html(random)
   var total = subtotal + shipping
+  if(total > 0){
+    total = total - parseFloat(random)
+  }
 
   $('.totals-value').fadeOut(fadeTime, function () {
     $('#cart-subtotal').html(subtotal)
@@ -71,6 +76,8 @@ function checkCart () {
     $('.empty-cart').css('display', 'none')
     $('.btn-beli').attr('disabled', false)
   }
+
+
 }
 
 

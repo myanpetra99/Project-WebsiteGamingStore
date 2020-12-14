@@ -59,19 +59,19 @@
           <div class="xzoom-container">
             <img src="data:image/<%=product.img.contentType%>;base64, 
         <%=product.img.data.toString('base64')%> " class="xzoom" xoriginal="data:image/<%=product.img.contentType%>;base64, 
-        <%=product.img.data.toString('base64')%> ">
+        <%=product.img.data.toString('base64')%> " style="height: 600px; width: 600px; object-fit: contain;">
 
 
             <div class="xzoom-thumbs">
-              <a href="data:image/<%=product.img.contentType%>;base64, 
+              <a style="height: 600px; width: 600px; object-fit: contain;" href="data:image/<%=product.img.contentType%>;base64, 
                 <%=product.img.data.toString('base64')%>">
-                <img class="xzoom-gallery" width="128"
+                <img class="xzoom-gallery" style="object-fit: contain;" width="128" height="128"
                   src="data:image/<%=product.img.contentType%>;base64, 
                   <%=product.img.data.toString('base64')%>" xpreview="data:image/<%=product.img.contentType%>;base64, 
                   <%=product.img.data.toString('base64')%>" /></a>
                   <% galleries.forEach(gallery =>{ %>
-                    <a href="data:image/<%=gallery.img.contentType%>;base64, 
-                      <%=gallery.img.data.toString('base64')%>"><img class="xzoom-gallery" width="128"
+                    <a style="height: 600px; width: 600px; object-fit: contain;" href="data:image/<%=gallery.img.contentType%>;base64, 
+                      <%=gallery.img.data.toString('base64')%>"><img class="xzoom-gallery" width="128" height="128" style="object-fit: contain;"
                       src="data:image/<%=gallery.img.contentType%>;base64, 
                       <%=gallery.img.data.toString('base64')%>" xpreview="data:image/<%=gallery.img.contentType%>;base64, 
                       <%=gallery.img.data.toString('base64')%>" /></a>
