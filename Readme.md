@@ -1,14 +1,16 @@
 <img src="https://i.ibb.co/ww41rRz/AGS.png" alt="AGS" border="0">
 
+https://agstoreforever.herokuapp.com/
+
 <b>Gaming Gear E-commerce coming to town
 	
 ## Installation
 
 `npm install` installs dependencies listed in package.json
 ##  Development 
-Please run `npm run devStart` (nodemon)
+Please run `npm run start`
 <br>
-mongoDB server name : <b>Agstore</b>
+mongoDB local server name : <b>Agstore</b>
 
 ### 
 
